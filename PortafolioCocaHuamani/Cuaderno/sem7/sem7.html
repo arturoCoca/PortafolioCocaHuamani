@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 7 - Hooks en React | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem7.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <!-- React CDN para demostraciones -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="#">Semana 7</a>
+            </nav>
+            <h1>Hooks en React</h1>
+            <p class="subtitle">Gestión avanzada de estado y efectos en componentes funcionales</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender el propósito y beneficios de los Hooks en React</li>
+                <li>Dominar el uso de useState para gestión de estado local</li>
+                <li>Implementar efectos secundarios con useEffect</li>
+                <li>Gestionar estado global con useContext y React Context</li>
+                <li>Manejar estado complejo con useReducer</li>
+                <li>Crear y utilizar Custom Hooks para lógica reutilizable</li>
+                <li>Identificar los casos de uso adecuados para cada tipo de Hook</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="hooks-intro">
+                <h2><i class="fas fa-link"></i> Introducción a los Hooks</h2>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>¿Qué son los Hooks?</h3>
+                        <p>Los Hooks son funciones especiales introducidas en React 16.8 que permiten a los componentes funcionales:</p>
+                        <ul>
+                            <li>Acceder al estado y ciclo de vida de React</li>
+                            <li>Reutilizar lógica de estado entre componentes</li>
+                            <li>Reducir la complejidad del código</li>
+                            <li>Eliminar la necesidad de componentes de clase</li>
+                        </ul>
+                        <div class="best-practice">
+                            <h4>Reglas de los Hooks:</h4>
+                            <ul>
+                                <li>Solo llamar Hooks en el nivel superior (no en bucles, condiciones o funciones anidadas)</li>
+                                <li>Solo llamar Hooks desde componentes de React o Custom Hooks</li>
+                                <li>Los nombres de Hooks personalizados deben comenzar con "use"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Ventajas de los Hooks</h3>
+                        <ul>
+                            <li><strong>Simplificación:</strong> Eliminan la necesidad de clases y this</li>
+                            <li><strong>Reutilización:</strong> Facilita compartir lógica entre componentes</li>
+                            <li><strong>Organización:</strong> Agrupa código relacionado en el mismo lugar</li>
+                            <li><strong>Legibilidad:</strong> Código más limpio y fácil de entender</li>
+                            <li><strong>Testing:</strong> Más fácil de probar y aislar lógica</li>
+                        </ul>
+                        <div class="code-example">
+                            <h4>Comparación Clase vs Hooks:</h4>
+                            <div id="class-vs-hooks-demo"></div>
+                            <script type="text/babel">
+                                // Componente de clase
+                                class ClassCounter extends React.Component {
+                                    constructor(props) {
+                                        super(props);
+                                        this.state = { count: 0 };
+                                        this.increment = this.increment.bind(this);
+                                    }
+
+                                    increment() {
+                                        this.setState({ count: this.state.count + 1 });
+                                    }
+
+                                    render() {
+                                        return (
+                                            <div>
+                                                <p>Contador (Clase): {this.state.count}</p>
+                                                <button 
+                                                    className="demo-btn"
+                                                    onClick={this.increment}
+                                                >
+                                                    Incrementar
+                                                </button>
+                                            </div>
+                                        );
+                                    }
+                                }
+
+                                // Componente con Hooks
+                                function HooksCounter() {
+                                    const [count, setCount] = React.useState(0);
+
+                                    return (
+                                        <div>
+                                            <p>Contador (Hooks): {count}</p>
+                                            <button 
+                                                className="demo-btn"
+                                                onClick={() => setCount(count + 1)}
+                                            >
+                                                Incrementar
+                                            </button>
+                                        </div>
+                                    );
+                                }
+
+                                function ComparisonDemo() {
+                                    return (
+                                        <div>
+                                            <ClassCounter />
+                                            <HooksCounter />
+                                        </div>
+                                    );
+                                }
+
+                                ReactDOM.render(
+                                    <ComparisonDemo />,
+                                    document.getElementById('class-vs-hooks-demo')
+                                );
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="use-state-section">
+                <h2><i class="fas fa-battery-three-quarters"></i> useState</h2>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Conceptos Básicos</h3>
+                        <p><code>useState</code> es el Hook fundamental para gestionar estado local en componentes funcionales.</p>
+                        <pre><code>// Sintaxis básica
+const [state, setState] = useState(initialValue);
+
+// Ejemplo práctico
+const [count, setCount] = useState(0);</code></pre>
+                        <ul>
+                            <li><strong>state:</strong> Valor actual del estado</li>
+                            <li><strong>setState:</strong> Función para actualizar el estado</li>
+                            <li><strong>initialValue:</strong> Valor inicial del estado</li>
+                        </ul>
+                        <div class="important-note">
+                            <p>Las actualizaciones de estado con <code>useState</code> no fusionan objetos como <code>this.setState</code> en clases. Para objetos, debes manualmente fusionar el estado anterior.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Actualización del Estado</h3>
+                        <p>Existen dos formas de actualizar el estado:</p>
+                        <pre><code>// 1. Valor directo
+setCount(5);
+
+// 2. Función que recibe el estado anterior
+setCount(prevCount => prevCount + 1);</code></pre>
+                        <p>La segunda forma es recomendada cuando:</p>
+                        <ul>
+                            <li>El nuevo estado depende del anterior</li>
+                            <li>Se necesita evitar condiciones de carrera</li>
+                            <li>Se trabaja con estados complejos</li>
+                        </ul>
+                        <div class="interactive-demo">
+                            <div id="use-state-demo"></div>
+                            <script type="text/babel">
+                                function CounterDemo() {
+                                    const [count, setCount] = React.useState(0);
+                                    const [user, setUser] = React.useState({ name: '', age: 0 });
+
+                                    const updateName = (e) => {
+                                        setUser(prev => ({ ...prev, name: e.target.value }));
+                                    };
+
+                                    const updateAge = (e) => {
+                                        setUser(prev => ({ ...prev, age: parseInt(e.target.value) || 0 }));
+                                    };
+
+                                    return (
+                                        <div>
+                                            <h4>Contador Simple</h4>
+                                            <p>Valor: {count}</p>
+                                            <div className="button-group">
+                                                <button className="demo-btn" onClick={() => setCount(c => c + 1)}>
+                                                    Incrementar
+                                                </button>
+                                                <button className="demo-btn" onClick={() => setCount(c => c - 1)}>
+                                                    Decrementar
+                                                </button>
+                                                <button className="demo-btn" onClick={() => setCount(0)}>
+                                                    Resetear
+                                                </button>
+                                            </div>
+
+                                            <h4>Objeto de Estado</h4>
+                                            <div className="form-group">
+                                                <label>
+                                                    Nombre:
+                                                    <input type="text" value={user.name} onChange={updateName} />
+                                                </label>
+                                            </div>
+                                            <div className="form-group">
+                                                <label>
+                                                    Edad:
+                                                    <input type="number" value={user.age} onChange={updateAge} />
+                                                </label>
+                                            </div>
+                                            <p>Usuario: {JSON.stringify(user)}</p>
+                                        </div>
+                                    );
+                                }
+
+                                ReactDOM.render(
+                                    <CounterDemo />,
+                                    document.getElementById('use-state-demo')
+                                );
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="use-effect-section">
+                <h2><i class="fas fa-sync-alt"></i> useEffect</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="use-effect-fundamentals">Fundamentos</div>
+                        <div class="tab-btn" data-tab="use-effect-dependencies">Dependencias</div>
+                        <div class="tab-btn" data-tab="use-effect-cases">Casos de Uso</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="use-effect-fundamentals">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>¿Qué es useEffect?</h3>
+                                <p><code>useEffect</code> permite ejecutar efectos secundarios en componentes funcionales:</p>
+                                <pre><code>useEffect(() => {
+    // Código del efecto
+    return () => {
+        // Limpieza (opcional)
+    };
+}, [dependencies]);</code></pre>
+                                <p>Los efectos secundarios incluyen:</p>
+                                <ul>
+                                    <li>Peticiones a APIs (data fetching)</li>
+                                    <li>Suscripciones a eventos</li>
+                                    <li>Manipulación manual del DOM</li>
+                                    <li>Temporizadores</li>
+                                </ul>
+                            </div>
+                            <div class="card">
+                                <h3>Ciclo de Vida</h3>
+                                <p><code>useEffect</code> combina los métodos de ciclo de vida de clases:</p>
+                                <ul>
+                                    <li><strong>componentDidMount:</strong> Efecto con array de dependencias vacío</li>
+                                    <li><strong>componentDidUpdate:</strong> Efecto con dependencias específicas</li>
+                                    <li><strong>componentWillUnmount:</strong> Función de limpieza retornada por el efecto</li>
+                                </ul>
+                                <div class="lifecycle-diagram">
+                                    <div class="lifecycle-stage">
+                                        <div class="stage-name">Montaje</div>
+                                        <div class="stage-arrow">↓</div>
+                                        <div class="stage-code">useEffect(() => {}, [])</div>
+                                    </div>
+                                    <div class="lifecycle-stage">
+                                        <div class="stage-name">Actualización</div>
+                                        <div class="stage-arrow">↓</div>
+                                        <div class="stage-code">useEffect(() => {}, [dep])</div>
+                                    </div>
+                                    <div class="lifecycle-stage">
+                                        <div class="stage-name">Desmontaje</div>
+                                        <div class="stage-arrow">↓</div>
+                                        <div class="stage-code">return () => {}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="use-effect-dependencies">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Array de Dependencias</h3>
+                                <p>El array de dependencias controla cuándo se ejecuta el efecto:</p>
+                                <table class="dependencies-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Dependencias</th>
+                                            <th>Comportamiento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>[]</code> (vacío)</td>
+                                            <td>Se ejecuta solo al montar el componente</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>[dep1, dep2]</code></td>
+                                            <td>Se ejecuta cuando alguna dependencia cambia</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sin array</td>
+                                            <td>Se ejecuta después de cada renderizado</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="important-note">
+                                    <p>Incluir todas las dependencias que se usan dentro del efecto. Omisiones pueden causar bugs.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Ejemplo Práctico</h3>
+                                <div class="interactive-demo">
+                                    <div id="use-effect-demo"></div>
+                                    <script type="text/babel">
+                                        function EffectDemo() {
+                                            const [count, setCount] = React.useState(0);
+                                            const [width, setWidth] = React.useState(window.innerWidth);
+                                            
+                                            // Efecto sin dependencias (solo montaje)
+                                            React.useEffect(() => {
+                                                console.log('Componente montado');
+                                                return () => console.log('Componente desmontado');
+                                            }, []);
+                                            
+                                            // Efecto con dependencia (count)
+                                            React.useEffect(() => {
+                                                document.title = `Contador: ${count}`;
+                                            }, [count]);
+                                            
+                                            // Efecto para escuchar resize
+                                            React.useEffect(() => {
+                                                const handleResize = () => {
+                                                    setWidth(window.innerWidth);
+                                                };
+                                                
+                                                window.addEventListener('resize', handleResize);
+                                                return () => {
+                                                    window.removeEventListener('resize', handleResize);
+                                                };
+                                            }, []);
+                                            
+                                            return (
+                                                <div>
+                                                    <h4>Contador: {count}</h4>
+                                                    <button 
+                                                        className="demo-btn"
+                                                        onClick={() => setCount(c => c + 1)}
+                                                    >
+                                                        Incrementar
+                                                    </button>
+                                                    
+                                                    <h4>Ancho de ventana: {width}px</h4>
+                                                    <p>Prueba cambiar el tamaño de la ventana</p>
+                                                    
+                                                    <div className="console-message">
+                                                        <p>Mira la consola para ver los mensajes de ciclo de vida</p>
+                                                    </div>
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        ReactDOM.render(
+                                            <EffectDemo />,
+                                            document.getElementById('use-effect-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="use-effect-cases">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Casos Comunes</h3>
+                                <ul>
+                                    <li>
+                                        <strong>Fetching de datos:</strong>
+                                        <pre><code>useEffect(() => {
+    const fetchData = async () => {
+        const response = await fetch('api/data');
+        const data = await response.json();
+        setData(data);
+    };
+    fetchData();
+}, []);</code></pre>
+                                    </li>
+                                    <li>
+                                        <strong>Event listeners:</strong>
+                                        <pre><code>useEffect(() => {
+    const handleClick = () => console.log('Clicked');
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+}, []);</code></pre>
+                                    </li>
+                                    <li>
+                                        <strong>Temporizadores:</strong>
+                                        <pre><code>useEffect(() => {
+    const timer = setTimeout(() => {
+        setTime(new Date());
+    }, 1000);
+    return () => clearTimeout(timer);
+}, [time]);</code></pre>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card">
+                                <h3>Data Fetching Avanzado</h3>
+                                <div class="interactive-demo">
+                                    <div id="fetching-demo"></div>
+                                    <script type="text/babel">
+                                        function FetchingDemo() {
+                                            const [data, setData] = React.useState(null);
+                                            const [loading, setLoading] = React.useState(false);
+                                            const [error, setError] = React.useState(null);
+                                            const [userId, setUserId] = React.useState(1);
+                                            
+                                            React.useEffect(() => {
+                                                const fetchUser = async () => {
+                                                    setLoading(true);
+                                                    setError(null);
+                                                    try {
+                                                        const response = await fetch(
+                                                            `https://jsonplaceholder.typicode.com/users/${userId}`
+                                                        );
+                                                        if (!response.ok) {
+                                                            throw new Error('Usuario no encontrado');
+                                                        }
+                                                        const userData = await response.json();
+                                                        setData(userData);
+                                                    } catch (err) {
+                                                        setError(err.message);
+                                                        setData(null);
+                                                    } finally {
+                                                        setLoading(false);
+                                                    }
+                                                };
+                                                
+                                                fetchUser();
+                                            }, [userId]);
+                                            
+                                            return (
+                                                <div>
+                                                    <h4>Fetching de Datos</h4>
+                                                    <div className="form-group">
+                                                        <label>
+                                                            ID de Usuario (1-10):
+                                                            <input 
+                                                                type="number" 
+                                                                min="1" 
+                                                                max="10" 
+                                                                value={userId}
+                                                                onChange={(e) => setUserId(e.target.value)}
+                                                            />
+                                                        </label>
+                                                    </div>
+                                                    
+                                                    {loading && <p>Cargando...</p>}
+                                                    {error && <p className="error">Error: {error}</p>}
+                                                    {data && (
+                                                        <div className="user-data">
+                                                            <h5>Datos del Usuario:</h5>
+                                                            <pre>{JSON.stringify(data, null, 2)}</pre>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        ReactDOM.render(
+                                            <FetchingDemo />,
+                                            document.getElementById('fetching-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="context-reducer-section">
+                <h2><i class="fas fa-project-diagram"></i> useContext y useReducer</h2>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>React Context</h3>
+                        <p>Context proporciona una forma de compartir valores entre componentes sin pasar props manualmente en cada nivel.</p>
+                        <pre><code>// 1. Crear contexto
+const MyContext = React.createContext(defaultValue);
+
+// 2. Proveer contexto
+&lt;MyContext.Provider value={someValue}&gt;
+    {/* Componentes hijos */}
+&lt;/MyContext.Provider&gt;
+
+// 3. Consumir contexto
+const value = useContext(MyContext);</code></pre>
+                        <p>Casos de uso comunes:</p>
+                        <ul>
+                            <li>Tema de la aplicación (light/dark mode)</li>
+                            <li>Autenticación del usuario</li>
+                            <li>Idioma/localización</li>
+                            <li>Configuración global</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>useContext</h3>
+                        <p><code>useContext</code> permite acceder al valor de un contexto desde cualquier componente hijo.</p>
+                        <div class="interactive-demo">
+                            <div id="context-demo"></div>
+                            <script type="text/babel">
+                                // Crear contexto
+                                const ThemeContext = React.createContext('light');
+                                
+                                function ThemedButton() {
+                                    const theme = React.useContext(ThemeContext);
+                                    
+                                    return (
+                                        <button 
+                                            className={`demo-btn ${theme}`}
+                                            style={{
+                                                backgroundColor: theme === 'dark' ? '#333' : '#eee',
+                                                color: theme === 'dark' ? '#fff' : '#333'
+                                            }}
+                                        >
+                                            Botón con tema {theme}
+                                        </button>
+                                    );
+                                }
+                                
+                                function Toolbar() {
+                                    return (
+                                        <div>
+                                            <ThemedButton />
+                                        </div>
+                                    );
+                                }
+                                
+                                function ContextDemo() {
+                                    const [theme, setTheme] = React.useState('light');
+                                    
+                                    return (
+                                        <ThemeContext.Provider value={theme}>
+                                            <div>
+                                                <h4>Ejemplo de useContext</h4>
+                                                <div className="button-group">
+                                                    <button 
+                                                        className="demo-btn"
+                                                        onClick={() => setTheme('light')}
+                                                    >
+                                                        Tema Claro
+                                                    </button>
+                                                    <button 
+                                                        className="demo-btn"
+                                                        onClick={() => setTheme('dark')}
+                                                    >
+                                                        Tema Oscuro
+                                                    </button>
+                                                </div>
+                                                <Toolbar />
+                                                <p>El botón hereda el tema del Provider más cercano</p>
+                                            </div>
+                                        </ThemeContext.Provider>
+                                    );
+                                }
+                                
+                                ReactDOM.render(
+                                    <ContextDemo />,
+                                    document.getElementById('context-demo')
+                                );
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>useReducer</h3>
+                        <p><code>useReducer</code> es una alternativa a <code>useState</code> para manejar estado complejo:</p>
+                        <pre><code>const [state, dispatch] = useReducer(reducer, initialState);
+
+// Reducer es una función pura
+function reducer(state, action) {
+    switch (action.type) {
+        case 'ACTION_TYPE':
+            return { ...state, /* cambios */ };
+        default:
+            return state;
+    }
+}
+
+// Disparar acciones
+dispatch({ type: 'ACTION_TYPE', payload: data });</code></pre>
+                        <p>Ventajas sobre useState:</p>
+                        <ul>
+                            <li>Mejor para lógica compleja de estado</li>
+                            <li>Más fácil de testear</li>
+                            <li>Separa la lógica de actualización del componente</li>
+                            <li>Útil para estados con múltiples subvalores</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Ejemplo: Carrito de Compras</h3>
+                        <div class="interactive-demo">
+                            <div id="reducer-demo"></div>
+                            <script type="text/babel">
+                                // Estado inicial
+                                const initialState = {
+                                    products: [
+                                        { id: 1, name: 'Producto 1', price: 10, quantity: 0 },
+                                        { id: 2, name: 'Producto 2', price: 20, quantity: 0 },
+                                        { id: 3, name: 'Producto 3', price: 30, quantity: 0 }
+                                    ],
+                                    total: 0
+                                };
+                                
+                                // Reductor
+                                function cartReducer(state, action) {
+                                    switch (action.type) {
+                                        case 'ADD_ITEM':
+                                            const updatedProducts = state.products.map(product => 
+                                                product.id === action.payload 
+                                                    ? { ...product, quantity: product.quantity + 1 }
+                                                    : product
+                                            );
+                                            return {
+                                                ...state,
+                                                products: updatedProducts,
+                                                total: updatedProducts.reduce(
+                                                    (sum, product) => sum + (product.price * product.quantity), 0
+                                                )
+                                            };
+                                        case 'REMOVE_ITEM':
+                                            const reducedProducts = state.products.map(product => 
+                                                product.id === action.payload && product.quantity > 0
+                                                    ? { ...product, quantity: product.quantity - 1 }
+                                                    : product
+                                            );
+                                            return {
+                                                ...state,
+                                                products: reducedProducts,
+                                                total: reducedProducts.reduce(
+                                                    (sum, product) => sum + (product.price * product.quantity), 0
+                                                )
+                                            };
+                                        case 'CLEAR_CART':
+                                            return initialState;
+                                        default:
+                                            return state;
+                                    }
+                                }
+                                
+                                function CartDemo() {
+                                    const [state, dispatch] = React.useReducer(cartReducer, initialState);
+                                    
+                                    return (
+                                        <div>
+                                            <h4>Carrito de Compras con useReducer</h4>
+                                            <div className="product-list">
+                                                {state.products.map(product => (
+                                                    <div key={product.id} className="product-item">
+                                                        <h5>{product.name} - ${product.price}</h5>
+                                                        <div className="product-controls">
+                                                            <button 
+                                                                className="demo-btn"
+                                                                onClick={() => dispatch({ type: 'REMOVE_ITEM', payload: product.id })}
+                                                            >
+                                                                -
+                                                            </button>
+                                                            <span>{product.quantity}</span>
+                                                            <button 
+                                                                className="demo-btn"
+                                                                onClick={() => dispatch({ type: 'ADD_ITEM', payload: product.id })}
+                                                            >
+                                                                +
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <div className="cart-summary">
+                                                <h5>Total: ${state.total.toFixed(2)}</h5>
+                                                <button 
+                                                    className="demo-btn"
+                                                    onClick={() => dispatch({ type: 'CLEAR_CART' })}
+                                                >
+                                                    Vaciar Carrito
+                                                </button>
+                                            </div>
+                                        </div>
+                                    );
+                                }
+                                
+                                ReactDOM.render(
+                                    <CartDemo />,
+                                    document.getElementById('reducer-demo')
+                                );
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="custom-hooks-section">
+                <h2><i class="fas fa-cogs"></i> Custom Hooks</h2>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>¿Qué son Custom Hooks?</h3>
+                        <p>Los Custom Hooks son funciones JavaScript que:</p>
+                        <ul>
+                            <li>Comienzan con "use" (convención)</li>
+                            <li>Pueden llamar a otros Hooks</li>
+                            <li>Permiten extraer lógica de componentes para reutilizarla</li>
+                            <li>No tienen JSX (no renderizan UI)</li>
+                        </ul>
+                        <pre><code>// Ejemplo: useFetch
+function useFetch(url) {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(url);
+                const json = await response.json();
+                setData(json);
+            } catch (err) {
+                setError(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        
+        fetchData();
+    }, [url]);
+    
+    return { data, loading, error };
+}
+
+// Uso en componente
+function MyComponent() {
+    const { data, loading, error } = useFetch('api/data');
+    // ...
+}</code></pre>
+                    </div>
+                    <div class="card">
+                        <h3>Ejemplo: useLocalStorage</h3>
+                        <div class="interactive-demo">
+                            <div id="custom-hook-demo"></div>
+                            <script type="text/babel">
+                                // Custom Hook
+                                function useLocalStorage(key, initialValue) {
+                                    const [storedValue, setStoredValue] = React.useState(() => {
+                                        try {
+                                            const item = window.localStorage.getItem(key);
+                                            return item ? JSON.parse(item) : initialValue;
+                                        } catch (error) {
+                                            console.error(error);
+                                            return initialValue;
+                                        }
+                                    });
+                                    
+                                    const setValue = (value) => {
+                                        try {
+                                            const valueToStore = 
+                                                value instanceof Function ? value(storedValue) : value;
+                                            setStoredValue(valueToStore);
+                                            window.localStorage.setItem(key, JSON.stringify(valueToStore));
+                                        } catch (error) {
+                                            console.error(error);
+                                        }
+                                    };
+                                    
+                                    return [storedValue, setValue];
+                                }
+                                
+                                function CustomHookDemo() {
+                                    const [name, setName] = useLocalStorage('name', '');
+                                    const [darkMode, setDarkMode] = useLocalStorage('darkMode', false);
+                                    
+                                    return (
+                                        <div className={darkMode ? 'dark' : 'light'}>
+                                            <h4>Ejemplo de Custom Hook</h4>
+                                            <div className="form-group">
+                                                <label>
+                                                    Nombre:
+                                                    <input 
+                                                        type="text" 
+                                                        value={name} 
+                                                        onChange={(e) => setName(e.target.value)}
+                                                    />
+                                                </label>
+                                            </div>
+                                            <div className="form-group">
+                                                <label>
+                                                    Modo oscuro:
+                                                    <input 
+                                                        type="checkbox" 
+                                                        checked={darkMode}
+                                                        onChange={(e) => setDarkMode(e.target.checked)}
+                                                    />
+                                                </label>
+                                            </div>
+                                            <p>Los valores persisten al recargar la página porque están en localStorage.</p>
+                                            <p>Nombre guardado: {name || 'Vacío'}</p>
+                                            <p>Modo actual: {darkMode ? 'Oscuro' : 'Claro'}</p>
+                                        </div>
+                                    );
+                                }
+                                
+                                ReactDOM.render(
+                                    <CustomHookDemo />,
+                                    document.getElementById('custom-hook-demo')
+                                );
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Buenas Prácticas para Custom Hooks</h3>
+                    <ul>
+                        <li><strong>Nomenclatura:</strong> Siempre comenzar con "use"</li>
+                        <li><strong>Unicidad:</strong> Cada Hook debe encapsular una sola pieza de lógica</li>
+                        <li><strong>Estado mínimo:</strong> Mantener el estado interno al mínimo necesario</li>
+                        <li><strong>Dependencias:</strong> Manejar cuidadosamente las dependencias de useEffect</li>
+                        <li><strong>Documentación:</strong> Documentar claramente el propósito y API del Hook</li>
+                        <li><strong>Testing:</strong> Probar independientemente de los componentes</li>
+                    </ul>
+                    <div class="best-practice">
+                        <h4>Ejemplos de Custom Hooks útiles:</h4>
+                        <ul>
+                            <li><code>useFetch</code>: Manejo de peticiones HTTP</li>
+                            <li><code>useLocalStorage</code>: Sincronización con localStorage</li>
+                            <li><code>useDebounce</code>: Retrasar ejecución de funciones</li>
+                            <li><code>useMediaQuery</code>: Responder a media queries CSS</li>
+                            <li><code>useOnClickOutside</code>: Detectar clics fuera de un elemento</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hooks-comparison">
+                <h2><i class="fas fa-balance-scale"></i> Comparación de Hooks</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>useState vs useReducer</h3>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>useState</th>
+                                    <th>useReducer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Casos de uso</td>
+                                    <td>Estado simple, valores independientes</td>
+                                    <td>Estado complejo, múltiples subvalores relacionados</td>
+                                </tr>
+                                <tr>
+                                    <td>Lógica de actualización</td>
+                                    <td>Directa en el componente</td>
+                                    <td>Centralizada en el reductor</td>
+                                </tr>
+                                <tr>
+                                    <td>Testing</td>
+                                    <td>Requiere renderizar componente</td>
+                                    <td>Reductor testeable independientemente</td>
+                                </tr>
+                                <tr>
+                                    <td>Rendimiento</td>
+                                    <td>Mejor para actualizaciones simples</td>
+                                    <td>Mejor para actualizaciones complejas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card">
+                        <h3>useContext vs Redux</h3>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>useContext</th>
+                                    <th>Redux</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Complejidad</td>
+                                    <td>Baja, integrado en React</td>
+                                    <td>Alta, requiere configuración</td>
+                                </tr>
+                                <tr>
+                                    <td>Casos de uso</td>
+                                    <td>Estado global que no cambia frecuentemente</td>
+                                    <td>Estado complejo que cambia frecuentemente</td>
+                                </tr>
+                                <tr>
+                                    <td>Rendimiento</td>
+                                    <td>Puede causar re-renders innecesarios</td>
+                                    <td>Optimizado para evitar re-renders</td>
+                                </tr>
+                                <tr>
+                                    <td>Herramientas</td>
+                                    <td>React DevTools</td>
+                                    <td>Redux DevTools avanzadas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card">
+                        <h3>Recomendaciones</h3>
+                        <ul>
+                            <li>Comienza con <code>useState</code> y evoluciona a <code>useReducer</code> cuando sea necesario</li>
+                            <li>Usa <code>useContext</code> para temas, autenticación o configuración</li>
+                            <li>Considera Redux solo para aplicaciones muy grandes y complejas</li>
+                            <li>Crea Custom Hooks para lógica reutilizable</li>
+                            <li>No abuses de <code>useEffect</code> - considera si la lógica puede ir en eventos</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 7</h2>
+            <div class="summary-grid">
+                <div class="summary-card key-concepts">
+                    <h3>Conceptos Clave</h3>
+                    <ul>
+                        <li>Hooks permiten estado y efectos en componentes funcionales</li>
+                        <li><code>useState</code> para estado local simple</li>
+                        <li><code>useEffect</code> para efectos secundarios y ciclo de vida</li>
+                        <li><code>useContext</code> para acceder a valores de contexto</li>
+                        <li><code>useReducer</code> para estado complejo con lógica centralizada</li>
+                        <li>Custom Hooks para reutilizar lógica entre componentes</li>
+                    </ul>
+                </div>
+                <div class="summary-card tools">
+                    <h3>Hooks Dominados</h3>
+                    <ul>
+                        <li><code>useState</code> - Gestión básica de estado</li>
+                        <li><code>useEffect</code> - Efectos secundarios y sus dependencias</li>
+                        <li><code>useContext</code> - Consumo de contexto</li>
+                        <li><code>useReducer</code> - Manejo de estado complejo</li>
+                        <li>Custom Hooks - Lógica reutilizable</li>
+                    </ul>
+                </div>
+                <div class="summary-card next-steps">
+                    <h3>Próximos Pasos</h3>
+                    <ul>
+                        <li>Profundizar en hooks avanzados: <code>useCallback</code>, <code>useMemo</code>, <code>useRef</code></li>
+                        <li>Aprender patrones de composición de Hooks</li>
+                        <li>Explorar librerías de Hooks populares (react-use, ahooks)</li>
+                        <li>Practicar integración de múltiples Hooks en proyectos reales</li>
+                        <li>Dominar testing de componentes con Hooks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="lab-exercises">
+            <h2><i class="fas fa-flask"></i> Ejercicios de Laboratorio</h2>
+            
+            <div class="exercise">
+                <h3>Ejercicio 1: Contador Avanzado</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Implementé un contador con funcionalidades avanzadas usando Hooks:</p>
+                        <ul>
+                            <li>Contador con incremento/decremento</li>
+                            <li>Historial de cambios</li>
+                            <li>Persistencia en localStorage</li>
+                            <li>Reset del contador</li>
+                            <li>Uso de useState, useEffect y Custom Hook</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Resultado:</h4>
+                        <div class="result-container">
+                            <div id="advanced-counter-demo"></div>
+                            <script type="text/babel">
+                                function useLocalStorageCounter(key, initialValue) {
+                                    const [count, setCount] = React.useState(() => {
+                                        const saved = localStorage.getItem(key);
+                                        return saved !== null ? JSON.parse(saved) : initialValue;
+                                    });
+                                    
+                                    const [history, setHistory] = React.useState([]);
+                                    
+                                    React.useEffect(() => {
+                                        localStorage.setItem(key, JSON.stringify(count));
+                                        setHistory(prev => [...prev, count]);
+                                    }, [count, key]);
+                                    
+                                    const reset = () => {
+                                        setCount(initialValue);
+                                    };
+                                    
+                                    return { count, setCount, history, reset };
+                                }
+                                
+                                function AdvancedCounter() {
+                                    const { 
+                                        count, 
+                                        setCount, 
+                                        history, 
+                                        reset 
+                                    } = useLocalStorageCounter('advanced-counter', 0);
+                                    
+                                    return (
+                                        <div>
+                                            <h4>Contador: {count}</h4>
+                                            <div className="button-group">
+                                                <button 
+                                                    className="demo-btn"
+                                                    onClick={() => setCount(c => c - 1)}
+                                                >
+                                                    Decrementar
+                                                </button>
+                                                <button 
+                                                    className="demo-btn"
+                                                    onClick={() => setCount(c => c + 1)}
+                                                >
+                                                    Incrementar
+                                                </button>
+                                                <button 
+                                                    className="demo-btn"
+                                                    onClick={reset}
+                                                >
+                                                    Resetear
+                                                </button>
+                                            </div>
+                                            
+                                            <h5>Historial (últimos 5):</h5>
+                                            <ul>
+                                                {history.slice(-5).map((item, index) => (
+                                                    <li key={index}>{item}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    );
+                                }
+                                
+                                ReactDOM.render(
+                                    <AdvancedCounter />,
+                                    document.getElementById('advanced-counter-demo')
+                                );
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="exercise">
+                <h3>Ejercicio 2 Custom Hook useFetch</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Implementé un Custom Hook <code>useFetch</code> para manejar peticiones HTTP:</p>
+                        <ul>
+                            <li>Manejo de estados: loading, error, data</li>
+                            <li>Cancelación de peticiones al desmontar</li>
+                            <li>Reutilizable en cualquier componente</li>
+                            <li>Tipado con TypeScript (opcional)</li>
+                            <li>Implementación en componente de ejemplo</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Resultado:</h4>
+                        <div class="result-container">
+                            <div id="fetch-hook-demo"></div>
+                            <script type="text/babel">
+                                function useFetch(url) {
+                                    const [data, setData] = React.useState(null);
+                                    const [loading, setLoading] = React.useState(true);
+                                    const [error, setError] = React.useState(null);
+                                    
+                                    React.useEffect(() => {
+                                        const controller = new AbortController();
+                                        const signal = controller.signal;
+                                        
+                                        const fetchData = async () => {
+                                            setLoading(true);
+                                            setError(null);
+                                            
+                                            try {
+                                                const response = await fetch(url, { signal });
+                                                if (!response.ok) {
+                                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                                }
+                                                const json = await response.json();
+                                                setData(json);
+                                            } catch (err) {
+                                                if (err.name !== 'AbortError') {
+                                                    setError(err.message);
+                                                }
+                                            } finally {
+                                                setLoading(false);
+                                            }
+                                        };
+                                        
+                                        fetchData();
+                                        
+                                        return () => {
+                                            controller.abort();
+                                        };
+                                    }, [url]);
+                                    
+                                    return { data, loading, error };
+                                }
+                                
+                                function FetchHookDemo() {
+                                    const [postId, setPostId] = React.useState(1);
+                                    const { data, loading, error } = useFetch(
+                                        `https://jsonplaceholder.typicode.com/posts/${postId}`
+                                    );
+                                    
+                                    return (
+                                        <div>
+                                            <h4>Custom Hook useFetch</h4>
+                                            <div className="form-group">
+                                                <label>
+                                                    ID de Post (1-100):
+                                                    <input
+                                                        type="number"
+                                                        min="1"
+                                                        max="100"
+                                                        value={postId}
+                                                        onChange={(e) => setPostId(e.target.value)}
+                                                    />
+                                                </label>
+                                            </div>
+                                            
+                                            {loading && <p>Cargando...</p>}
+                                            {error && <p className="error">Error: {error}</p>}
+                                            {data && (
+                                                <div className="post-data">
+                                                    <h5>{data.title}</h5>
+                                                    <p>{data.body}</p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                }
+                                
+                                ReactDOM.render(
+                                    <FetchHookDemo />,
+                                    document.getElementById('fetch-hook-demo')
+                                );
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reflection">
+            <h2><i class="fas fa-brain"></i> Reflexión sobre el Aprendizaje</h2>
+            
+            <div class="reflection-content">
+                <div class="reflection-card">
+                    <h3><i class="fas fa-lightbulb"></i> ¿Qué aprendí?</h3>
+                    <div class="reflection-text">
+                        <p>Esta semana profundicé en uno de los conceptos más importantes de React moderno:</p>
+                        <ul>
+                            <li><strong>Hooks fundamentales:</strong> Domino el uso de useState para gestión de estado local y useEffect para efectos secundarios.</li>
+                            <li><strong>Context API:</strong> Aprendí a compartir estado global entre componentes sin prop drilling usando useContext.</li>
+                            <li><strong>Estado complejo:</strong> Comprendí cuándo y cómo usar useReducer para manejar lógica de estado más sofisticada.</li>
+                            <li><strong>Reutilización:</strong> Creé mis primeros Custom Hooks para encapsular y reutilizar lógica entre componentes.</li>
+                            <li><strong>Buenas prácticas:</strong> Entendí las reglas de los Hooks y cómo organizar mi código para mantenerlo limpio y eficiente.</li>
+                        </ul>
+                        <p>El momento más revelador fue cuando implementé el mismo componente primero con clases y luego con Hooks, viendo cómo estos últimos simplifican enormemente el código.</p>
+                    </div>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3><i class="fas fa-graduation-cap"></i> ¿Cómo aprendí?</h3>
+                    <div class="reflection-text">
+                        <p>Mi proceso de aprendizaje fue práctico y basado en la experimentación:</p>
+                        <ul>
+                            <li><strong>Documentación oficial:</strong> Estudié a fondo la documentación de React sobre Hooks.</li>
+                            <li><strong>Ejercicios progresivos:</strong> Comencé con useState simple y avancé hasta combinaciones complejas de múltiples Hooks.</li>
+                            <li><strong>Comparación:</strong> Implementé los mismos componentes con clases y con Hooks para entender las diferencias.</li>
+                            <li><strong>Proyectos reales:</strong> Apliqué Hooks en pequeños proyectos para ver su comportamiento en escenarios reales.</li>
+                            <li><strong>Debugging:</strong> Usé React DevTools para entender el flujo de actualización de componentes con Hooks.</li>
+                        </ul>
+                        <p>Un ejercicio particularmente útil fue refactorizar un componente de clase existente para usar Hooks, lo que me ayudó a entender las diferencias conceptuales.</p>
+                    </div>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3><i class="fas fa-chart-line"></i> Próximos Pasos</h3>
+                    <div class="reflection-text">
+                        <p>Para continuar mi aprendizaje sobre Hooks:</p>
+                        <ul>
+                            <li>Profundizar en hooks avanzados como useMemo, useCallback y useRef.</li>
+                            <li>Aprender patrones de composición de Hooks para manejar lógica compleja.</li>
+                            <li>Explorar librerías populares de Hooks como react-use.</li>
+                            <li>Practicar testing de componentes que usan Hooks.</li>
+                            <li>Implementar un proyecto completo usando exclusivamente Hooks para todas las necesidades de estado y efectos.</li>
+                        </ul>
+                        <p>También planeo investigar cómo optimizar el rendimiento de aplicaciones que usan intensivamente Hooks, especialmente para evitar re-renders innecesarios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="#">Semana 7</a>
+                
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; <span id="current-year"></span> Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem7.js"></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 1 - Fundamentos Tecnologías Web | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+
+< <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="#">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+            </nav>
+            <h1>Fundamentos de Tecnologías Web</h1>
+            <p class="subtitle">Introducción a las tecnologías y herramientas esenciales para el desarrollo web moderno</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender los conceptos básicos de las tecnologías web</li>
+                <li>Diferenciar entre sistemas web, aplicaciones web, sitios web y páginas web</li>
+                <li>Conocer el funcionamiento de los protocolos fundamentales de la web</li>
+                <li>Identificar los roles en el desarrollo de aplicaciones web</li>
+                <li>Dominar el uso básico de Visual Studio Code para desarrollo web</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="web-solutions">
+                <h2><i class="fas fa-layer-group"></i> Soluciones Web</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Sistema Web</h3>
+                        <p>Aplicación compleja que integra múltiples componentes y funcionalidades para resolver problemas específicos.</p>
+                        <div class="tech-tags">
+                            <span>Bases de datos</span>
+                            <span>APIs</span>
+                            <span>Autenticación</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Aplicación Web</h3>
+                        <p>Software accesible a través de navegadores que permite interacción avanzada con el usuario.</p>
+                        <div class="tech-tags">
+                            <span>React/Angular/Vue</span>
+                            <span>Interactividad</span>
+                            <span>SPA</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Sitio Web</h3>
+                        <p>Conjunto de páginas web relacionadas bajo un mismo dominio, con propósito informativo o comercial.</p>
+                        <div class="tech-tags">
+                            <span>HTML/CSS</span>
+                            <span>Navegación</span>
+                            <span>Contenido</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Página Web</h3>
+                        <p>Documento individual accesible mediante una URL específica dentro de un sitio web.</p>
+                        <div class="tech-tags">
+                            <span>Documento</span>
+                            <span>URL única</span>
+                            <span>Contenido</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="web-technologies">
+                <h2><i class="fas fa-code"></i> Tecnologías Web</h2>
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="basic">Básicas</div>
+                        <div class="tab-btn" data-tab="languages">Lenguajes</div>
+                        <div class="tab-btn" data-tab="graphics">Gráficos</div>
+                    </div>
+                    <div class="tab-content active" id="basic">
+                        <ul>
+                            <li><strong>HTML</strong> - Estructura y contenido</li>
+                            <li><strong>CSS</strong> - Presentación y diseño</li>
+                            <li><strong>JavaScript</strong> - Comportamiento e interactividad</li>
+                            <li><strong>HTTP/HTTPS</strong> - Protocolos de comunicación</li>
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="languages">
+                        <ul>
+                            <li><strong>Frontend</strong>: HTML5, CSS3, JavaScript, TypeScript</li>
+                            <li><strong>Backend</strong>: Node.js, Python, PHP, Java, C#</li>
+                            <li><strong>Bases de datos</strong>: SQL, MongoDB, Firebase</li>
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="graphics">
+                        <ul>
+                            <li><strong>SVG</strong> - Gráficos vectoriales escalables</li>
+                            <li><strong>Canvas</strong> - Gráficos bitmap dinámicos</li>
+                            <li><strong>WebGL</strong> - Gráficos 3D en el navegador</li>
+                            <li><strong>CSS Graphics</strong> - Animaciones y efectos visuales</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <article class="web-protocols">
+                <h2><i class="fas fa-network-wired"></i> Funcionamiento de la Web</h2>
+                <div class="protocol-grid">
+                    <div class="protocol-card">
+                        <div class="protocol-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>DNS</h3>
+                        <p>Sistema de nombres de dominio que traduce nombres de dominio a direcciones IP.</p>
+                        <div class="protocol-animation">
+                            <div class="dns-flow">
+                                <span>Navegador</span>
+                                <i class="fas fa-arrow-right"></i>
+                                <span>DNS</span>
+                                <i class="fas fa-arrow-right"></i>
+                                <span>Servidor</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="protocol-card">
+                        <div class="protocol-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3>TCP/IP</h3>
+                        <p>Conjunto de protocolos para la transmisión de datos en redes, asegurando entrega confiable.</p>
+                        <div class="protocol-steps">
+                            <span>1. Establecimiento</span>
+                            <span>2. Transmisión</span>
+                            <span>3. Confirmación</span>
+                        </div>
+                    </div>
+                    <div class="protocol-card">
+                        <div class="protocol-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>HTTP/HTTPS</h3>
+                        <p>Protocolo para transferencia de hipertexto, base de la comunicación web (HTTPS es la versión segura).</p>
+                        <div class="http-methods">
+                            <span>GET</span>
+                            <span>POST</span>
+                            <span>PUT</span>
+                            <span>DELETE</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="development-roles">
+                <h2><i class="fas fa-users"></i> Roles en Desarrollo Web</h2>
+                <div class="roles-container">
+                    <div class="role-card">
+                        <div class="role-header frontend">
+                            <i class="fas fa-desktop"></i>
+                            <h3>Frontend Developer</h3>
+                        </div>
+                        <div class="role-body">
+                            <p>Responsable de la interfaz de usuario y experiencia del cliente.</p>
+                            <ul>
+                                <li>HTML, CSS, JavaScript</li>
+                                <li>Frameworks como React, Angular, Vue</li>
+                                <li>Diseño responsive</li>
+                                <li>Accesibilidad web</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-header backend">
+                            <i class="fas fa-server"></i>
+                            <h3>Backend Developer</h3>
+                        </div>
+                        <div class="role-body">
+                            <p>Gestiona la lógica del servidor, bases de datos y API.</p>
+                            <ul>
+                                <li>Node.js, Python, PHP, Java</li>
+                                <li>Bases de datos SQL/NoSQL</li>
+                                <li>APIs RESTful/GraphQL</li>
+                                <li>Autenticación y seguridad</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-header fullstack">
+                            <i class="fas fa-code-branch"></i>
+                            <h3>Fullstack Developer</h3>
+                        </div>
+                        <div class="role-body">
+                            <p>Combina habilidades de frontend y backend para desarrollar aplicaciones completas.</p>
+                            <ul>
+                                <li>Amplio conocimiento técnico</li>
+                                <li>Capacidad para trabajar en todo el stack</li>
+                                <li>Integración de sistemas</li>
+                                <li>Visión global del proyecto</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vscode-section">
+                <h2><i class="fas fa-code"></i> Visual Studio Code</h2>
+                <p class="intro">Herramienta esencial para desarrollo web moderno con múltiples características para mejorar productividad.</p>
+                
+                <div class="vscode-features">
+                    <div class="feature">
+                        <h3><i class="fas fa-bolt"></i> Generación de Código Emmet</h3>
+                        <p>Abreviaciones que se expanden a código HTML/CSS completo.</p>
+                        <div class="code-examples">
+                            <div class="code-block">
+                                <h4>Ejemplo HTML</h4>
+                                <pre><code>ul>li*5>a{Item $}</code></pre>
+                                <div class="code-result">
+                                    <button class="show-result-btn">Mostrar Resultado</button>
+                                    <div class="result" style="display: none;">
+                                        <pre><code>&lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Item 3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Item 4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Item 5&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="code-block">
+                                <h4>Ejemplo CSS</h4>
+                                <pre><code>m10+p20</code></pre>
+                                <div class="code-result">
+                                    <button class="show-result-btn">Mostrar Resultado</button>
+                                    <div class="result" style="display: none;">
+                                        <pre><code>margin: 10px;
+padding: 20px;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <h3><i class="fas fa-keyboard"></i> Atajos de Teclado</h3>
+                        <div class="shortcuts-grid">
+                            <div class="shortcut-card">
+                                <kbd>Ctrl</kbd> + <kbd>P</kbd>
+                                <span>Buscar archivo</span>
+                            </div>
+                            <div class="shortcut-card">
+                                <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>
+                                <span>Paleta de comandos</span>
+                            </div>
+                            <div class="shortcut-card">
+                                <kbd>Alt</kbd> + <kbd>↑</kbd>/<kbd>↓</kbd>
+                                <span>Mover línea</span>
+                            </div>
+                            <div class="shortcut-card">
+                                <kbd>Ctrl</kbd> + <kbd>/</kbd>
+                                <span>Comentar línea</span>
+                            </div>
+                            <div class="shortcut-card">
+                                <kbd>F12</kbd>
+                                <span>Ir a definición</span>
+                            </div>
+                            <div class="shortcut-card">
+                                <kbd>Ctrl</kbd> + <kbd>D</kbd>
+                                <span>Seleccionar siguiente coincidencia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <h3><i class="fas fa-puzzle-piece"></i> Extensiones Recomendadas</h3>
+                        <div class="extensions-grid">
+                            <div class="extension-card">
+                                <h4>Live Server</h4>
+                                <p>Servidor local con recarga automática</p>
+                            </div>
+                            <div class="extension-card">
+                                <h4>Prettier</h4>
+                                <p>Formateador de código automático</p>
+                            </div>
+                            <div class="extension-card">
+                                <h4>ESLint</h4>
+                                <p>Análisis de código JavaScript</p>
+                            </div>
+                            <div class="extension-card">
+                                <h4>GitLens</h4>
+                                <p>Integración avanzada de Git</p>
+                            </div>
+                            <div class="extension-card">
+                                <h4>Bracket Pair Colorizer</h4>
+                                <p>Identifica pares de corchetes con colores</p>
+                            </div>
+                            <div class="extension-card">
+                                <h4>Auto Rename Tag</h4>
+                                <p>Renombra automáticamente etiquetas HTML</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 1</h2>
+            <div class="summary-grid">
+                <div class="summary-card key-concepts">
+                    <h3>Conceptos Clave</h3>
+                    <ul>
+                        <li>Diferencias entre sistemas, aplicaciones, sitios y páginas web</li>
+                        <li>Componentes básicos de la web: HTML, CSS, JavaScript</li>
+                        <li>Protocolos fundamentales: DNS, TCP/IP, HTTP/HTTPS</li>
+                        <li>Roles en desarrollo web: frontend, backend, fullstack</li>
+                    </ul>
+                </div>
+                <div class="summary-card tools">
+                    <h3>Herramientas</h3>
+                    <ul>
+                        <li>Visual Studio Code como editor principal</li>
+                        <li>Emmet para generación rápida de código</li>
+                        <li>Atajos de teclado para mejorar productividad</li>
+                        <li>Extensiones esenciales para desarrollo web</li>
+                    </ul>
+                </div>
+                <div class="summary-card next-steps">
+                    <h3>Próximos Pasos</h3>
+                    <ul>
+                        <li>Profundizar en HTML5 y semántica</li>
+                        <li>Explorar CSS moderno (Flexbox, Grid)</li>
+                        <li>Introducción a JavaScript básico</li>
+                        <li>Configuración avanzada de VS Code</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+
+
+
+
+                < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="#">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; 2023 Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem1.js"></script>
+</body>
+</html>

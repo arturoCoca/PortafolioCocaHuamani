@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 4 - Bootstrap y Tailwind CSS | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem4.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS via CDN (para demostración) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#2ecc71',
+                        dark: '#2c3e50',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+
+                     < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                 <a href="#">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+
+            </nav>
+            <h1>Bootstrap y Tailwind CSS</h1>
+            <p class="subtitle">Frameworks CSS modernos para desarrollo rápido y consistente</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Dominar el sistema de grid y componentes de Bootstrap</li>
+                <li>Personalizar Bootstrap con variables SASS</li>
+                <li>Comprender la filosofía utility-first de Tailwind CSS</li>
+                <li>Configurar y optimizar proyectos con Tailwind</li>
+                <li>Implementar diseños responsivos en ambos frameworks</li>
+                <li>Comparar ventajas y casos de uso para cada framework</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="bootstrap-section">
+                <h2><i class="fab fa-bootstrap"></i> Bootstrap</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="bootstrap-grid">Grid System</div>
+                        <div class="tab-btn" data-tab="bootstrap-components">Componentes</div>
+                        <div class="tab-btn" data-tab="bootstrap-custom">Personalización</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="bootstrap-grid">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Sistema de Grid</h3>
+                                <div class="bootstrap-grid-demo">
+                                    <div class="row mb-3">
+                                        <div class="col-md-4 bg-primary p-3 text-white">.col-md-4</div>
+                                        <div class="col-md-4 bg-success p-3 text-white">.col-md-4</div>
+                                        <div class="col-md-4 bg-danger p-3 text-white">.col-md-4</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-lg-3 bg-warning p-3">.col-sm-6 .col-lg-3</div>
+                                        <div class="col-sm-6 col-lg-3 bg-info p-3">.col-sm-6 .col-lg-3</div>
+                                        <div class="col-sm-6 col-lg-3 bg-dark p-3 text-white">.col-sm-6 .col-lg-3</div>
+                                        <div class="col-sm-6 col-lg-3 bg-secondary p-3 text-white">.col-sm-6 .col-lg-3</div>
+                                    </div>
+                                </div>
+                                <pre><code>&lt;div class="row"&gt;
+  &lt;div class="col-md-4"&gt;Columna 1&lt;/div&gt;
+  &lt;div class="col-md-4"&gt;Columna 2&lt;/div&gt;
+  &lt;div class="col-md-4"&gt;Columna 3&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="row"&gt;
+  &lt;div class="col-sm-6 col-lg-3"&gt;Col A&lt;/div&gt;
+  &lt;div class="col-sm-6 col-lg-3"&gt;Col B&lt;/div&gt;
+  &lt;div class="col-sm-6 col-lg-3"&gt;Col C&lt;/div&gt;
+  &lt;div class="col-sm-6 col-lg-3"&gt;Col D&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>12 columnas</span>
+                                    <span>responsive</span>
+                                    <span>breakpoints</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Utilidades Responsivas</h3>
+                                <div class="bootstrap-utils-demo">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <button class="btn btn-primary">Botón 1</button>
+                                        <button class="btn btn-outline-secondary">Botón 2</button>
+                                    </div>
+                                    <div class="alert alert-warning d-sm-none">Visible solo en móviles</div>
+                                    <div class="alert alert-info d-none d-md-block">Visible desde tablets</div>
+                                    <div class="text-end text-md-center mt-3 p-2 bg-light">
+                                        Texto alineado diferente por breakpoint
+                                    </div>
+                                </div>
+                                <pre><code>&lt;!-- Alineación responsiva --&gt;
+&lt;div class="text-start text-md-center"&gt;
+  Texto centrado en md+
+&lt;/div&gt;
+
+&lt;!-- Visibilidad responsiva --&gt;
+&lt;div class="d-none d-lg-block"&gt;
+  Solo visible en lg+
+&lt;/div&gt;
+
+&lt;!-- Espaciado responsivo --&gt;
+&lt;div class="mt-2 mt-md-4"&gt;
+  Margen superior variable
+&lt;/div&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>d-*</span>
+                                    <span>text-*</span>
+                                    <span>m/p-*</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="bootstrap-components">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Componentes Comunes</h3>
+                                <div class="bootstrap-components-demo">
+                                    <div class="card mb-3" style="width: 100%">
+                                        <div class="card-header">
+                                            Tarjeta de Bootstrap
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Título especial</h5>
+                                            <p class="card-text">Texto de ejemplo en el cuerpo de la tarjeta.</p>
+                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Abrir Modal
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-success alert-dismissible fade show">
+                                        <strong>Éxito!</strong> Esto es una alerta desechable.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                    </div>
+                                </div>
+                                <pre><code>&lt;!-- Tarjeta --&gt;
+&lt;div class="card"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Título&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Contenido...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Alerta --&gt;
+&lt;div class="alert alert-success"&gt;
+  Mensaje de éxito
+&lt;/div&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>cards</span>
+                                    <span>alerts</span>
+                                    <span>buttons</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Componentes Interactivos</h3>
+                                <div class="bootstrap-interactive-demo">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-home">
+                                                Inicio
+                                            </button>
+                                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-profile">
+                                                Perfil
+                                            </button>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content p-3 border border-top-0" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="nav-home">
+                                            Contenido de la pestaña Inicio
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-profile">
+                                            Contenido de la pestaña Perfil
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="dropdown mt-3">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            Menú Desplegable
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Opción 1</a></li>
+                                            <li><a class="dropdown-item" href="#">Opción 2</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <pre><code>&lt;!-- Pestañas --&gt;
+&lt;ul class="nav nav-tabs"&gt;
+  &lt;li class="nav-item"&gt;
+    &lt;a class="nav-link active" data-bs-toggle="tab" href="#home"&gt;Inicio&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Dropdown --&gt;
+&lt;div class="dropdown"&gt;
+  &lt;button class="dropdown-toggle" data-bs-toggle="dropdown"&gt;
+    Menú
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Opción&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>tabs</span>
+                                    <span>dropdowns</span>
+                                    <span>modals</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="bootstrap-custom">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Personalización con SASS</h3>
+                                <pre><code>// Cambiar colores primarios
+$primary: #3498db;
+$danger: #e74c3c;
+
+// Modificar breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Importar Bootstrap
+@import "~bootstrap/scss/bootstrap";</code></pre>
+                                <div class="tech-tags">
+                                    <span>variables SASS</span>
+                                    <span>customización</span>
+                                    <span>themificación</span>
+                                </div>
+                                <div class="best-practice">
+                                    <h4>Buena Práctica:</h4>
+                                    <p>Crea un archivo <code>_variables.scss</code> para sobreescribir las variables de Bootstrap antes de importar los estilos principales.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Componentes Personalizados</h3>
+                                <div class="custom-component-demo">
+                                    <button class="btn btn-custom">Botón Personalizado</button>
+                                    <div class="custom-alert mt-3">
+                                        Alerta personalizada
+                                    </div>
+                                </div>
+                                <pre><code>// _custom.scss
+.btn-custom {
+  @extend .btn;
+  background-color: var(--bs-purple);
+  border: 2px solid darken($purple, 10%);
+  
+  &:hover {
+    background-color: darken($purple, 10%);
+  }
+}
+
+.custom-alert {
+  @extend .alert;
+  background: linear-gradient(to right, $primary, $info);
+  color: white;
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>@extend</span>
+                                    <span>mixins</span>
+                                    <span>componentes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal de Bootstrap -->
+                <div class="modal fade" id="exampleModal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Título del Modal</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Contenido del modal de ejemplo.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="tailwind-section">
+                <h2><i class="fas fa-wind"></i> Tailwind CSS</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="tailwind-utils">Utilidades</div>
+                        <div class="tab-btn" data-tab="tailwind-responsive">Responsive</div>
+                        <div class="tab-btn" data-tab="tailwind-custom">Personalización</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="tailwind-utils">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Clases Utilitarias</h3>
+                                <div class="tailwind-utils-demo">
+                                    <div class="flex justify-between items-center p-4 bg-gray-100 rounded-lg mb-4">
+                                        <h4 class="text-xl font-bold text-primary">Título</h4>
+                                        <button class="px-4 py-2 bg-primary text-white rounded hover:bg-blue-600 transition">
+                                            Botón
+                                        </button>
+                                    </div>
+                                    <div class="border border-gray-300 rounded p-4 shadow">
+                                        <p class="text-gray-700 mb-2">Este es un cuadro con sombra y borde.</p>
+                                        <div class="flex space-x-2">
+                                            <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                                                Etiqueta
+                                            </span>
+                                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                                                Otra
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <pre><code>&lt;div class="flex justify-between p-4 bg-gray-100 rounded"&gt;
+  &lt;h4 class="text-xl font-bold text-primary"&gt;Título&lt;/h4&gt;
+  &lt;button class="px-4 py-2 bg-primary text-white rounded"&gt;
+    Botón
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="border border-gray-300 rounded p-4 shadow"&gt;
+  &lt;p class="text-gray-700"&gt;Contenido...&lt;/p&gt;
+  &lt;div class="flex space-x-2"&gt;
+    &lt;span class="px-3 py-1 bg-green-100 rounded-full"&gt;
+      Etiqueta
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>flex</span>
+                                    <span>padding</span>
+                                    <span>colors</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Flexbox y Grid</h3>
+                                <div class="tailwind-layout-demo">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        <div class="p-4 bg-purple-100 rounded">Columna 1</div>
+                                        <div class="p-4 bg-purple-200 rounded">Columna 2</div>
+                                    </div>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <div class="flex-1 p-4 bg-yellow-100 rounded">Item 1</div>
+                                        <div class="flex-1 p-4 bg-yellow-200 rounded">Item 2</div>
+                                        <div class="flex-1 p-4 bg-yellow-300 rounded">Item 3</div>
+                                    </div>
+                                </div>
+                                <pre><code>&lt;!-- Grid --&gt;
+&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;
+  &lt;div&gt;Columna 1&lt;/div&gt;
+  &lt;div&gt;Columna 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Flexbox --&gt;
+&lt;div class="flex flex-col sm:flex-row gap-4"&gt;
+  &lt;div class="flex-1"&gt;Item 1&lt;/div&gt;
+  &lt;div class="flex-1"&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>grid</span>
+                                    <span>flex</span>
+                                    <span>gap</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tailwind-responsive">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Diseño Responsivo</h3>
+                                <div class="tailwind-responsive-demo">
+                                    <div class="text-center md:text-left lg:text-right xl:text-center mb-4 p-2 bg-gray-100">
+                                        Texto con alineación responsiva
+                                    </div>
+                                    <div class="hidden sm:block md:hidden lg:block bg-blue-100 p-3 mb-3">
+                                        Visible en sm y lg
+                                    </div>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                        <div class="bg-green-100 p-2">1</div>
+                                        <div class="bg-green-200 p-2">2</div>
+                                        <div class="bg-green-300 p-2">3</div>
+                                        <div class="bg-green-400 p-2">4</div>
+                                    </div>
+                                </div>
+                                <pre><code>&lt;!-- Alineación responsiva --&gt;
+&lt;div class="text-center md:text-left"&gt;
+  Texto adaptable
+&lt;/div&gt;
+
+&lt;!-- Visibilidad responsiva --&gt;
+&lt;div class="hidden md:block"&gt;
+  Visible en md+
+&lt;/div&gt;
+
+&lt;!-- Grid responsivo --&gt;
+&lt;div class="grid grid-cols-2 md:grid-cols-4"&gt;
+  &lt;div&gt;Item&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>sm:</span>
+                                    <span>md:</span>
+                                    <span>lg:</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Dark Mode</h3>
+                                <div class="tailwind-dark-demo">
+                                    <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+                                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Título</h4>
+                                        <p class="text-gray-700 dark:text-gray-300">Este componente cambia en modo oscuro.</p>
+                                        <button class="mt-2 px-3 py-1 bg-blue-600 dark:bg-purple-600 text-white rounded">
+                                            Botón
+                                        </button>
+                                    </div>
+                                    <div class="flex justify-center mt-3">
+                                        <button id="toggle-dark-mode" class="px-4 py-2 bg-gray-800 text-white rounded">
+                                            Toggle Dark Mode
+                                        </button>
+                                    </div>
+                                </div>
+                                <pre><code>&lt;div class="bg-white dark:bg-gray-800"&gt;
+  &lt;h4 class="text-gray-900 dark:text-white"&gt;
+    Título
+  &lt;/h4&gt;
+  &lt;p class="text-gray-700 dark:text-gray-300"&gt;
+    Contenido...
+  &lt;/p&gt;
+&lt;/div&gt;
+
+// tailwind.config.js
+module.exports = {
+  darkMode: 'class', // or 'media'
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>dark:</span>
+                                    <span>configuración</span>
+                                    <span>personalización</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="tailwind-custom">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Configuración Tailwind</h3>
+                                <pre><code>// tailwind.config.js
+module.exports = {
+  content: ['./src/**/*.{html,js}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3498db',
+        secondary: {
+          100: '#d1f2eb',
+          500: '#2ecc71',
+          900: '#186a3b',
+        }
+      },
+      spacing: {
+        '128': '32rem',
+      }
+    },
+  },
+  plugins: [],
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>tailwind.config.js</span>
+                                    <span>colors</span>
+                                    <span>spacing</span>
+                                </div>
+                                <div class="best-practice">
+                                    <h4>Buena Práctica:</h4>
+                                    <p>Extiende el tema en lugar de sobrescribirlo completamente para mantener compatibilidad con futuras actualizaciones.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Componentes con @apply</h3>
+                                <div class="tailwind-components-demo">
+                                    <button class="btn-tailwind">Botón Personalizado</button>
+                                    <div class="card-tailwind">
+                                        <h4>Tarjeta Tailwind</h4>
+                                        <p>Estilo reutilizable con @apply</p>
+                                    </div>
+                                </div>
+                                <pre><code>/* styles.css */
+.btn-tailwind {
+  @apply px-4 py-2 rounded font-semibold;
+  @apply bg-primary text-white;
+  @apply hover:bg-blue-600 transition;
+}
+
+.card-tailwind {
+  @apply p-6 rounded-lg shadow-md;
+  @apply bg-white dark:bg-gray-800;
+  @apply border border-gray-200 dark:border-gray-700;
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>@apply</span>
+                                    <span>componentes</span>
+                                    <span>reutilizables</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="comparison">
+                <h2><i class="fas fa-balance-scale"></i> Comparación</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Bootstrap</h3>
+                        <ul>
+                            <li><strong>Ventajas:</strong> Componentes preconstruidos, documentación extensa, comunidad grande</li>
+                            <li><strong>Desventajas:</strong> Menos flexible, CSS más grande, puede requerir sobrescrituras</li>
+                            <li><strong>Mejor para:</strong> Prototipado rápido, equipos que prefieren componentes listos, aplicaciones internas</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Tailwind CSS</h3>
+                        <ul>
+                            <li><strong>Ventajas:</strong> Extremadamente flexible, CSS mínimo, fácil personalización</li>
+                            <li><strong>Desventajas:</strong> Curva de aprendizaje, HTML más verboso, requiere configuración</li>
+                            <li><strong>Mejor para:</strong> Diseños personalizados, equipos que usan sistemas de diseño, proyectos con requisitos únicos</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Recomendaciones</h3>
+                        <ul>
+                            <li>Usa Bootstrap cuando necesites velocidad y consistencia</li>
+                            <li>Elige Tailwind para diseños altamente personalizados</li>
+                            <li>Considera PurgeCSS con Bootstrap para producción</li>
+                            <li>Tailwind funciona excelente con frameworks JS modernos</li>
+                            <li>Ambos pueden usarse juntos en diferentes partes de un proyecto</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        
+
+        <section class="lab-exercises">
+            <h2><i class="fas fa-flask"></i> Ejercicios de Laboratorio</h2>
+            
+            <div class="exercise">
+                <h3>Ejercicio 1: Landing Page con Bootstrap</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Desarrollé una landing page responsive usando:</p>
+                        <ul>
+                            <li>Navbar con dropdown responsive</li>
+                            <li>Hero section con Jumbotron personalizado</li>
+                            <li>Grid de características con cards</li>
+                            <li>Formulario de contacto con validación</li>
+                            <li>Footer con iconos y enlaces</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Resultado:</h4>
+                        <div class="result-container">
+                            <div class="bootstrap-landing-demo">
+                                <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+                                    <div class="container-fluid">
+                                        <a class="navbar-brand" href="#">Mi Sitio</a>
+                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDemo">
+                                            <span class="navbar-toggler-icon"></span>
+                                        </button>
+                                        <div class="collapse navbar-collapse" id="navbarDemo">
+                                            <ul class="navbar-nav me-auto">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="#">Inicio</a>
+                                                </li>
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                                        Productos
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#">Opción 1</a></li>
+                                                        <li><a class="dropdown-item" href="#">Opción 2</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                                
+                                <div class="p-5 mb-4 bg-light rounded-3">
+                                    <div class="container-fluid py-5">
+                                        <h1 class="display-5 fw-bold">Landing Page</h1>
+                                        <p class="col-md-8 fs-4">Ejemplo de hero section con Bootstrap.</p>
+                                        <button class="btn btn-primary btn-lg">Más información</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                                    <div class="col">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Característica 1</h5>
+                                                <p class="card-text">Descripción breve.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Característica 2</h5>
+                                                <p class="card-text">Descripción breve.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Característica 3</h5>
+                                                <p class="card-text">Descripción breve.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h3>Ejercicio 2: Dashboard con Tailwind</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Implementé un dashboard administrativo usando:</p>
+                        <ul>
+                            <li>Sidebar colapsable</li>
+                            <li>Cards con gráficos simulados</li>
+                            <li>Tabla responsiva</li>
+                            <li>Soporte para dark mode</li>
+                            <li>Animaciones con transition</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Resultado:</h4>
+                        <div class="result-container">
+                            <div class="tailwind-dashboard-demo">
+                                <div class="flex h-64 border rounded-lg overflow-hidden">
+                                    <div class="w-16 md:w-64 bg-gray-800 text-white p-2 transition-all duration-300">
+                                        <div class="font-bold mb-4">Dashboard</div>
+                                        <nav>
+                                            <a href="#" class="block py-2 px-3 rounded hover:bg-gray-700">Inicio</a>
+                                            <a href="#" class="block py-2 px-3 rounded hover:bg-gray-700">Reportes</a>
+                                            <a href="#" class="block py-2 px-3 rounded hover:bg-gray-700">Configuración</a>
+                                        </nav>
+                                    </div>
+                                    <div class="flex-1 p-4 bg-white dark:bg-gray-700">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                                            <div class="p-4 rounded-lg bg-blue-100 dark:bg-blue-900">
+                                                <h3 class="font-bold">Ventas</h3>
+                                                <p class="text-2xl">$12,345</p>
+                                            </div>
+                                            <div class="p-4 rounded-lg bg-green-100 dark:bg-green-900">
+                                                <h3 class="font-bold">Usuarios</h3>
+                                                <p class="text-2xl">1,234</p>
+                                            </div>
+                                            <div class="p-4 rounded-lg bg-purple-100 dark:bg-purple-900">
+                                                <h3 class="font-bold">Tareas</h3>
+                                                <p class="text-2xl">12/24</p>
+                                            </div>
+                                        </div>
+                                        <div class="border rounded-lg p-4 dark:border-gray-600">
+                                            <h3 class="font-bold mb-2 dark:text-white">Actividad Reciente</h3>
+                                            <div class="overflow-x-auto">
+                                                <table class="min-w-full">
+                                                    <thead>
+                                                        <tr class="border-b dark:border-gray-600">
+                                                            <th class="text-left p-2">Usuario</th>
+                                                            <th class="text-left p-2">Acción</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="border-b dark:border-gray-600">
+                                                            <td class="p-2">Juan Pérez</td>
+                                                            <td class="p-2">Actualizó perfil</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="p-2">María Gómez</td>
+                                                            <td class="p-2">Realizó compra</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="reflection">
+        <h2><i class="fas fa-brain"></i> Reflexión sobre el Aprendizaje</h2>
+        
+        <div class="reflection-content">
+            <div class="reflection-card">
+                <h3><i class="fas fa-lightbulb"></i> ¿Qué aprendí?</h3>
+                <div class="reflection-text">
+                    <p>Durante esta semana de inmersión en Bootstrap y Tailwind CSS:</p>
+                    <ul>
+                        <li><strong>Enfoques diferentes:</strong> Comprendí la filosofía component-first de Bootstrap vs utility-first de Tailwind</li>
+                        <li><strong>Rapidez de desarrollo:</strong> Bootstrap permite prototipado rápido con componentes listos, mientras Tailwind ofrece mayor flexibilidad</li>
+                        <li><strong>Personalización:</strong> Aprendí a customizar ambos frameworks (variables SASS en Bootstrap, tailwind.config.js en Tailwind)</li>
+                        <li><strong>Responsive design:</strong> Dominé los sistemas de breakpoints en ambos frameworks</li>
+                        <li><strong>Casos de uso:</strong> Identifiqué cuándo es mejor usar cada framework según los requerimientos del proyecto</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="reflection-card">
+                <h3><i class="fas fa-graduation-cap"></i> ¿Cómo aprendí?</h3>
+                <div class="reflection-text">
+                    <p>Mi proceso de aprendizaje combinó:</p>
+                    <ul>
+                        <li><strong>Práctica comparativa:</strong> Implementé los mismos componentes en ambos frameworks para entender diferencias</li>
+                        <li><strong>Documentación oficial:</strong> Estudié a profundidad las guías de Bootstrap y Tailwind</li>
+                        <li><strong>Proyectos reales:</strong> Creé páginas completas usando cada framework</li>
+                        <li><strong>Análisis crítico:</strong> Evalué ventajas/desventajas en rendimiento, personalización y mantenibilidad</li>
+                        <li><strong>Comunidad:</strong> Revisé ejemplos y soluciones de otros desarrolladores</li>
+                    </ul>
+                    <p>El momento clave fue cuando implementé el mismo componente en ambos frameworks y pude comparar directamente la cantidad de código, flexibilidad y facilidad de mantenimiento.</p>
+                </div>
+            </div>
+            
+            <div class="reflection-card">
+                <h3><i class="fas fa-chart-line"></i> Próximos Pasos</h3>
+                <div class="reflection-text">
+                    <p>Para continuar mi aprendizaje:</p>
+                    <ul>
+                        <li>Profundizar en la personalización avanzada de ambos frameworks</li>
+                        <li>Explorar la integración con frameworks JavaScript (React, Vue)</li>
+                        <li>Aprender a optimizar el rendimiento (PurgeCSS, tree-shaking)</li>
+                        <li>Crear un sistema de diseño personalizado basado en Tailwind</li>
+                        <li>Dominar el uso de plugins en Tailwind</li>
+                    </ul>
+                    <p>También planeo crear una biblioteca de componentes reutilizables que pueda usar con ambos frameworks en proyectos futuros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 4</h2>
+            <div class="summary-grid">
+                <div class="summary-card key-concepts">
+                    <h3>Conceptos Clave</h3>
+                    <ul>
+                        <li>Sistemas de grid y componentes en Bootstrap</li>
+                        <li>Filosofía utility-first de Tailwind CSS</li>
+                        <li>Personalización con variables y configuración</li>
+                        <li>Diseño responsivo en ambos frameworks</li>
+                        <li>Ventajas y casos de uso para cada uno</li>
+                    </ul>
+                </div>
+                <div class="summary-card tools">
+                    <h3>Herramientas Dominadas</h3>
+                    <ul>
+                        <li>Componentes Bootstrap (cards, modals, navs)</li>
+                        <li>Clases utilitarias de Tailwind</li>
+                        <li>Configuración de tailwind.config.js</li>
+                        <li>Personalización con SASS en Bootstrap</li>
+                        <li>Dark Mode en Tailwind</li>
+                    </ul>
+                </div>
+                <div class="summary-card next-steps">
+                    <h3>Próximos Pasos</h3>
+                    <ul>
+                        <li>Profundizar en SASS para Bootstrap</li>
+                        <li>Explorar plugins de Tailwind</li>
+                        <li>Integrar con frameworks JavaScript</li>
+                        <li>Automatizar procesos con PostCSS</li>
+                        <li>Crear sistemas de diseño completos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+
+
+</main>
+
+<footer class="sem-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-nav">
+
+     < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                 <a href="#">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+
+            </div>
+            <div class="footer-copy">
+                <p>&copy; <span id="current-year"></span> Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="sem4.js"></script>

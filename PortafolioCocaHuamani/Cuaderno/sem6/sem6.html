@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 6 - Componentes React con JSX y TypeScript | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem6.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <!-- React y TypeScript CDN para demostraciones -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/typescript@4.9.5/lib/typescript.js"></script>
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+
+                < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                 <a href="#">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                
+               
+            </nav>
+            <h1>Componentes React con JSX y TypeScript</h1>
+            <p class="subtitle">Desarrollo de componentes avanzados con tipado estático</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender el modelo de renderizado de React y el DOM Virtual</li>
+                <li>Dominar la creación de componentes funcionales con JSX</li>
+                <li>Aplicar TypeScript para tipado estático en componentes React</li>
+                <li>Implementar control de flujo y renderizado condicional</li>
+                <li>Manejar estilos CSS en componentes React</li>
+                <li>Trabajar con props, children y composición de componentes</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="react-rendering">
+                <h2><i class="fab fa-react"></i> Renderizado en React</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="react-dom">DOM Virtual</div>
+                        <div class="tab-btn" data-tab="component-types">Tipos de Componentes</div>
+                        <div class="tab-btn" data-tab="jsx-syntax">Sintaxis JSX</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="react-dom">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Proceso de Renderizado</h3>
+                                <p>React utiliza un enfoque innovador para actualizar la interfaz de usuario:</p>
+                                <ol>
+                                    <li><strong>Renderizado Inicial:</strong> ReactDOM.render() convierte componentes en nodos del DOM</li>
+                                    <li><strong>DOM Virtual:</strong> Representación ligera en memoria del árbol de componentes</li>
+                                    <li><strong>Re-renderizado:</strong> Cuando el estado cambia, se genera un nuevo DOM virtual</li>
+                                    <li><strong>Diffing:</strong> Compara el nuevo DOM virtual con el anterior</li>
+                                    <li><strong>Reconciliación:</strong> Actualiza solo las partes necesarias del DOM real</li>
+                                </ol>
+                                <div class="code-example">
+                                    <h4>Ejemplo Básico:</h4>
+                                    <div id="react-render-demo"></div>
+                                    <script type="text/babel">
+                                        function RenderDemo() {
+                                            const [count, setCount] = React.useState(0);
+                                            
+                                            return (
+                                                <div>
+                                                    <p>Contador: {count}</p>
+                                                    <button 
+                                                        className="demo-btn"
+                                                        onClick={() => setCount(count + 1)}
+                                                    >
+                                                        Incrementar
+                                                    </button>
+                                                    <p className="render-info">
+                                                        Observa en las DevTools cómo solo se actualiza el texto del contador
+                                                    </p>
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        ReactDOM.render(
+                                            <RenderDemo />,
+                                            document.getElementById('react-render-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Eficiencia del DOM Virtual</h3>
+                                <p>El DOM virtual proporciona varias ventajas clave:</p>
+                                <ul>
+                                    <li><strong>Rendimiento:</strong> Minimiza operaciones costosas en el DOM real</li>
+                                    <li><strong>Abstracción:</strong> Simplifica la programación declarativa</li>
+                                    <li><strong>Portabilidad:</strong> Puede renderizar en diferentes entornos (web, móvil, etc.)</li>
+                                </ul>
+                                <div class="performance-comparison">
+                                    <h4>Comparación de Rendimiento:</h4>
+                                    <div class="comparison-chart">
+                                        <div class="chart-bar vanilla-dom">
+                                            <span>DOM Directo</span>
+                                            <div class="bar" style="width: 100%"></div>
+                                        </div>
+                                        <div class="chart-bar virtual-dom">
+                                            <span>DOM Virtual</span>
+                                            <div class="bar" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                    <p class="chart-note">Tiempo relativo de actualización para 1000 elementos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="component-types">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Componentes de Función</h3>
+                                <p>Los componentes funcionales son la forma moderna y preferida de crear componentes en React:</p>
+                                <ul>
+                                    <li>Definidos como funciones JavaScript/TypeScript</li>
+                                    <li>Pueden usar Hooks para manejar estado y efectos</li>
+                                    <li>Más simples y concisos que los de clase</li>
+                                    <li>Mejor optimización por el compilador</li>
+                                </ul>
+                                <pre><code>// Componente funcional con TypeScript
+interface GreetingProps {
+    name: string;
+    age?: number; // Prop opcional
+}
+
+const Greeting: React.FC&lt;GreetingProps&gt; = ({ name, age }) =&gt; {
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;Hola, {name}!&lt;/h1&gt;
+            {age && &lt;p&gt;Tienes {age} años&lt;/p&gt;}
+        &lt;/div&gt;
+    );
+};</code></pre>
+                            </div>
+                            <div class="card">
+                                <h3>Componentes de Clase</h3>
+                                <p>Los componentes de clase fueron la forma original de crear componentes con estado:</p>
+                                <ul>
+                                    <li>Definidos como clases ES6 que extienden React.Component</li>
+                                    <li>Usan el método render() para devolver JSX</li>
+                                    <li>Manejan estado a través de this.state y this.setState()</li>
+                                    <li>Tienen métodos de ciclo de vida como componentDidMount()</li>
+                                </ul>
+                                <pre><code>// Componente de clase con TypeScript
+interface CounterState {
+    count: number;
+}
+
+class Counter extends React.Component&lt;{}, CounterState&gt; {
+    state: CounterState = { count: 0 };
+    
+    increment = () =&gt; {
+        this.setState(prevState =&gt; ({
+            count: prevState.count + 1
+        }));
+    };
+    
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;p&gt;Contador: {this.state.count}&lt;/p&gt;
+                &lt;button onClick={this.increment}&gt;Incrementar&lt;/button&gt;
+            &lt;/div&gt;
+        );
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="jsx-syntax">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Fundamentos de JSX</h3>
+                                <p>JSX es una extensión de sintaxis para JavaScript que permite escribir HTML en código React:</p>
+                                <ul>
+                                    <li><strong>No es HTML:</strong> Es azúcar sintáctico que se transpila a JavaScript</li>
+                                    <li><strong>Reglas básicas:</strong>
+                                        <ul>
+                                            <li>Elementos deben cerrarse: &lt;div /&gt; o &lt;div&gt;&lt;/div&gt;</li>
+                                            <li>Atributos usan camelCase: className en lugar de class</li>
+                                            <li>Estilo se pasa como objeto: style={{ color: 'red' }}</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Expresiones JavaScript:</strong> Se incluyen con { }</li>
+                                </ul>
+                                <div class="interactive-demo">
+                                    <div id="jsx-demo"></div>
+                                    <script type="text/babel">
+                                        function JsxDemo() {
+                                            const user = {
+                                                name: 'Ana',
+                                                age: 28,
+                                                hobbies: ['Leer', 'Correr', 'Programar']
+                                            };
+                                            
+                                            const isAdult = user.age >= 18;
+                                            const currentYear = new Date().getFullYear();
+                                            
+                                            return (
+                                                <div className="jsx-example">
+                                                    <h3>Demo de JSX</h3>
+                                                    <p>Nombre: {user.name}</p>
+                                                    <p>Edad: {user.age} - {isAdult ? 'Adulto' : 'Menor'}</p>
+                                                    <p>Año actual: {currentYear}</p>
+                                                    <h4>Hobbies:</h4>
+                                                    <ul>
+                                                        {user.hobbies.map((hobby, index) => (
+                                                            <li key={index}>{hobby}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        ReactDOM.render(
+                                            <JsxDemo />,
+                                            document.getElementById('jsx-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>JSX vs HTML</h3>
+                                <p>Diferencias clave entre JSX y HTML tradicional:</p>
+                                <table class="comparison-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Característica</th>
+                                            <th>HTML</th>
+                                            <th>JSX</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Atributo class</td>
+                                            <td>class="container"</td>
+                                            <td>className="container"</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Estilos en línea</td>
+                                            <td>style="color: red;"</td>
+                                            <td>style={{ color: 'red' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Eventos</td>
+                                            <td>onclick="handleClick()"</td>
+                                            <td>onClick={handleClick}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Valores booleanos</td>
+                                            <td>disabled="true"</td>
+                                            <td>disabled={true}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="best-practice">
+                                    <h4>Mejor Práctica:</h4>
+                                    <p>Usa el plugin ESLint <code>eslint-plugin-react</code> para mantener consistencia en tu código JSX y detectar errores comunes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="typescript-section">
+                <h2><i class="fab fa-js"></i> TypeScript con React</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="ts-basics">Fundamentos</div>
+                        <div class="tab-btn" data-tab="ts-react">React con TS</div>
+                        <div class="tab-btn" data-tab="ts-advanced">Avanzado</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="ts-basics">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Tipado Básico</h3>
+                                <p>TypeScript añade tipos estáticos a JavaScript:</p>
+                                <pre><code>// Tipos primitivos
+const name: string = 'Carlos';
+const age: number = 30;
+const isActive: boolean = true;
+
+// Arrays
+const numbers: number[] = [1, 2, 3];
+const mixed: (string | number)[] = ['a', 1, 'b', 2];
+
+// Objetos
+interface User {
+    id: number;
+    name: string;
+    email?: string; // Opcional
+}
+
+const user: User = {
+    id: 1,
+    name: 'María'
+};
+
+// Funciones
+function greet(name: string): string {
+    return `Hola, ${name}!`;
+}
+
+// Tipos personalizados
+type Status = 'active' | 'inactive' | 'pending';
+const userStatus: Status = 'active';</code></pre>
+                            </div>
+                            <div class="card">
+                                <h3>Beneficios del Tipado</h3>
+                                <p>TypeScript ofrece varias ventajas para proyectos React:</p>
+                                <ul>
+                                    <li><strong>Detección temprana de errores:</strong> Encuentra problemas durante el desarrollo</li>
+                                    <li><strong>Mejor autocompletado:</strong> Los editores pueden ofrecer sugerencias más precisas</li>
+                                    <li><strong>Documentación incorporada:</strong> Los tipos sirven como documentación viva</li>
+                                    <li><strong>Refactorización segura:</strong> Cambiar código es menos riesgoso</li>
+                                    <li><strong>Mejor colaboración:</strong> Los tipos hacen las intenciones del código más claras</li>
+                                </ul>
+                                <div class="code-example">
+                                    <h4>Ejemplo de Error Detectado:</h4>
+                                    <div class="error-demo">
+                                        <pre><code>interface Product {
+    id: number;
+    name: string;
+    price: number;
+}
+
+function displayProduct(product: Product) {
+    console.log(`${product.name}: $${product.prie}`); 
+    // Error: La propiedad 'prie' no existe en 'Product'
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="ts-react">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Componentes Tipados</h3>
+                                <p>TypeScript mejora los componentes React con tipado fuerte:</p>
+                                <pre><code>// Props tipados
+interface ButtonProps {
+    text: string;
+    onClick: () => void;
+    variant?: 'primary' | 'secondary' | 'danger';
+    disabled?: boolean;
+}
+
+const Button: React.FC&lt;ButtonProps&gt; = ({ 
+    text, 
+    onClick, 
+    variant = 'primary',
+    disabled = false
+}) => {
+    return (
+        &lt;button
+            className={`btn btn-${variant}`}
+            onClick={onClick}
+            disabled={disabled}
+        &gt;
+            {text}
+        &lt;/button&gt;
+    );
+};
+
+// Uso del componente
+&lt;Button 
+    text="Enviar" 
+    onClick={() => alert('Enviado!')} 
+    variant="secondary"
+/&gt;</code></pre>
+                            </div>
+                            <div class="card">
+                                <h3>Hooks con TypeScript</h3>
+                                <p>Los hooks de React también se benefician del tipado:</p>
+                                <pre><code>// useState con tipos
+const [count, setCount] = useState&lt;number&gt;(0);
+const [user, setUser] = useState&lt;User | null&gt;(null);
+
+// useReducer con tipos
+type Action = 
+    | { type: 'increment' } 
+    | { type: 'decrement' }
+    | { type: 'reset'; payload: number };
+
+interface State {
+    count: number;
+}
+
+const reducer = (state: State, action: Action): State => {
+    switch (action.type) {
+        case 'increment':
+            return { count: state.count + 1 };
+        case 'decrement':
+            return { count: state.count - 1 };
+        case 'reset':
+            return { count: action.payload };
+        default:
+            return state;
+    }
+};
+
+const [state, dispatch] = useReducer(reducer, { count: 0 });</code></pre>
+                                <div class="interactive-demo">
+                                    <div id="ts-hooks-demo"></div>
+                                    <script type="text/babel">
+                                        function TsHooksDemo() {
+                                            const [name, setName] = React.useState('');
+                                            
+                                            const addTodo = () => {
+                                                if (name.trim()) {
+                                                    setTodos([...todos, {
+                                                        id: Date.now(),
+                                                        text: name
+                                                    }]);
+                                                    setName('');
+                                                }
+                                            };
+                                            
+                                            return (
+                                                <div>
+                                                    <h4>Todo List con TypeScript</h4>
+                                                    <input
+                                                        type="text"
+                                                        value={name}
+                                                        onChange={(e) => setName(e.target.value)}
+                                                        placeholder="Nueva tarea"
+                                                    />
+                                                    <button 
+                                                        className="demo-btn"
+                                                        onClick={addTodo}
+                                                    >
+                                                        Agregar
+                                                    </button>
+                                                    <ul>
+                                                        {todos.map(todo => (
+                                                            <li key={todo.id}>{todo.text}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        ReactDOM.render(
+                                            <TsHooksDemo />,
+                                            document.getElementById('ts-hooks-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="ts-advanced">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Tipos Genéricos</h3>
+                                <p>Los genéricos permiten crear componentes flexibles y reutilizables:</p>
+                                <pre><code>// Componente genérico para listas
+interface ListProps&lt;T&gt; {
+    items: T[];
+    renderItem: (item: T) => React.ReactNode;
+}
+
+function List&lt;T&gt;({ items, renderItem }: ListProps&lt;T&gt;) {
+    return (
+        &lt;ul&gt;
+            {items.map((item, index) => (
+                &lt;li key={index}&gt;{renderItem(item)}&lt;/li&gt;
+            ))}
+        &lt;/ul&gt;
+    );
+}
+
+// Uso con diferentes tipos
+const users = [{ id: 1, name: 'Ana' }, { id: 2, name: 'Carlos' }];
+const products = [{ id: 1, title: 'Laptop' }, { id: 2, title: 'Phone' }];
+
+// Lista de usuarios
+&lt;List 
+    items={users}
+    renderItem={(user) => &lt;span&gt;{user.name}&lt;/span&gt;}
+/&gt;
+
+// Lista de productos
+&lt;List
+    items={products}
+    renderItem={(product) => &lt;span&gt;{product.title}&lt;/span&gt;}
+/&gt;</code></pre>
+                            </div>
+                            <div class="card">
+                                <h3>Utilidades de Tipos</h3>
+                                <p>TypeScript ofrece tipos utilitarios para patrones comunes:</p>
+                                <pre><code>// Partial: hace todas las propiedades opcionales
+type PartialUser = Partial&lt;User&gt;;
+
+// Readonly: hace todas las propiedades de solo lectura
+type ReadonlyUser = Readonly&lt;User&gt;;
+
+// Pick: selecciona propiedades específicas
+type UserName = Pick&lt;User, 'name'&gt;;
+
+// Omit: excluye propiedades específicas
+type UserWithoutId = Omit&lt;User, 'id'&gt;;
+
+// Record: crea un tipo con propiedades de un tipo específico
+type Pages = Record&lt;string, { title: string, content: string }&gt;;
+
+// Ejemplo avanzado: Componente con props condicionales
+type ModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+} & (
+    | { variant: 'alert'; confirmText: string }
+    | { variant: 'confirm'; confirmText: string; cancelText: string }
+    | { variant: 'custom'; children: React.ReactNode }
+);</code></pre>
+                                <div class="best-practice">
+                                    <h4>Mejor Práctica:</h4>
+                                    <p>Usa <code>React.FC</code> para componentes funcionales y define interfaces para props complejas. Para props opcionales, usa el operador <code>?</code>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="component-patterns">
+                <h2><i class="fas fa-puzzle-piece"></i> Patrones de Componentes</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="props-children">Props y Children</div>
+                        <div class="tab-btn" data-tab="conditional-rendering">Renderizado Condicional</div>
+                        <div class="tab-btn" data-tab="component-styles">Estilos</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="props-children">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Props Básicos</h3>
+                                <p>Los props permiten pasar datos a componentes hijos:</p>
+                                <pre><code>interface CardProps {
+    title: string;
+    description: string;
+    imageUrl?: string;
+    rating?: number;
+}
+
+const Card: React.FC&lt;CardProps&gt; = ({ 
+    title, 
+    description, 
+    imageUrl,
+    rating = 0
+}) => {
+    return (
+        &lt;div className="card"&gt;
+            {imageUrl && &lt;img src={imageUrl} alt={title} /&gt;}
+            &lt;h3&gt;{title}&lt;/h3&gt;
+            &lt;p&gt;{description}&lt;/p&gt;
+            &lt;div className="stars"&gt;
+                {'★'.repeat(rating).padEnd(5, '☆')}
+            &lt;/div&gt;
+        &lt;/div&gt;
+    );
+};
+
+// Uso
+&lt;Card 
+    title="Producto Ejemplo"
+    description="Descripción del producto"
+    imageUrl="/product.jpg"
+    rating={4}
+/&gt;</code></pre>
+                            </div>
+                            <div class="card">
+                                <h3>Children y Composición</h3>
+                                <p>El prop children permite anidar componentes:</p>
+                                <pre><code>interface LayoutProps {
+    sidebar?: React.ReactNode;
+    children: React.ReactNode;
+}
+
+const Layout: React.FC&lt;LayoutProps&gt; = ({ sidebar, children }) => {
+    return (
+        &lt;div className="layout"&gt;
+            {sidebar && &lt;aside className="sidebar"&gt;{sidebar}&lt;/aside&gt;}
+            &lt;main className="content"&gt;{children}&lt;/main&gt;
+        &lt;/div&gt;
+    );
+};
+
+// Uso
+&lt;Layout
+    sidebar={&lt;NavMenu /&gt;}
+&gt;
+    &lt;h1&gt;Contenido Principal&lt;/h1&gt;
+    &lt;p&gt;Este es el cuerpo de la página&lt;/p&gt;
+&lt;/Layout&gt;</code></pre>
+                                <div class="interactive-demo">
+                                    <div id="children-demo"></div>
+                                    <script type="text/babel">
+                                        function Panel({ title, children }) {
+                                            return (
+                                                <div className="panel">
+                                                    <h3>{title}</h3>
+                                                    <div className="panel-content">
+                                                        {children}
+                                                    </div>
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        function ChildrenDemo() {
+                                            return (
+                                                <Panel title="Demo de Children">
+                                                    <p>Este contenido se pasa como children</p>
+                                                    <ul>
+                                                        <li>Elemento 1</li>
+                                                        <li>Elemento 2</li>
+                                                        <li>Elemento 3</li>
+                                                    </ul>
+                                                </Panel>
+                                            );
+                                        }
+                                        
+                                        ReactDOM.render(
+                                            <ChildrenDemo />,
+                                            document.getElementById('children-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="conditional-rendering">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Renderizado Condicional</h3>
+                                <p>React ofrece varias formas de mostrar contenido condicionalmente:</p>
+                                <pre><code>// 1. Operador ternario
+function Greeting({ user }) {
+    return (
+        &lt;div&gt;
+            {user ? (
+                &lt;h1&gt;Hola, {user.name}!&lt;/h1&gt;
+            ) : (
+                &lt;button&gt;Iniciar sesión&lt;/button&gt;
+            )}
+        &lt;/div&gt;
+    );
+}
+
+// 2. Operador &&
+function Notification({ messages }) {
+    return (
+        &lt;div&gt;
+            {messages.length > 0 && (
+                &lt;p&gt;Tienes {messages.length} mensajes nuevos&lt;/p&gt;
+            )}
+        &lt;/div&gt;
+    );
+}
+
+// 3. Variables intermedias
+function Page({ isLoading, content }) {
+    let pageContent;
+    if (isLoading) {
+        pageContent = &lt;Spinner /&gt;;
+    } else if (content) {
+        pageContent = &lt;Article content={content} /&gt;;
+    } else {
+        pageContent = &lt;EmptyState /&gt;;
+    }
+    
+    return &lt;div className="page"&gt;{pageContent}&lt;/div&gt;;
+}</code></pre>
+                            </div>
+                            <div class="card">
+                                <h3>Renderizado de Listas</h3>
+                                <p>El método .map() transforma arrays en elementos React:</p>
+                                <pre><code>interface Product {
+    id: number;
+    name: string;
+    price: number;
+    inStock: boolean;
+}
+
+function ProductList({ products }: { products: Product[] }) {
+    return (
+        &lt;ul className="product-list"&gt;
+            {products.map(product => (
+                &lt;li key={product.id} className={!product.inStock ? 'out-of-stock' : ''}&gt;
+                    &lt;h3&gt;{product.name}&lt;/h3&gt;
+                    &lt;p&gt;Precio: ${product.price.toFixed(2)}&lt;/p&gt;
+                    {!product.inStock && &lt;span className="badge"&gt;Agotado&lt;/span&gt;}
+                &lt;/li&gt;
+            ))}
+        &lt;/ul&gt;
+    );
+}
+
+// Uso con TypeScript
+const products: Product[] = [
+    { id: 1, name: 'Laptop', price: 999.99, inStock: true },
+    { id: 2, name: 'Mouse', price: 19.99, inStock: false }
+];
+
+&lt;ProductList products={products} /&gt;</code></pre>
+                                <div class="interactive-demo">
+                                    <div id="list-rendering-demo"></div>
+                                    <script type="text/babel">
+                                        function ListRenderingDemo() {
+                                            const [filter, setFilter] = React.useState('all');
+                                            const [items, setItems] = React.useState([
+                                                { id: 1, text: 'Aprender React', completed: true },
+                                                { id: 2, text: 'Practicar TypeScript', completed: false },
+                                                { id: 3, text: 'Construir un proyecto', completed: false }
+                                            ]);
+                                            
+                                            const filteredItems = items.filter(item => {
+                                                if (filter === 'all') return true;
+                                                if (filter === 'completed') return item.completed;
+                                                return !item.completed;
+                                            });
+                                            
+                                            const toggleComplete = (id) => {
+                                                setItems(items.map(item => 
+                                                    item.id === id ? { ...item, completed: !item.completed } : item
+                                                ));
+                                            };
+                                            
+                                            return (
+                                                <div>
+                                                    <div className="filter-buttons">
+                                                        <button 
+                                                            className={filter === 'all' ? 'active' : ''}
+                                                            onClick={() => setFilter('all')}
+                                                        >
+                                                            Todos
+                                                        </button>
+                                                        <button 
+                                                            className={filter === 'completed' ? 'active' : ''}
+                                                            onClick={() => setFilter('completed')}
+                                                        >
+                                                            Completados
+                                                        </button>
+                                                        <button 
+                                                            className={filter === 'active' ? 'active' : ''}
+                                                            onClick={() => setFilter('active')}
+                                                        >
+                                                            Pendientes
+                                                        </button>
+                                                    </div>
+                                                    <ul>
+                                                        {filteredItems.map(item => (
+                                                            <li 
+                                                                key={item.id}
+                                                                className={item.completed ? 'completed' : ''}
+                                                                onClick={() => toggleComplete(item.id)}
+                                                            >
+                                                                {item.text}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        ReactDOM.render(
+                                            <ListRenderingDemo />,
+                                            document.getElementById('list-rendering-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="component-styles">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Enfoques de Estilado</h3>
+                                <p>React ofrece múltiples formas de aplicar estilos:</p>
+                                <div class="style-approaches">
+                                    <div class="approach">
+                                        <h4>1. CSS Tradicional</h4>
+                                        <pre><code>/* styles.css */
+.button {
+    padding: 8px 16px;
+    background: #3498db;
+    color: white;
+}
+
+// Componente
+import './styles.css';
+
+const Button = () => (
+    &lt;button className="button"&gt;Click me&lt;/button&gt;
+);</code></pre>
+                                    </div>
+                                    <div class="approach">
+                                        <h4>2. Módulos CSS</h4>
+                                        <pre><code>/* Button.module.css */
+.primary {
+    background: #3498db;
+}
+
+// Componente
+import styles from './Button.module.css';
+
+const Button = () => (
+    &lt;button className={styles.primary}&gt;Click me&lt;/button&gt;
+);</code></pre>
+                                    </div>
+                                    <div class="approach">
+                                        <h4>3. Estilos en Línea</h4>
+                                        <pre><code>const buttonStyle = {
+    padding: '8px 16px',
+    backgroundColor: '#3498db',
+    color: 'white'
+};
+
+const Button = () => (
+    &lt;button style={buttonStyle}&gt;Click me&lt;/button&gt;
+);</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Bibliotecas CSS-in-JS</h3>
+                                <p>Soluciones modernas para estilado en React:</p>
+                                <ul>
+                                    <li><strong>Styled Components:</strong> Componentes estilados con template literals</li>
+                                    <li><strong>Emotion:</strong> Similar pero con mejor rendimiento en algunos casos</li>
+                                    <li><strong>Tailwind CSS:</strong> Utilidades CSS con clases predefinidas</li>
+                                </ul>
+                                <pre><code>// Ejemplo con Styled Components
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+    padding: 8px 16px;
+    background: ${props => props.primary ? '#3498db' : '#eee'};
+    color: ${props => props.primary ? 'white' : '#333'};
+`;
+
+const Button = ({ primary, children }) => (
+    &lt;StyledButton primary={primary}&gt;
+        {children}
+    &lt;/StyledButton&gt;
+);
+
+// Uso
+&lt;Button primary&gt;Principal&lt;/Button&gt;
+&lt;Button&gt;Secundario&lt;/Button&gt;</code></pre>
+                                <div class="best-practice">
+                                    <h4>Recomendación:</h4>
+                                    <p>Para proyectos pequeños, CSS Modules es una excelente opción. Para aplicaciones grandes, considera Styled Components o Emotion.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 6</h2>
+            <div class="summary-grid">
+                <div class="summary-card key-concepts">
+                    <h3>Conceptos Clave</h3>
+                    <ul>
+                        <li>DOM Virtual y proceso de reconciliación en React</li>
+                        <li>Creación de componentes funcionales con JSX/TSX</li>
+                        <li>Tipado estático con TypeScript para props y estado</li>
+                        <li>Renderizado condicional y de listas</li>
+                        <li>Composición de componentes con props y children</li>
+                    </ul>
+                </div>
+                <div class="summary-card tools">
+                    <h3>Herramientas Dominadas</h3>
+                    <ul>
+                        <li>JSX para estructuración de componentes</li>
+                        <li>TypeScript para tipado estático</li>
+                        <li>Patrones de diseño de componentes reutilizables</li>
+                        <li>Múltiples enfoques para estilado en React</li>
+                        <li>React DevTools para depuración</li>
+                    </ul>
+                </div>
+                <div class="summary-card next-steps">
+                    <h3>Próximos Pasos</h3>
+                    <ul>
+                        <li>Profundizar en hooks avanzados (useEffect, useReducer)</li>
+                        <li>Aprender gestión de estado global con Context API o Redux</li>
+                        <li>Explorar React Router para navegación</li>
+                        <li>Practicar integración con APIs usando TypeScript</li>
+                        <li>Experimentar con frameworks como Next.js</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section class="reflection">
+            <h2><i class="fas fa-brain"></i> Reflexión sobre el Aprendizaje</h2>
+            
+            <div class="reflection-content">
+                <div class="reflection-card">
+                    <h3><i class="fas fa-lightbulb"></i> ¿Qué aprendí?</h3>
+                    <div class="reflection-text">
+                        <p>Esta semana profundicé en conceptos avanzados de React y TypeScript:</p>
+                        <ul>
+                            <li><strong>DOM Virtual:</strong> Comprendí cómo React optimiza las actualizaciones del DOM real mediante el diffing y reconciliación</li>
+                            <li><strong>JSX avanzado:</strong> Dominé el uso de expresiones JavaScript, renderizado condicional y de listas dentro de JSX</li>
+                            <li><strong>TypeScript con React:</strong> Aprendí a tipar componentes, props, hooks y estados para mayor seguridad de tipos</li>
+                            <li><strong>Patrones de componentes:</strong> Implementé componentes reutilizables con props, children y composición</li>
+                            <li><strong>Estilado:</strong> Experimenté con diferentes enfoques para aplicar CSS en componentes React</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3><i class="fas fa-graduation-cap"></i> ¿Cómo aprendí?</h3>
+                    <div class="reflection-text">
+                        <p>Mi proceso de aprendizaje combinó teoría y práctica:</p>
+                        <ul>
+                            <li><strong>Documentación oficial:</strong> Estudié a profundidad la documentación de React y TypeScript</li>
+                            <li><strong>Proyectos pequeños:</strong> Implementé componentes específicos para practicar cada concepto</li>
+                            <li><strong>Depuración:</strong> Usé React DevTools y el tipado de TypeScript para entender el flujo de datos</li>
+                            <li><strong>Comparación:</strong> Implementé los mismos componentes con y sin TypeScript para ver las diferencias</li>
+                            <li><strong>Retos personales:</strong> Me desafíe a crear componentes cada vez más complejos y reutilizables</li>
+                        </ul>
+                        <p>El momento más revelador fue cuando entendí cómo el sistema de tipos de TypeScript puede prevenir errores incluso antes de ejecutar el código, especialmente al trabajar con props de componentes complejos.</p>
+                    </div>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3><i class="fas fa-chart-line"></i> Próximos Pasos</h3>
+                    <div class="reflection-text">
+                        <p>Para continuar mi aprendizaje:</p>
+                        <ul>
+                            <li>Profundizar en hooks avanzados como useEffect, useReducer y useContext</li>
+                            <li>Aprender patrones avanzados de gestión de estado (Context API, Redux, Zustand)</li>
+                            <li>Explorar React Router para aplicaciones multipágina</li>
+                            <li>Practicar testing de componentes con Jest y React Testing Library</li>
+                            <li>Experimentar con frameworks como Next.js para renderizado del lado del servidor</li>
+                        </ul>
+                        <p>También planeo crear un proyecto completo que integre todos estos conceptos, posiblemente un dashboard interactivo con conexión a una API real.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                 <a href="#">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; <span id="current-year"></span> Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem6.js"></script>
+</body>
+</html>

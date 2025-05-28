@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 2 - HTML Básico y Avanzado | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+
+                < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                 <a href="#">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+
+            </nav>
+            <h1>HTML Básico y Avanzado</h1>
+            <p class="subtitle">Dominio completo del lenguaje de marcado para la estructuración de contenido web</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender la estructura fundamental de un documento HTML</li>
+                <li>Dominar las etiquetas básicas para contenido y formato</li>
+                <li>Implementar elementos semánticos para mejor accesibilidad y SEO</li>
+                <li>Utilizar formularios avanzados con validación integrada</li>
+                <li>Aplicar técnicas avanzadas como Web Storage y Drag & Drop</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="html-basics">
+                <h2><i class="fas fa-file-code"></i> HTML Básico</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="structure">Estructura</div>
+                        <div class="tab-btn" data-tab="text">Texto</div>
+                        <div class="tab-btn" data-tab="media">Multimedia</div>
+                        <div class="tab-btn" data-tab="semantic">Semántica</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="structure">
+                        <div class="code-examples">
+                            <div class="code-block">
+                                <h4>Estructura Básica HTML5</h4>
+                                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Título del Documento&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Contenido visible de la página --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            </div>
+                            <div class="code-block">
+                                <h4>Elementos Fundamentales</h4>
+                                <ul class="element-list">
+                                    <li><code>&lt;html&gt;</code>: Contenedor raíz</li>
+                                    <li><code>&lt;head&gt;</code>: Metadatos y recursos</li>
+                                    <li><code>&lt;body&gt;</code>: Contenido visible</li>
+                                    <li><code>&lt;meta&gt;</code>: Configuración del documento</li>
+                                    <li><code>&lt;title&gt;</code>: Título en pestaña del navegador</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="text">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Encabezados</h3>
+                                <pre><code>&lt;h1&gt;Título principal&lt;/h1&gt;
+&lt;h2&gt;Subtítulo&lt;/h2&gt;
+&lt;h3&gt;Sub-sección&lt;/h3&gt;
+&lt;!-- Hasta h6 --&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>Jerarquía</span>
+                                    <span>SEO</span>
+                                    <span>Accesibilidad</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Párrafos y Formato</h3>
+                                <pre><code>&lt;p&gt;Párrafo normal&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Negrita&lt;/strong&gt; y &lt;em&gt;énfasis&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Salto&lt;br&gt;de línea&lt;/p&gt;
+&lt;hr&gt; &lt;!-- Línea horizontal --&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>Texto</span>
+                                    <span>Formato</span>
+                                    <span>Estructura</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Listas</h3>
+                                <pre><code>&lt;ul&gt; &lt;!-- No ordenada --&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt; &lt;!-- Ordenada --&gt;
+  &lt;li&gt;Primero&lt;/li&gt;
+  &lt;li&gt;Segundo&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>Organización</span>
+                                    <span>Menús</span>
+                                    <span>Contenido</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="media">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Imágenes</h3>
+                                <pre><code>&lt;img src="imagen.jpg" 
+     alt="Descripción accesible" 
+     width="400" height="300"&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>src</span>
+                                    <span>alt</span>
+                                    <span>SEO</span>
+                                </div>
+                                <div class="best-practice">
+                                    <h4>Buena Práctica:</h4>
+                                    <p>Siempre incluye el atributo <code>alt</code> para accesibilidad y SEO.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Enlaces</h3>
+                                <pre><code>&lt;a href="https://ejemplo.com" 
+   target="_blank" 
+   rel="noopener noreferrer"&gt;
+   Texto del enlace
+&lt;/a&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>href</span>
+                                    <span>target</span>
+                                    <span>rel</span>
+                                </div>
+                                <div class="best-practice">
+                                    <h4>Seguridad:</h4>
+                                    <p>Usa <code>rel="noopener noreferrer"</code> con <code>target="_blank"</code> para prevenir vulnerabilidades.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="semantic">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Estructura Semántica</h3>
+                                <pre><code>&lt;header&gt;Cabecera&lt;/header&gt;
+&lt;nav&gt;Navegación&lt;/nav&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;section&gt;Sección 1&lt;/section&gt;
+    &lt;section&gt;Sección 2&lt;/section&gt;
+  &lt;/article&gt;
+  &lt;aside&gt;Contenido relacionado&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;Pie de página&lt;/footer&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>HTML5</span>
+                                    <span>SEO</span>
+                                    <span>Accesibilidad</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Tablas Accesibles</h3>
+                                <pre><code>&lt;table&gt;
+  &lt;caption&gt;Título de tabla&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th scope="col"&gt;Encabezado&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Dato&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>Organización</span>
+                                    <span>Datos</span>
+                                    <span>Accesibilidad</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="html-advanced">
+                <h2><i class="fas fa-file-code"></i> HTML Avanzado</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="forms">Formularios</div>
+                        <div class="tab-btn" data-tab="multimedia">Multimedia</div>
+                        <div class="tab-btn" data-tab="apis">APIs</div>
+                        <div class="tab-btn" data-tab="templates">Templates</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="forms">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Tipos de Input</h3>
+                                <pre><code>&lt;input type="email" required&gt;
+&lt;input type="password" minlength="8"&gt;
+&lt;input type="date" min="2023-01-01"&gt;
+&lt;input type="range" min="0" max="100"&gt;
+&lt;input type="color" value="#3498db"&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>HTML5</span>
+                                    <span>Validación</span>
+                                    <span>UX</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Validación Integrada</h3>
+                                <pre><code>&lt;form novalidate&gt;
+  &lt;input type="text" pattern="[A-Za-z]{3}" 
+         title="3 letras" required&gt;
+  &lt;input type="number" min="18" max="99"&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>pattern</span>
+                                    <span>required</span>
+                                    <span>novalidate</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Elementos Avanzados</h3>
+                                <pre><code>&lt;datalist id="browsers"&gt;
+  &lt;option value="Chrome"&gt;
+  &lt;option value="Firefox"&gt;
+&lt;/datalist&gt;
+&lt;input list="browsers"&gt;
+
+&lt;progress value="75" max="100"&gt;&lt;/progress&gt;
+&lt;meter min="0" max="100" value="65"&gt;&lt;/meter&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>HTML5</span>
+                                    <span>UX</span>
+                                    <span>Componentes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="multimedia">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Video y Audio</h3>
+                                <pre><code>&lt;video controls width="600"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  &lt;track src="subtitles.vtt" kind="subtitles" 
+         srclang="es" label="Español"&gt;
+  Tu navegador no soporta video.
+&lt;/video&gt;
+
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>HTML5</span>
+                                    <span>Accesibilidad</span>
+                                    <span>Subtítulos</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>SVG y Canvas</h3>
+                                <pre><code>&lt;!-- SVG (vectorial) --&gt;
+&lt;svg width="100" height="100"&gt;
+  &lt;circle cx="50" cy="50" r="40" 
+          stroke="green" fill="yellow" /&gt;
+&lt;/svg&gt;
+
+&lt;!-- Canvas (bitmap) --&gt;
+&lt;canvas id="myCanvas" width="200" height="100"&gt;
+  Alternativa para navegadores antiguos
+&lt;/canvas&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>Gráficos</span>
+                                    <span>Animaciones</span>
+                                    <span>Interactividad</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="apis">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Drag and Drop</h3>
+                                <pre><code>&lt;div id="dropzone" ondragover="allowDrop(event)" 
+     ondrop="drop(event)"&gt;
+  &lt;img id="drag1" src="img.png" draggable="true" 
+       ondragstart="drag(event)" width="100"&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function allowDrop(e) { e.preventDefault(); }
+function drag(e) { e.dataTransfer.setData("text", e.target.id); }
+function drop(e) {
+  e.preventDefault();
+  const id = e.dataTransfer.getData("text");
+  e.target.appendChild(document.getElementById(id));
+}
+&lt;/script&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>HTML5</span>
+                                    <span>Interactividad</span>
+                                    <span>JavaScript</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Web Storage</h3>
+                                <pre><code>// Almacenamiento local (persistente)
+localStorage.setItem('clave', 'valor');
+const dato = localStorage.getItem('clave');
+
+// Almacenamiento de sesión (temporal)
+sessionStorage.setItem('usuario', 'Juan');
+
+// Evento que se dispara cuando cambia el storage
+window.addEventListener('storage', (e) => {
+  console.log(`Cambio en ${e.key}: ${e.newValue}`);
+});</code></pre>
+                                <div class="tech-tags">
+                                    <span>Persistencia</span>
+                                    <span>Sin Cookies</span>
+                                    <span>5MB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="templates">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>&lt;template&gt; y &lt;slot&gt;</h3>
+                                <pre><code>&lt;template id="cardTemplate"&gt;
+  &lt;div class="card"&gt;
+    &lt;h3&gt;&lt;slot name="title"&gt;Título predeterminado&lt;/slot&gt;&lt;/h3&gt;
+    &lt;p&gt;&lt;slot name="content"&gt;Contenido...&lt;/slot&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const template = document.getElementById('cardTemplate');
+const clone = template.content.cloneNode(true);
+document.body.appendChild(clone);
+&lt;/script&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>Reutilización</span>
+                                    <span>Shadow DOM</span>
+                                    <span>Componentes</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Microdatos</h3>
+                                <pre><code>&lt;div itemscope itemtype="https://schema.org/Person"&gt;
+  &lt;span itemprop="name"&gt;Juan Pérez&lt;/span&gt;
+  &lt;span itemprop="jobTitle"&gt;Desarrollador Web&lt;/span&gt;
+  &lt;a itemprop="url" href="https://ejemplo.com"&gt;Sitio web&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                                <div class="tech-tags">
+                                    <span>SEO</span>
+                                    <span>Estructura</span>
+                                    <span>Rich Snippets</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            
+        </section>
+
+        
+
+
+         <!-- Nueva sección de Ejercicios de Laboratorio -->
+    <section class="lab-exercises">
+        <h2><i class="fas fa-flask"></i> Ejercicios de Laboratorio</h2>
+        
+        <div class="exercise">
+            <h3>Ejercicio 1: Formulario de Contacto Avanzado</h3>
+            <div class="exercise-content">
+                <div class="exercise-description">
+                    <p>Creé un formulario de contacto con validación HTML5 que incluye:</p>
+                    <ul>
+                        <li>Campos obligatorios con <code>required</code></li>
+                        <li>Validación de email con <code>type="email"</code></li>
+                        <li>Patrón personalizado para teléfono</li>
+                        <li>Mensajes de error personalizados</li>
+                    </ul>
+                </div>
+                <div class="exercise-result">
+                    <h4>Resultado:</h4>
+                    <div class="result-container">
+                        <form class="demo-form" novalidate>
+                            <div class="form-group">
+                                <label for="name">Nombre:</label>
+                                <input type="text" id="name" required 
+                                       placeholder="Tu nombre completo">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" required
+                                       placeholder="ejemplo@dominio.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Teléfono:</label>
+                                <input type="tel" id="phone" pattern="[0-9]{9}"
+                                       title="9 dígitos sin espacios"
+                                       placeholder="987654321">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensaje:</label>
+                                <textarea id="message" required></textarea>
+                            </div>
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 2: Implementación de Web Storage</h3>
+            <div class="exercise-content">
+                <div class="exercise-description">
+                    <p>Desarrollé una pequeña aplicación que usa localStorage para:</p>
+                    <ul>
+                        <li>Guardar preferencias del usuario</li>
+                        <li>Mantener un historial de búsquedas</li>
+                        <li>Recordar el último tema seleccionado (claro/oscuro)</li>
+                    </ul>
+                </div>
+                <div class="exercise-result">
+                    <h4>Resultado:</h4>
+                    <div class="result-container" id="storage-demo">
+                        <div class="storage-controls">
+                            <input type="text" id="storage-input" 
+                                   placeholder="Introduce un valor">
+                            <div class="storage-buttons">
+                                <button id="save-storage">Guardar</button>
+                                <button id="read-storage">Leer</button>
+                                <button id="clear-storage">Limpiar</button>
+                            </div>
+                        </div>
+                        <div class="storage-output" id="storage-output"></div>
+                        <p class="storage-hint">Prueba a guardar un valor y recargar la página</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="exercise">
+            <h3>Ejercicio 3: Página Semántica con ARIA</h3>
+            <div class="exercise-content">
+                <div class="exercise-description">
+                    <p>Construí una página usando:</p>
+                    <ul>
+                        <li>Elementos semánticos HTML5 (<code>header</code>, <code>nav</code>, <code>main</code>, etc.)</li>
+                        <li>Atributos ARIA para mejorar accesibilidad</li>
+                        <li>Estructura lógica para lectores de pantalla</li>
+                        <li>Microdatos para SEO</li>
+                    </ul>
+                </div>
+                <div class="exercise-result">
+                    <h4>Fragmento de código:</h4>
+                    <div class="result-container">
+                        <pre><code>&lt;header role="banner"&gt;
+  &lt;nav role="navigation" aria-label="Principal"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#inicio" aria-current="page"&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#servicios"&gt;Servicios&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main role="main"&gt;
+  &lt;article itemscope itemtype="https://schema.org/Article"&gt;
+    &lt;h1 itemprop="headline"&gt;Título del Artículo&lt;/h1&gt;
+    &lt;p itemprop="description"&gt;Descripción...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nueva sección de Reflexión -->
+    <section class="reflection">
+        <h2><i class="fas fa-brain"></i> Reflexión sobre el Aprendizaje</h2>
+        
+        <div class="reflection-content">
+            <div class="reflection-card">
+                <h3><i class="fas fa-lightbulb"></i> ¿Qué aprendí?</h3>
+                <div class="reflection-text">
+                    <p>Durante esta semana, he consolidado mi comprensión de HTML desde sus fundamentos hasta características avanzadas:</p>
+                    <ul>
+                        <li><strong>Estructura semántica:</strong> Ahora entiendo la importancia real de usar elementos como <code>article</code>, <code>section</code> y <code>nav</code> no solo para organización, sino para accesibilidad y SEO.</li>
+                        <li><strong>Formularios avanzados:</strong> He aprendido a aprovechar la validación nativa del navegador, reduciendo la dependencia de JavaScript para validaciones básicas.</li>
+                        <li><strong>APIs HTML5:</strong> La implementación de Web Storage ha sido reveladora para entender cómo mantener estado en aplicaciones web sin backend.</li>
+                        <li><strong>Accesibilidad:</strong> Los atributos ARIA y la estructura semántica ya no son conceptos abstractos, sino herramientas concretas que puedo aplicar para hacer la web más inclusiva.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="reflection-card">
+                <h3><i class="fas fa-graduation-cap"></i> ¿Cómo aprendí?</h3>
+                <div class="reflection-text">
+                    <p>Mi proceso de aprendizaje combinó múltiples enfoques:</p>
+                    <ul>
+                        <li><strong>Práctica guiada:</strong> Seguí tutoriales estructurados para entender los conceptos básicos, luego los adapté a mis necesidades.</li>
+                        <li><strong>Experimentación:</strong> Creé múltiples versiones de cada ejercicio, probando diferentes enfoques y comparando resultados.</li>
+                        <li><strong>Análisis de errores:</strong> Cuando algo no funcionaba, investigaba en documentación y foros, lo que me llevó a comprender más profundamente los conceptos.</li>
+                        <li><strong>Enseñanza:</strong> Expliqué los conceptos a compañeros, lo que me obligó a organizar mis pensamientos y descubrir áreas que necesitaba reforzar.</li>
+                    </ul>
+                    <p>El momento más valioso fue cuando implementé el formulario con validación y descubrí cómo los mensajes de error predeterminados podían personalizarse, lo que me llevó a investigar sobre internacionalización y accesibilidad en formularios.</p>
+                </div>
+            </div>
+            
+            <div class="reflection-card">
+                <h3><i class="fas fa-chart-line"></i> Próximos Pasos</h3>
+                <div class="reflection-text">
+                    <p>Para continuar mi aprendizaje, planeo:</p>
+                    <ul>
+                        <li>Profundizar en accesibilidad con más atributos ARIA y pruebas con lectores de pantalla.</li>
+                        <li>Explorar más APIs HTML5 como Geolocation y Drag & Drop en proyectos reales.</li>
+                        <li>Investigar Web Components para crear elementos reutilizables.</li>
+                        <li>Mejorar mis formularios con validación asíncrona y retroalimentación en tiempo real.</li>
+                    </ul>
+                    <p>También quiero centrarme en patrones de diseño accesibles y mejores prácticas de performance para HTML, especialmente en la carga de recursos multimedia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="summary">
+
+        <article class="best-practices">
+                <h2><i class="fas fa-check-circle"></i> Buenas Prácticas</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Accesibilidad</h3>
+                        <ul>
+                            <li>Usa atributos <code>alt</code> en imágenes</li>
+                            <li>Implementa ARIA cuando sea necesario</li>
+                            <li>Estructura semántica correcta</li>
+                            <li>Contraste adecuado de colores</li>
+                            <li>Navegación con teclado</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>SEO</h3>
+                        <ul>
+                            <li>Estructura semántica adecuada</li>
+                            <li>Meta etiquetas descriptivas</li>
+                            <li>URLs amigables</li>
+                            <li>Microdatos para rich snippets</li>
+                            <li>Contenido de calidad y relevante</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Performance</h3>
+                        <ul>
+                            <li>Optimiza imágenes</li>
+                            <li>Usa lazy loading</li>
+                            <li>Minimiza el uso de iframes</li>
+                            <li>Implementa caché adecuadamente</li>
+                            <li>Prioriza contenido crítico</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 2</h2>
+            <div class="summary-grid">
+                <div class="summary-card key-concepts">
+                    <h3>Conceptos Clave</h3>
+                    <ul>
+                        <li>Estructura básica de documento HTML</li>
+                        <li>Elementos semánticos para mejor SEO y accesibilidad</li>
+                        <li>Formularios avanzados con validación integrada</li>
+                        <li>APIs de HTML5: Web Storage, Geolocation, Drag & Drop</li>
+                        <li>Técnicas de optimización y buenas prácticas</li>
+                    </ul>
+                </div>
+                <div class="summary-card tools">
+                    <h3>Elementos Dominados</h3>
+                    <ul>
+                        <li>Etiquetas básicas y de formato</li>
+                        <li>Multimedia: video, audio, SVG, Canvas</li>
+                        <li>Formularios avanzados y validación</li>
+                        <li>Web Components: template y slot</li>
+                        <li>Microdatos para SEO</li>
+                    </ul>
+                </div>
+                <div class="summary-card next-steps">
+                    <h3>Próximos Pasos</h3>
+                    <ul>
+                        <li>Profundizar en CSS moderno</li>
+                        <li>Introducción a JavaScript</li>
+                        <li>Accesibilidad avanzada (ARIA)</li>
+                        <li>Optimización de performance</li>
+                        <li>Patrones de diseño web</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+
+
+                    < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                 <a href="#">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; <span id="current-year"></span> Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem2.js"></script>
+</body>
+</html>

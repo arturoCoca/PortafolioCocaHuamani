@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 5 - JavaScript y React | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem5.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <!-- React CDN para demostraciones -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+
+                    < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                 <a href="#">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+
+                
+            </nav>
+            <h1>JavaScript Básico y React</h1>
+            <p class="subtitle">Fundamentos de programación y desarrollo de interfaces modernas</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender los fundamentos de JavaScript (variables, funciones, estructuras de control)</li>
+                <li>Manipular el DOM y manejar eventos del navegador</li>
+                <li>Almacenar datos localmente con Web Storage API</li>
+                <li>Entender los conceptos básicos de React (componentes, estado, props)</li>
+                <li>Configurar un entorno de desarrollo React con herramientas modernas</li>
+                <li>Crear componentes reutilizables y manejar el estado de la aplicación</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="javascript-section">
+                <h2><i class="fab fa-js"></i> JavaScript Básico</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="js-fundamentals">Fundamentos</div>
+                        <div class="tab-btn" data-tab="js-dom">DOM</div>
+                        <div class="tab-btn" data-tab="js-storage">Almacenamiento</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="js-fundamentals">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Variables y Tipos</h3>
+                                <pre><code>// Declaración de variables
+let nombre = "Juan"; // String
+const edad = 30; // Number
+let esMayor = true; // Boolean
+
+// Arrays
+const frutas = ["manzana", "banana", "naranja"];
+
+// Objetos
+const persona = {
+  nombre: "María",
+  edad: 25,
+  profesion: "Desarrolladora"
+};</code></pre>
+                                <div class="interactive-demo">
+                                    <button id="variables-demo" class="demo-btn">Ejecutar Demo</button>
+                                    <div id="variables-output" class="demo-output"></div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Funciones y Control</h3>
+                                <pre><code>// Función declarada
+function saludar(nombre) {
+  return `Hola, ${nombre}!`;
+}
+
+// Arrow function
+const sumar = (a, b) => a + b;
+
+// Condicionales
+if (edad >= 18) {
+  console.log("Mayor de edad");
+} else {
+  console.log("Menor de edad");
+}
+
+// Bucle for
+for (let i = 0; i < frutas.length; i++) {
+  console.log(frutas[i]);
+}</code></pre>
+                                <div class="interactive-demo">
+                                    <button id="functions-demo" class="demo-btn">Ejecutar Demo</button>
+                                    <div id="functions-output" class="demo-output"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="js-dom">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Manipulación del DOM</h3>
+                                <pre><code>// Seleccionar elementos
+const titulo = document.getElementById('titulo');
+const items = document.querySelectorAll('.item');
+
+// Modificar contenido
+titulo.textContent = 'Nuevo título';
+titulo.style.color = 'blue';
+
+// Crear elementos
+const nuevoDiv = document.createElement('div');
+nuevoDiv.className = 'nuevo';
+document.body.appendChild(nuevoDiv);</code></pre>
+                                <div class="interactive-demo">
+                                    <div id="dom-demo-area" class="dom-demo-area">
+                                        <h4 id="dom-title">Título Original</h4>
+                                        <ul>
+                                            <li class="dom-item">Item 1</li>
+                                            <li class="dom-item">Item 2</li>
+                                        </ul>
+                                    </div>
+                                    <button id="dom-demo-btn" class="demo-btn">Modificar DOM</button>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Manejo de Eventos</h3>
+                                <pre><code>// Evento click
+const boton = document.getElementById('miBoton');
+boton.addEventListener('click', function() {
+  console.log('Botón clickeado!');
+});
+
+// Evento formulario
+const formulario = document.getElementById('miForm');
+formulario.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const datos = new FormData(formulario);
+  console.log(Object.fromEntries(datos));
+});</code></pre>
+                                <div class="interactive-demo">
+                                    <div id="event-demo-area">
+                                        <button id="event-demo-btn" class="demo-btn">Haz Click</button>
+                                        <p id="event-counter">Clicks: 0</p>
+                                        <form id="event-demo-form">
+                                            <input type="text" name="nombre" placeholder="Tu nombre">
+                                            <button type="submit">Enviar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="js-storage">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Web Storage API</h3>
+                                <pre><code>// localStorage - Persistente
+localStorage.setItem('usuario', 'JuanPerez');
+const usuario = localStorage.getItem('usuario');
+
+// sessionStorage - Temporal
+sessionStorage.setItem('token', 'abc123');
+
+// JSON
+const datos = { nombre: 'María', edad: 25 };
+localStorage.setItem('datos', JSON.stringify(datos));
+const datosGuardados = JSON.parse(localStorage.getItem('datos'));</code></pre>
+                                <div class="interactive-demo">
+                                    <div class="storage-demo">
+                                        <input type="text" id="storage-input" placeholder="Introduce un valor">
+                                        <button id="save-storage" class="demo-btn">Guardar</button>
+                                        <button id="read-storage" class="demo-btn">Leer</button>
+                                        <button id="clear-storage" class="demo-btn">Limpiar</button>
+                                        <div id="storage-output" class="demo-output"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Depuración</h3>
+                                <pre><code>// Console.log
+console.log('Mensaje normal');
+console.warn('Advertencia');
+console.error('Error');
+
+// Debugger
+function funcionCompleja() {
+  debugger; // Pausa la ejecución
+  // Código a depurar
+}
+
+// Medición de performance
+console.time('miFuncion');
+miFuncion(); // Función a medir
+console.timeEnd('miFuncion');</code></pre>
+                                <div class="interactive-demo">
+                                    <button id="debug-demo" class="demo-btn">Probar Console</button>
+                                    <button id="debugger-demo" class="demo-btn">Activar Debugger</button>
+                                    <div id="debug-output" class="demo-output"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="react-section">
+                <h2><i class="fab fa-react"></i> React</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="react-fundamentals">Fundamentos</div>
+                        <div class="tab-btn" data-tab="react-components">Componentes</div>
+                        <div class="tab-btn" data-tab="react-tools">Herramientas</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="react-fundamentals">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>¿Qué es React?</h3>
+                                <p>React es una biblioteca de JavaScript para construir interfaces de usuario. Fue creada por Facebook y se destaca por:</p>
+                                <ul>
+                                    <li>Componentes reutilizables</li>
+                                    <li>DOM virtual para mejor rendimiento</li>
+                                    <li>Flujo de datos unidireccional</li>
+                                    <li>Sintaxis JSX (JavaScript + HTML)</li>
+                                </ul>
+                                <div class="code-example">
+                                    <h4>Ejemplo Básico:</h4>
+                                    <div id="react-hello-demo"></div>
+                                    <script type="text/babel">
+                                        function HelloReact() {
+                                            return <h4>¡Hola desde React!</h4>;
+                                        }
+                                        ReactDOM.render(
+                                            <HelloReact />,
+                                            document.getElementById('react-hello-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Entorno de Desarrollo</h3>
+                                <p>Configuración recomendada:</p>
+                                <ul>
+                                    <li><strong>Node.js:</strong> Entorno de ejecución</li>
+                                    <li><strong>npm/yarn:</strong> Gestión de paquetes</li>
+                                    <li><strong>Create React App:</strong> Configuración automática</li>
+                                    <li><strong>VS Code:</strong> Editor con extensiones para React</li>
+                                </ul>
+                                <pre><code># Crear nueva aplicación
+npx create-react-app mi-app
+
+# Instalar dependencias adicionales
+npm install react-router-dom axios
+
+# Iniciar servidor de desarrollo
+npm start</code></pre>
+                                <div class="best-practice">
+                                    <h4>Alternativas Modernas:</h4>
+                                    <p>Vite y Next.js ofrecen configuraciones más rápidas y optimizadas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="react-components">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Componentes y Props</h3>
+                                <pre><code>// Componente funcional
+function Saludo(props) {
+  return &lt;h1&gt;Hola, {props.nombre}!&lt;/h1&gt;;
+}
+
+// Uso del componente
+&lt;Saludo nombre="Juan" /&gt;
+
+// Componente con estado (Hooks)
+function Contador() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Contador: {count}&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
+        Incrementar
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                <div class="interactive-demo">
+                                    <div id="react-component-demo"></div>
+                                    <script type="text/babel">
+                                        function Greeting(props) {
+                                            return <p>¡Bienvenido, {props.name}!</p>;
+                                        }
+                                        
+                                        function Counter() {
+                                            const [count, setCount] = React.useState(0);
+                                            
+                                            return (
+                                                <div>
+                                                    <p>Contador: {count}</p>
+                                                    <button 
+                                                        className="demo-btn"
+                                                        onClick={() => setCount(count + 1)}
+                                                    >
+                                                        Incrementar
+                                                    </button>
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        function ComponentDemo() {
+                                            return (
+                                                <div>
+                                                    <Greeting name="Visitante" />
+                                                    <Counter />
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        ReactDOM.render(
+                                            <ComponentDemo />,
+                                            document.getElementById('react-component-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Listas y Eventos</h3>
+                                <pre><code>function ListaTareas() {
+  const [tareas, setTareas] = useState([
+    { id: 1, texto: 'Aprender React' },
+    { id: 2, texto: 'Crear proyecto' }
+  ]);
+
+  const agregarTarea = () => {
+    const nuevaTarea = {
+      id: Date.now(),
+      texto: 'Nueva tarea'
+    };
+    setTareas([...tareas, nuevaTarea]);
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;button onClick={agregarTarea}&gt;Agregar&lt;/button&gt;
+      &lt;ul&gt;
+        {tareas.map(tarea => (
+          &lt;li key={tarea.id}&gt;{tarea.texto}&lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                <div class="interactive-demo">
+                                    <div id="react-list-demo"></div>
+                                    <script type="text/babel">
+                                        function TaskList() {
+                                            const [tasks, setTasks] = React.useState([
+                                                { id: 1, text: 'Aprender React' },
+                                                { id: 2, text: 'Practicar componentes' }
+                                            ]);
+                                            
+                                            const addTask = () => {
+                                                const newTask = {
+                                                    id: Date.now(),
+                                                    text: 'Nueva tarea'
+                                                };
+                                                setTasks([...tasks, newTask]);
+                                            };
+                                            
+                                            return (
+                                                <div>
+                                                    <button 
+                                                        className="demo-btn"
+                                                        onClick={addTask}
+                                                    >
+                                                        Agregar Tarea
+                                                    </button>
+                                                    <ul>
+                                                        {tasks.map(task => (
+                                                            <li key={task.id}>{task.text}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            );
+                                        }
+                                        
+                                        ReactDOM.render(
+                                            <TaskList />,
+                                            document.getElementById('react-list-demo')
+                                        );
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="react-tools">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Herramientas Esenciales</h3>
+                                <ul>
+                                    <li><strong>Babel:</strong> Transpila JSX y ES6+ a JavaScript compatible</li>
+                                    <li><strong>Webpack:</strong> Empaqueta módulos y recursos</li>
+                                    <li><strong>ESLint:</strong> Analiza código en busca de errores</li>
+                                    <li><strong>Prettier:</strong> Formatea código consistentemente</li>
+                                    <li><strong>React DevTools:</strong> Extensión para depuración</li>
+                                </ul>
+                                <pre><code>// Ejemplo de configuración .eslintrc
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "react/prop-types": "off",
+    "no-unused-vars": "warn"
+  }
+}</code></pre>
+                            </div>
+                            <div class="card">
+                                <h3>Ecosistema React</h3>
+                                <ul>
+                                    <li><strong>React Router:</strong> Navegación entre vistas</li>
+                                    <li><strong>Redux:</strong> Gestión de estado global</li>
+                                    <li><strong>Axios:</strong> Peticiones HTTP</li>
+                                    <li><strong>Styled Components:</strong> CSS en JS</li>
+                                    <li><strong>Next.js:</strong> Framework para React</li>
+                                </ul>
+                                <div class="best-practice">
+                                    <h4>Flujo de Trabajo Moderno:</h4>
+                                    <p>Para nuevos proyectos, considera Vite + React + TypeScript + Tailwind CSS como stack moderno.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="comparison">
+                <h2><i class="fas fa-balance-scale"></i> Comparación</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>JavaScript Vanilla</h3>
+                        <ul>
+                            <li><strong>Ventajas:</strong> No requiere compilación, total control, sin dependencias</li>
+                            <li><strong>Desventajas:</strong> Código más verboso, difícil de escalar, manejo manual del DOM</li>
+                            <li><strong>Mejor para:</strong> Pequeñas interacciones, páginas simples, aprendizaje</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>React</h3>
+                        <ul>
+                            <li><strong>Ventajas:</strong> Componentes reutilizables, estado manejable, rico ecosistema</li>
+                            <li><strong>Desventajas:</strong> Curva de aprendizaje, configuración inicial, overhead para proyectos pequeños</li>
+                            <li><strong>Mejor para:</strong> Aplicaciones complejas, equipos, proyectos escalables</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Recomendaciones</h3>
+                        <ul>
+                            <li>Aprende bien JavaScript antes de React</li>
+                            <li>Usa JavaScript vanilla para pequeños scripts</li>
+                            <li>Elige React para aplicaciones complejas</li>
+                            <li>Considera el tamaño y necesidades del proyecto</li>
+                            <li>No tengas miedo de usar ambas en el mismo proyecto</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 5</h2>
+            <div class="summary-grid">
+                <div class="summary-card key-concepts">
+                    <h3>Conceptos Clave</h3>
+                    <ul>
+                        <li>Fundamentos de JavaScript (sintaxis, estructuras)</li>
+                        <li>Manipulación del DOM y manejo de eventos</li>
+                        <li>Almacenamiento local con Web Storage API</li>
+                        <li>Componentes, estado y props en React</li>
+                        <li>Herramientas del ecosistema React</li>
+                    </ul>
+                </div>
+                <div class="summary-card tools">
+                    <h3>Herramientas Dominadas</h3>
+                    <ul>
+                        <li>Variables, funciones y estructuras de control</li>
+                        <li>document.querySelector y eventos</li>
+                        <li>localStorage y JSON</li>
+                        <li>Create React App y componentes</li>
+                        <li>Babel, Webpack y ESLint</li>
+                    </ul>
+                </div>
+                <div class="summary-card next-steps">
+                    <h3>Próximos Pasos</h3>
+                    <ul>
+                        <li>Profundizar en hooks de React (useEffect, useContext)</li>
+                        <li>Aprender React Router para navegación</li>
+                        <li>Explorar gestión de estado con Redux o Context API</li>
+                        <li>Practicar integración con APIs reales</li>
+                        <li>Crear un proyecto completo con React</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="lab-exercises">
+            <h2><i class="fas fa-flask"></i> Ejercicios de Laboratorio</h2>
+            
+            <div class="exercise">
+                <h3>Ejercicio 1: Lista de Tareas con JavaScript</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Implementé una lista de tareas interactiva usando JavaScript puro:</p>
+                        <ul>
+                            <li>Agregar nuevas tareas</li>
+                            <li>Marcar tareas como completadas</li>
+                            <li>Eliminar tareas</li>
+                            <li>Persistencia con localStorage</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Resultado:</h4>
+                        <div class="result-container">
+                            <div id="js-todo-demo">
+                                <h4>Lista de Tareas (JavaScript)</h4>
+                                <form id="js-todo-form">
+                                    <input type="text" id="js-todo-input" placeholder="Nueva tarea" required>
+                                    <button type="submit" class="demo-btn">Agregar</button>
+                                </form>
+                                <ul id="js-todo-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h3>Ejercicio 2: Lista de Tareas con React</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Reimplementé la lista de tareas usando React:</p>
+                        <ul>
+                            <li>Componente TodoList con estado</li>
+                            <li>Manejo de eventos para agregar/completar/eliminar</li>
+                            <li>Mismo funcionamiento pero con enfoque React</li>
+                            <li>Uso de hooks (useState)</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Resultado:</h4>
+                        <div class="result-container">
+                            <div id="react-todo-demo"></div>
+                            <script type="text/babel">
+                                function ReactTodo() {
+                                    const [todos, setTodos] = React.useState([]);
+                                    const [input, setInput] = React.useState('');
+                                    
+                                    const addTodo = (e) => {
+                                        e.preventDefault();
+                                        if (!input.trim()) return;
+                                        
+                                        setTodos([...todos, {
+                                            id: Date.now(),
+                                            text: input,
+                                            completed: false
+                                        }]);
+                                        setInput('');
+                                    };
+                                    
+                                    const toggleTodo = (id) => {
+                                        setTodos(todos.map(todo => 
+                                            todo.id === id ? {...todo, completed: !todo.completed} : todo
+                                        ));
+                                    };
+                                    
+                                    const deleteTodo = (id) => {
+                                        setTodos(todos.filter(todo => todo.id !== id));
+                                    };
+                                    
+                                    return (
+                                        <div>
+                                            <h4>Lista de Tareas (React)</h4>
+                                            <form onSubmit={addTodo}>
+                                                <input
+                                                    type="text"
+                                                    value={input}
+                                                    onChange={(e) => setInput(e.target.value)}
+                                                    placeholder="Nueva tarea"
+                                                    required
+                                                />
+                                                <button type="submit" className="demo-btn">Agregar</button>
+                                            </form>
+                                            <ul>
+                                                {todos.map(todo => (
+                                                    <li key={todo.id}>
+                                                        <span 
+                                                            style={{textDecoration: todo.completed ? 'line-through' : 'none'}}
+                                                            onClick={() => toggleTodo(todo.id)}
+                                                        >
+                                                            {todo.text}
+                                                        </span>
+                                                        <button 
+                                                            className="delete-btn"
+                                                            onClick={() => deleteTodo(todo.id)}
+                                                        >
+                                                            ×
+                                                        </button>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    );
+                                }
+                                
+                                ReactDOM.render(
+                                    <ReactTodo />,
+                                    document.getElementById('react-todo-demo')
+                                );
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h3>Ejercicio 3: Configuración de Entorno</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Configuré un proyecto React desde cero con:</p>
+                        <ul>
+                            <li>Create React App inicializado</li>
+                            <li>ESLint y Prettier para calidad de código</li>
+                            <li>React Router para navegación básica</li>
+                            <li>Sass para estilos</li>
+                            <li>Axios para peticiones HTTP</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Estructura del Proyecto:</h4>
+                        <div class="result-container">
+                            <pre><code>mi-app-react/
+├── node_modules/
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx
+│   │   └── Footer.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   └── About.jsx
+│   ├── styles/
+│   │   ├── main.scss
+│   │   └── _variables.scss
+│   ├── App.jsx
+│   ├── index.js
+│   └── setupTests.js
+├── .eslintrc.json
+├── .prettierrc
+├── package.json
+└── README.md</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reflection">
+            <h2><i class="fas fa-brain"></i> Reflexión sobre el Aprendizaje</h2>
+            
+            <div class="reflection-content">
+                <div class="reflection-card">
+                    <h3><i class="fas fa-lightbulb"></i> ¿Qué aprendí?</h3>
+                    <div class="reflection-text">
+                        <p>Esta semana fue fundamental para mi crecimiento como desarrollador:</p>
+                        <ul>
+                            <li><strong>JavaScript esencial:</strong> Consolidé mi comprensión de variables, funciones, arrays y objetos</li>
+                            <li><strong>DOM manipulation:</strong> Aprendí a seleccionar y modificar elementos de la página dinámicamente</li>
+                            <li><strong>React fundamentals:</strong> Comprendí el modelo de componentes y el flujo unidireccional de datos</li>
+                            <li><strong>Herramientas modernas:</strong> Me familiaricé con Babel, Webpack y el ecosistema npm</li>
+                            <li><strong>Diferentes enfoques:</strong> Experimenté las diferencias entre JavaScript puro y React</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3><i class="fas fa-graduation-cap"></i> ¿Cómo aprendí?</h3>
+                    <div class="reflection-text">
+                        <p>Mi proceso de aprendizaje fue práctico y estructurado:</p>
+                        <ul>
+                            <li><strong>Ejercicios progresivos:</strong> Comencé con JavaScript básico y avanzé hasta React</li>
+                            <li><strong>Comparación directa:</strong> Implementé el mismo proyecto con ambas tecnologías</li>
+                            <li><strong>Configuración manual:</strong> Experimenté con Webpack y Babel para entender el proceso</li>
+                            <li><strong>Documentación:</strong> Estudié a profundidad la documentación oficial de React</li>
+                            <li><strong>Depuración:</strong> Usé Chrome DevTools y React DevTools para entender el flujo</li>
+                        </ul>
+                        <p>El momento más revelador fue cuando implementé la misma funcionalidad (lista de tareas) con ambos enfoques y pude comparar directamente las ventajas de cada uno.</p>
+                    </div>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3><i class="fas fa-chart-line"></i> Próximos Pasos</h3>
+                    <div class="reflection-text">
+                        <p>Para continuar mi aprendizaje:</p>
+                        <ul>
+                            <li>Profundizar en hooks avanzados (useEffect, useReducer, useContext)</li>
+                            <li>Aprender React Router para aplicaciones multipágina</li>
+                            <li>Explorar gestión de estado con Redux o Context API</li>
+                            <li>Practicar integración con APIs reales usando Axios</li>
+                            <li>Crear un proyecto completo con autenticación y base de datos</li>
+                        </ul>
+                        <p>También planeo explorar frameworks basados en React como Next.js para renderizado del lado del servidor.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+
+                    < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                 <a href="#">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; <span id="current-year"></span> Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem5.js"></script>
+</body>
+</html>

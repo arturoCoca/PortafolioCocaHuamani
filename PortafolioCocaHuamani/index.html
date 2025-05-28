@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanpech - Innovación que impulsa el futuro</title>
+    <meta name="description" content="Fanpech: Soluciones innovadoras en tecnología avanzada para un mundo más eficiente. Descubre cómo revolucionamos el sector con nuestra tecnología de punta.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/descarga.jpeg">
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">F</div>
+            <div class="loader-lines">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partículas de fondo -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">
+                    <span class="logo-text">FANPECH</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Inicio</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Nosotros</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Cuaderno</a></li>
+                    <li class="nav-item"><a href="#technology" class="nav-link">Universidad</a></li>
+                    <li class="nav-item"><a href="#clients" class="nav-link">Comentarios</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="glitch-text" data-text="ARTURO HUAMANI">ARTURO HUAMANI</h1>
+                <p class="hero-subtitle">Estudiante de Ingeniera de Sistemas.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">Descubre más</a>
+                    <a href="#contact" class="btn btn-secondary">Contáctanos</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-video-container">
+            <video autoplay muted loop class="hero-video">
+                <source src="assets/hero-background.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Presentación</h2>
+                <p class="section-subtitle">Conoce mis temas adquiridos y desarrollados</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Quién soy</h3>
+                    <p>En <strong>Mi perfil</strong>.</p>
+                    <p>Estudiante del 9no semestre de Ingeniería de Sistemas en la UNCP, con conocimientos en desarrollo de software, gestión de información y soporte técnico. Busco aplicar mis habilidades en análisis y optimización de sistemas, contribuyendo a la mejora de procesos. Disponibilidad inmediata, capacidad de adaptación y motivación para aportar soluciones tecnológicas y colaborar en proyectos que impulsen la eficiencia.</p>
+                </div>
+                <div class="about-image">
+                    <div class="image-container">
+                        <img src="img/FOTO_Coca.jpg" alt="Equipo Fanpech">
+                    </div>
+                </div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-year="2021">
+                    <div class="timeline-content">
+                        <h3>Primer semestre</h3>
+                        <p>me gusta más software y programación</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2022">
+                    <div class="timeline-content">
+                        <h3>segundo semestre</h3>
+                        <p>me gusta la gestión de proyectos</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-content">
+                        <h3>tercer semestre</h3>
+                        <p>me gusta desarrollar software</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2024">
+                    <div class="timeline-content">
+                        <h3>cuarto semestre</h3>
+                        <p>me gusta análisis de datos y gestión de base de datos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Soluciones innovadoras para tu negocio</p>
+            </div>
+            <div class="services-filter">
+                <button class="filter-btn active" data-filter="all">todo</button>
+                <button class="filter-btn" data-filter="tech">html</button>
+                <button class="filter-btn" data-filter="energy">CSS-Talwinc</button>
+                <button class="filter-btn" data-filter="auto">React</button>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-category="tech">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3>Semana 1</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Semana 1</h3>
+                            <p>Explicar los fundamentos de las tecnologías web; Usar la Herramienta Visual Stusdio Code de desarrollo.</p>
+                            <a href="Cuaderno/sem1/sem1.html" class="btn-text">Saber más</a>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="service-card" data-category="tech">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3>Semana 2</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Semana 2</h3>
+                            <p>html básico y html avanzado</p>
+                            <a href="Cuaderno/sem2/sem2.html" class="btn-text">Saber más</a>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="service-card" data-category="energy">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-solar-panel"></i>
+                            </div>
+                            <h3>Semana 3</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Semana 3</h3>
+                            <p>css básico y css avanzado.</p>
+                            <a href="Cuaderno/sem3/sem3.html" class="btn-text">Saber más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="auto">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>Semana 4</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Semana 4</h3>
+                            <p>CSS con Bootstrap y CSS con talwind.</p>
+                            <a href="Cuaderno/sem4/sem4.html" class="btn-text">Saber más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="tech">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>Semana 5</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Semana 5</h3>
+                            <p>javaScript Básico y Desarrollo de Aplicaciones Web con React.</p>
+                            <a href="Cuaderno/sem5/sem5.html" class="btn-text">Saber más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="auto">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <h3>Semana 6</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Semana 6</h3>
+                            <p>Componentes React con JSX y Typescript.</p>
+                            <a href="Cuaderno/sem6/sem6.html" class="btn-text">Saber más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card" data-category="energy">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Semana 7</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Semana 7</h3>
+                            <p>Uso de Hooks en React.</p>
+                            <a href="Cuaderno/sem7/sem7.html" class="btn-text">Saber más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="technology" class="technology">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">UNIVERSIDAD NACIONAL DEL CENTRO DEL PERÚ</h2>
+                <p class="section-subtitle">Facultad de ingenieria de sistemas</p>
+            </div>
+            <div class="tech-showcase">
+                <div class="tech-diagram">
+                    <div class="diagram-container">
+                        <div class="diagram-center">
+                            <div class="pulse-circle"></div>
+                            <span>UNCP</span>
+                        </div>
+                        
+                        <div class="diagram-connections">
+                            <svg viewBox="0 0 500 500" class="connections-svg">
+                              
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="clients" class="clients">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frases celebres</h2>
+                <p class="section-subtitle">Recuerda siempre que ...</p>
+            </div>
+          
+            <div class="testimonials">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                <p>"Los programas deben escribirse para que las personas los lean, y solo incidentalmente para que las máquinas los ejecuten."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="img/descarga.jpeg" alt="Testimonial 1">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Carlos Rodríguez</h4>
+                                    <p>Director de Operaciones, TechCorp</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                <p>"Hablar es barato. Muéstrame el código."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="img/descarga.jpeg" alt="Testimonial 2">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Ana Martínez</h4>
+                                    <p>CEO, Innovatech</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial-text">
+                                <p>"Lo más desastroso que puedes aprender es tu primer lenguaje de programación."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-image">
+                                    <img src="img/descarga.jpeg" alt="Testimonial 3">
+                                </div>
+                                <div class="author-info">
+                                    <h4>Miguel Sánchez</h4>
+                                    <p>CTO, Global Solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-controls">
+                    <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="testimonial-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contacto</h2>
+                <p class="section-subtitle">Estoy listos para ayudarte</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Ubicación</h3>
+                            <p>Av. Mariscal Castilla N° 3909, Huancayo 12006</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Teléfono</h3>
+                            <p>+51 959 704 212</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p>E_2020101663f@UNCP.EDU.PE</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Nombre" required>
+                            <div class="input-focus-effect"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <div class="input-focus-effect"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Asunto" required>
+                            <div class="input-focus-effect"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Mensaje" required></textarea>
+                            <div class="input-focus-effect"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">COCA HUAMANI</span>
+                    <p>Innovación que impulsa el futuro</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Navegación</h3>
+                        <ul>
+                            <li><a href="#home">Inicio</a></li>
+                            <li><a href="#about">Nosotros</a></li>
+                            <li><a href="#services">CUADERNO</a></li>
+                            <li><a href="#technology">UNIVERSIDAD</a></li>
+                            <li><a href="#clients">Comentarios</a></li>
+                            <li><a href="#contact">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Cuaderno</h3>
+                        <ul>
+                            <li><a href="#services">Introducción</a></li>
+                            <li><a href="#services">HTM basico y avanzado</a></li>
+                            <li><a href="#services">CSS básico y Avanzado</a></li>
+                            <li><a href="#services">Bootstrap-Tailwind css</a></li>
+                            <li><a href="#services">Javascript y react</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Contratos</h3>
+                        <ul>
+                            <li><a href="#">Términos y Condiciones</a></li>
+                            <li><a href="#">Política de Privacidad</a></li>
+                            <li><a href="#">Política de Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fanpech. Todos los derechos reservados por ARTURO COCA.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/51959704212" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

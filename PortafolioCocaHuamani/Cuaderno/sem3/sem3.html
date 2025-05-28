@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 3 - CSS Básico y Avanzado | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+
+
+                < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                 <a href="#">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+
+            </nav>
+            <h1>CSS Básico y Avanzado</h1>
+            <p class="subtitle">Dominio de estilos desde fundamentos hasta técnicas modernas para diseños sofisticados</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Dominar selectores CSS y el modelo de cascada</li>
+                <li>Comprender el modelo de caja y sistemas de posicionamiento</li>
+                <li>Implementar layouts modernos con Flexbox y Grid</li>
+                <li>Aplicar técnicas de diseño responsivo y mobile-first</li>
+                <li>Utilizar características avanzadas como variables CSS y funciones</li>
+                <li>Optimizar el rendimiento de estilos en proyectos web</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="css-basics">
+                <h2><i class="fab fa-css3"></i> CSS Básico</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="selectors">Selectores</div>
+                        <div class="tab-btn" data-tab="box-model">Modelo de Caja</div>
+                        <div class="tab-btn" data-tab="layout">Layouts</div>
+                        <div class="tab-btn" data-tab="animations">Animaciones</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="selectors">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Selectores Básicos</h3>
+                                <pre><code>/* Selector de elemento */
+p { color: blue; }
+
+/* Selector de clase */
+.destacado { font-weight: bold; }
+
+/* Selector de ID */
+#header { background: #333; }
+
+/* Selector descendente */
+nav ul li { display: inline-block; }</code></pre>
+                                <div class="tech-tags">
+                                    <span>Especificidad</span>
+                                    <span>Cascada</span>
+                                    <span>Herencia</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Pseudo-clases/elementos</h3>
+                                <pre><code>/* Estados de interacción */
+a:hover { color: red; }
+input:focus { outline: 2px solid blue; }
+
+/* Posición en listas */
+li:nth-child(odd) { background: #f5f5f5; }
+
+/* Pseudo-elementos */
+p::first-letter { font-size: 1.5em; }
+.blockquote::before { content: '"'; }</code></pre>
+                                <div class="tech-tags">
+                                    <span>:hover</span>
+                                    <span>:nth-child</span>
+                                    <span>::before</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="box-model">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Box Model</h3>
+                                <div class="box-model-demo">
+                                    <div class="box-content">Contenido</div>
+                                </div>
+                                <pre><code>.elemento {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #333;
+  margin: 10px;
+  box-sizing: border-box; /* Alternativa */
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>margin</span>
+                                    <span>border</span>
+                                    <span>padding</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Posicionamiento</h3>
+                                <div class="positioning-demo">
+                                    <div class="position-box static">static</div>
+                                    <div class="position-box relative">relative</div>
+                                    <div class="position-box absolute">absolute</div>
+                                    <div class="position-box fixed">fixed</div>
+                                    <div class="position-box sticky">sticky</div>
+                                </div>
+                                <pre><code>.relative { position: relative; }
+.absolute { position: absolute; top: 0; }
+.fixed { position: fixed; bottom: 0; }
+.sticky { position: sticky; top: 0; }</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="layout">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Flexbox</h3>
+                                <div class="flexbox-demo">
+                                    <div class="flex-item">1</div>
+                                    <div class="flex-item">2</div>
+                                    <div class="flex-item">3</div>
+                                </div>
+                                <pre><code>.contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item {
+  flex: 1 0 auto;
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>display: flex</span>
+                                    <span>justify-content</span>
+                                    <span>align-items</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>CSS Grid</h3>
+                                <div class="grid-demo">
+                                    <div class="grid-item header">Header</div>
+                                    <div class="grid-item sidebar">Sidebar</div>
+                                    <div class="grid-item main">Main</div>
+                                    <div class="grid-item footer">Footer</div>
+                                </div>
+                                <pre><code>.contenedor {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }</code></pre>
+                                <div class="tech-tags">
+                                    <span>display: grid</span>
+                                    <span>grid-template</span>
+                                    <span>fr units</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="animations">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Transiciones</h3>
+                                <div class="transition-demo">
+                                    Pasa el cursor
+                                </div>
+                                <pre><code>.elemento {
+  transition: all 0.3s ease;
+  background: blue;
+}
+
+.elemento:hover {
+  background: red;
+  transform: scale(1.1);
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>transition</span>
+                                    <span>easing</span>
+                                    <span>duration</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Animaciones</h3>
+                                <div class="animation-demo">
+                                    ✨
+                                </div>
+                                <pre><code>@keyframes slidein {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.elemento {
+  animation: slidein 1s ease infinite alternate;
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>@keyframes</span>
+                                    <span>animation</span>
+                                    <span>transform</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="css-advanced">
+                <h2><i class="fab fa-css3-alt"></i> CSS Avanzado</h2>
+                
+                <div class="tabs">
+                    <div class="tab-header">
+                        <div class="tab-btn active" data-tab="variables">Variables</div>
+                        <div class="tab-btn" data-tab="functions">Funciones</div>
+                        <div class="tab-btn" data-tab="responsive">Responsive</div>
+                        <div class="tab-btn" data-tab="effects">Efectos</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="variables">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Variables CSS</h3>
+                                <pre><code>:root {
+  --primary-color: #3498db;
+  --spacing-unit: 1rem;
+  --max-width: 1200px;
+}
+
+.elemento {
+  color: var(--primary-color);
+  margin: calc(var(--spacing-unit) * 2);
+  max-width: var(--max-width);
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>Custom Properties</span>
+                                    <span>--variable-name</span>
+                                    <span>var()</span>
+                                </div>
+                                <div class="best-practice">
+                                    <h4>Buena Práctica:</h4>
+                                    <p>Define variables en <code>:root</code> para acceso global y usa nombres descriptivos.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Modificación con JS</h3>
+                                <pre><code>// Obtener variable
+const primary = getComputedStyle(document.documentElement)
+  .getPropertyValue('--primary-color');
+
+// Cambiar variable
+document.documentElement.style
+  .setProperty('--primary-color', '#e74c3c');</code></pre>
+                                <div class="interactive-demo">
+                                    <button id="change-theme">Cambiar Tema</button>
+                                    <div class="theme-box"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="functions">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Funciones Matemáticas</h3>
+                                <pre><code>.elemento {
+  width: calc(100% - 2rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  padding: min(2rem, 5%);
+  margin: max(1rem, 3vh);
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>calc()</span>
+                                    <span>clamp()</span>
+                                    <span>min()/max()</span>
+                                </div>
+                                <div class="best-practice">
+                                    <h4>Uso Práctico:</h4>
+                                    <p><code>clamp()</code> es ideal para tipografía fluida que se escala entre valores mínimo y máximo.</p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Ejemplo: Grid Fluido</h3>
+                                <pre><code>.grid-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(250px, 100%), 1fr)
+  );
+  gap: clamp(1rem, 3vw, 2rem);
+}</code></pre>
+                                <div class="responsive-grid-demo">
+                                    <div>Item 1</div>
+                                    <div>Item 2</div>
+                                    <div>Item 3</div>
+                                    <div>Item 4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="responsive">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Media Queries</h3>
+                                <pre><code>/* Mobile-first approach */
+.container {
+  padding: 1rem;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>@media</span>
+                                    <span>mobile-first</span>
+                                    <span>breakpoints</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Container Queries</h3>
+                                <pre><code>.card {
+  container-type: inline-size;
+}
+
+@container (min-width: 400px) {
+  .card {
+    display: flex;
+    gap: 1rem;
+  }
+}</code></pre>
+                                <div class="container-query-demo">
+                                    <div class="cq-card">
+                                        <div class="cq-image"></div>
+                                        <div class="cq-content">
+                                            <h4>Título</h4>
+                                            <p>Contenido que cambia según el ancho del contenedor</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="effects">
+                        <div class="grid-container">
+                            <div class="card">
+                                <h3>Clip-path & Mask</h3>
+                                <div class="clip-path-demo"></div>
+                                <pre><code>.elemento {
+  clip-path: polygon(
+    0 0, 100% 0, 
+    100% 75%, 0 100%
+  );
+  
+  mask-image: linear-gradient(
+    to right, 
+    transparent, black 20%
+  );
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>clip-path</span>
+                                    <span>mask</span>
+                                    <span>shapes</span>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h3>Filtros y Blend Modes</h3>
+                                <div class="filter-demo">
+                                    <img src="https://picsum.photos/400/200?random=5 " alt="Demo">
+                                </div>
+                                <pre><code>.imagen {
+  filter: blur(1px) brightness(1.2);
+  mix-blend-mode: multiply;
+  backdrop-filter: blur(5px);
+}</code></pre>
+                                <div class="tech-tags">
+                                    <span>filter</span>
+                                    <span>blend-mode</span>
+                                    <span>backdrop-filter</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="performance">
+                <h2><i class="fas fa-tachometer-alt"></i> Optimización CSS</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Métricas Clave</h3>
+                        <ul>
+                            <li><strong>Tamaño del CSS:</strong> Minificar y comprimir</li>
+                            <li><strong>CSS no utilizado:</strong> Eliminar con herramientas como PurgeCSS</li>
+                            <li><strong>Complexity:</strong> Evitar selectores demasiado específicos</li>
+                            <li><strong>Render blocking:</strong> Critical CSS para above-the-fold</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Herramientas</h3>
+                        <ul>
+                            <li><strong>Auditoría:</strong> Chrome DevTools, Lighthouse</li>
+                            <li><strong>Optimización:</strong> PostCSS, cssnano</li>
+                            <li><strong>Organización:</strong> BEM, SMACSS, ITCSS</li>
+                            <li><strong>Preprocesadores:</strong> Sass, Less (con moderación)</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Técnicas Avanzadas</h3>
+                        <ul>
+                            <li><strong>CSS Containment:</strong> <code>contain: paint</code></li>
+                            <li><strong>Will-change:</strong> <code>will-change: transform</code></li>
+                            <li><strong>Content-visibility:</strong> <code>content-visibility: auto</code></li>
+                            <li><strong>Layer:</strong> <code>@layer base, components, utilities;</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        
+
+        <section class="lab-exercises">
+            <h2><i class="fas fa-flask"></i> Ejercicios de Laboratorio</h2>
+            
+            <div class="exercise">
+                <h3>Ejercicio 1: Galería Responsive</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Implementé una galería de imágenes que se adapta a diferentes tamaños de pantalla usando:</p>
+                        <ul>
+                            <li>CSS Grid con <code>auto-fit</code> y <code>minmax()</code></li>
+                            <li>Media Queries para ajustes específicos</li>
+                            <li>Efectos hover con transiciones</li>
+                            <li>Container Queries para componentes reutilizables</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Resultado:</h4>
+                        <div class="result-container">
+                            <div class="responsive-gallery">
+                                <div class="gallery-item">
+                                    <img src="https://picsum.photos/400/200?random=1 " alt="Imagen 1">
+                                    <div class="gallery-caption">Imagen 1</div>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="https://picsum.photos/400/200?random=2" alt="Imagen 2">
+                                    <div class="gallery-caption">Imagen 2</div>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="https://picsum.photos/400/200?random=3" alt="Imagen 3">
+                                    <div class="gallery-caption">Imagen 3</div>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="https://picsum.photos/400/200?random=4" alt="Imagen 4">
+                                    <div class="gallery-caption">Imagen 4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h3>Ejercicio 2: Dashboard con CSS Grid</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Desarrollé un dashboard complejo utilizando:</p>
+                        <ul>
+                            <li>CSS Grid con áreas nombradas</li>
+                            <li>Variables CSS para temas personalizables</li>
+                            <li>Transiciones para interacciones suaves</li>
+                            <li>Flexbox para componentes internos</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Resultado:</h4>
+                        <div class="result-container">
+                            <div class="css-grid-dashboard">
+                                <header class="dashboard-header">Header</header>
+                                <nav class="dashboard-nav">Navigation</nav>
+                                <main class="dashboard-main">Main Content</main>
+                                <aside class="dashboard-sidebar">Sidebar</aside>
+                                <footer class="dashboard-footer">Footer</footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h3>Ejercicio 3: Efectos Visuales Avanzados</h3>
+                <div class="exercise-content">
+                    <div class="exercise-description">
+                        <p>Creé componentes con efectos visuales sofisticados:</p>
+                        <ul>
+                            <li>Tarjetas con <code>clip-path</code> interactivo</li>
+                            <li>Animaciones con <code>@keyframes</code> y <code>scroll-timeline</code></li>
+                            <li>Efectos de parallax con solo CSS</li>
+                            <li>Máscaras y gradientes complejos</li>
+                        </ul>
+                    </div>
+                    <div class="exercise-result">
+                        <h4>Resultado:</h4>
+                        <div class="result-container">
+                            <div class="advanced-effects">
+                                <div class="effect-card clip-effect">
+                                    <h4>Clip-path Effect</h4>
+                                    <p>Pasa el cursor para ver el efecto</p>
+                                </div>
+                                <div class="effect-card scroll-animation">
+                                    <h4>Scroll Animation</h4>
+                                    <p>Desplázate para activar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reflection">
+            <h2><i class="fas fa-brain"></i> Reflexión sobre el Aprendizaje</h2>
+            
+            <div class="reflection-content">
+                <div class="reflection-card">
+                    <h3><i class="fas fa-lightbulb"></i> ¿Qué aprendí?</h3>
+                    <div class="reflection-text">
+                        <p>Esta semana ha sido una inmersión profunda en el poder de CSS:</p>
+                        <ul>
+                            <li><strong>Fundamentos sólidos:</strong> Comprendí completamente el modelo de caja, especificidad y cascada, lo que me permite depurar problemas de estilos con mayor eficiencia.</li>
+                            <li><strong>Layouts modernos:</strong> Domino Flexbox y Grid al punto de poder crear diseños complejos con menos código y mayor mantenibilidad.</li>
+                            <li><strong>Diseño responsivo:</strong> Aprendí a implementar estrategias mobile-first y a usar container queries para componentes verdaderamente independientes.</li>
+                            <li><strong>Performance:</strong> Entendí cómo el CSS afecta el rendimiento y cómo optimizarlo mediante técnicas como el critical CSS y la contención.</li>
+                            <li><strong>Efectos avanzados:</strong> Descubrí que muchos efectos que antes requerían JavaScript ahora son posibles solo con CSS, como animaciones complejas y scroll effects.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3><i class="fas fa-graduation-cap"></i> ¿Cómo aprendí?</h3>
+                    <div class="reflection-text">
+                        <p>Mi proceso de aprendizaje fue multifacético:</p>
+                        <ul>
+                            <li><strong>Práctica deliberada:</strong> Creé múltiples versiones de cada ejercicio, forzándome a usar diferentes enfoques para resolver los mismos problemas.</li>
+                            <li><strong>Análisis de código:</strong> Inspeccioné sitios web profesionales para entender cómo implementan sus diseños y luego intenté replicar sus técnicas.</li>
+                            <li><strong>Desafíos personales:</strong> Me impuse limitaciones como "no usar JavaScript" para dominar las capacidades puras de CSS.</li>
+                            <li><strong>Retroalimentación:</strong> Compartí mis ejercicios con compañeros y mentores para recibir críticas constructivas.</li>
+                            <li><strong>Documentación:</strong> Llevé un registro detallado de mis descubrimientos y soluciones a problemas comunes.</li>
+                        </ul>
+                        <p>El momento más revelador fue cuando entendí cómo las variables CSS pueden cambiar completamente la forma de organizar los estilos y permitir temas dinámicos. Implementar un sistema de temas con variables y JavaScript fue un punto de inflexión en mi comprensión.</p>
+                    </div>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3><i class="fas fa-chart-line"></i> Próximos Pasos</h3>
+                    <div class="reflection-text">
+                        <p>Para continuar mi aprendizaje en CSS:</p>
+                        <ul>
+                            <li><strong>CSS Houdini:</strong> Explorar las nuevas APIs de pintura y animación para llevar mis diseños al siguiente nivel.</li>
+                            <li><strong>Scroll-driven Animations:</strong> Dominar las nuevas capacidades de animación vinculadas al scroll.</li>
+                            <li><strong>Accesibilidad avanzada:</strong> Profundizar en cómo el CSS afecta la accesibilidad y cómo mejorarla.</li>
+                            <li><strong>Arquitectura CSS:</strong> Aprender metodologías avanzadas como ITCSS para proyectos grandes.</li>
+                            <li><strong>Herramientas modernas:</strong> Integrar PostCSS y otras herramientas en mi flujo de trabajo.</li>
+                        </ul>
+                        <p>También quiero enfocarme en crear una biblioteca de componentes reutilizables con CSS moderno que pueda usar en proyectos futuros, documentando cada decisión de diseño y técnica utilizada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 3</h2>
+            <div class="summary-grid">
+                <div class="summary-card key-concepts">
+                    <h3>Conceptos Clave</h3>
+                    <ul>
+                        <li>Selectores, especificidad y modelo de caja</li>
+                        <li>Sistemas de layout: Flexbox y Grid</li>
+                        <li>Variables CSS y funciones modernas</li>
+                        <li>Diseño responsivo y mobile-first</li>
+                        <li>Técnicas de optimización y performance</li>
+                    </ul>
+                </div>
+                <div class="summary-card tools">
+                    <h3>Herramientas Dominadas</h3>
+                    <ul>
+                        <li>Media Queries y Container Queries</li>
+                        <li>Animaciones y transiciones CSS</li>
+                        <li>Clip-path y efectos visuales</li>
+                        <li>Métricas de rendimiento</li>
+                        <li>Organización de código CSS</li>
+                    </ul>
+                </div>
+                <div class="summary-card next-steps">
+                    <h3>Próximos Pasos</h3>
+                    <ul>
+                        <li>Profundizar en CSS Houdini</li>
+                        <li>Explorar Scroll-driven Animations</li>
+                        <li>Patrones de diseño accesibles</li>
+                        <li>Integración con frameworks CSS</li>
+                        <li>CSS en arquitecturas modernas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+
+
+
+     < <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                 <a href="#">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; <span id="current-year"></span> Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem3.js"></script>
+</body>
+</html>

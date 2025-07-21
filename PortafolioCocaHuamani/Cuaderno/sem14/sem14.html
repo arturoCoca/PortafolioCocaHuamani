@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 14 - Microservicios | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem14.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="../sem9/sem9.html">Semana 9</a>
+                <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="../sem12/sem12.html">Semana 12</a>
+                <span>/</span>
+                <a href="../sem13/sem13.html">Semana 13</a>
+                <span>/</span>
+                <a href="#">Semana 14</a>
+                <span>/</span>
+                <a href="../sem15/sem15.html">Semana 15</a>
+            </nav>
+            <h1>Microservicios</h1>
+            <p class="subtitle">Arquitectura de microservicios, Docker, Kubernetes, API Gateway, service mesh y orquestación</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender la arquitectura de microservicios y sus beneficios</li>
+                <li>Dominar Docker para containerización de aplicaciones</li>
+                <li>Implementar orquestación con Kubernetes</li>
+                <li>Configurar API Gateway y service mesh</li>
+                <li>Desarrollar proyecto de microservicios con enlace a GitHub</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="microservices-intro">
+                <h2><i class="fas fa-cubes"></i> Introducción a Microservicios</h2>
+                <div class="microservices-content">
+                    <div class="architecture-comparison">
+                        <h3>Monolito vs Microservicios</h3>
+                        <div class="comparison-grid">
+                            <div class="architecture-card monolith">
+                                <h4>Arquitectura Monolítica</h4>
+                                <div class="architecture-visual">
+                                    <div class="monolith-block">
+                                        <div class="layer">UI</div>
+                                        <div class="layer">Business Logic</div>
+                                        <div class="layer">Data Access</div>
+                                        <div class="layer">Database</div>
+                                    </div>
+                                </div>
+                                <div class="pros-cons">
+                                    <div class="pros">
+                                        <h5>Ventajas</h5>
+                                        <ul>
+                                            <li>Desarrollo inicial simple</li>
+                                            <li>Fácil testing e2e</li>
+                                            <li>Deployment sencillo</li>
+                                            <li>Debugging directo</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cons">
+                                        <h5>Desventajas</h5>
+                                        <ul>
+                                            <li>Escalabilidad limitada</li>
+                                            <li>Tecnología única</li>
+                                            <li>Deployments riesgosos</li>
+                                            <li>Mantenimiento complejo</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="architecture-card microservices">
+                                <h4>Arquitectura de Microservicios</h4>
+                                <div class="architecture-visual">
+                                    <div class="microservices-grid">
+                                        <div class="service">User Service</div>
+                                        <div class="service">Order Service</div>
+                                        <div class="service">Payment Service</div>
+                                        <div class="service">Inventory Service</div>
+                                        <div class="service">Notification Service</div>
+                                        <div class="service">Analytics Service</div>
+                                    </div>
+                                    <div class="api-gateway">API Gateway</div>
+                                </div>
+                                <div class="pros-cons">
+                                    <div class="pros">
+                                        <h5>Ventajas</h5>
+                                        <ul>
+                                            <li>Escalabilidad independiente</li>
+                                            <li>Tecnologías diversas</li>
+                                            <li>Deployments independientes</li>
+                                            <li>Equipos autónomos</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cons">
+                                        <h5>Desventajas</h5>
+                                        <ul>
+                                            <li>Complejidad de red</li>
+                                            <li>Consistencia de datos</li>
+                                            <li>Testing distribuido</li>
+                                            <li>Monitoreo complejo</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="microservices-principles">
+                        <h3>Principios de Microservicios</h3>
+                        <div class="principles-grid">
+                            <div class="principle-item">
+                                <i class="fas fa-puzzle-piece"></i>
+                                <h4>Single Responsibility</h4>
+                                <p>Cada servicio tiene una responsabilidad específica y bien definida</p>
+                            </div>
+                            <div class="principle-item">
+                                <i class="fas fa-unlink"></i>
+                                <h4>Loose Coupling</h4>
+                                <p>Servicios independientes con mínimas dependencias entre ellos</p>
+                            </div>
+                            <div class="principle-item">
+                                <i class="fas fa-link"></i>
+                                <h4>High Cohesion</h4>
+                                <p>Funcionalidades relacionadas agrupadas en el mismo servicio</p>
+                            </div>
+                            <div class="principle-item">
+                                <i class="fas fa-database"></i>
+                                <h4>Database per Service</h4>
+                                <p>Cada servicio gestiona su propia base de datos</p>
+                            </div>
+                            <div class="principle-item">
+                                <i class="fas fa-code-branch"></i>
+                                <h4>Decentralized</h4>
+                                <p>Gobierno descentralizado y autonomía de equipos</p>
+                            </div>
+                            <div class="principle-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Fault Tolerance</h4>
+                                <p>Diseño resiliente ante fallos de otros servicios</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="docker-containerization">
+                <h2><i class="fab fa-docker"></i> Docker y Containerización</h2>
+                <div class="docker-content">
+                    <div class="docker-overview">
+                        <h3>Containerización con Docker</h3>
+                        <p>Docker permite empaquetar aplicaciones con todas sus dependencias en contenedores ligeros y portables, garantizando consistencia entre entornos.</p>
+                        
+                        <div class="docker-benefits">
+                            <div class="benefit-grid">
+                                <div class="benefit-card">
+                                    <i class="fas fa-box"></i>
+                                    <h4>Portabilidad</h4>
+                                    <p>Ejecuta en cualquier entorno que soporte Docker</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <i class="fas fa-layer-group"></i>
+                                    <h4>Aislamiento</h4>
+                                    <p>Aplicaciones aisladas sin conflictos de dependencias</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <h4>Eficiencia</h4>
+                                    <p>Menor overhead que máquinas virtuales</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <i class="fas fa-expand-arrows-alt"></i>
+                                    <h4>Escalabilidad</h4>
+                                    <p>Fácil escalado horizontal de servicios</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="docker-examples">
+                        <div class="example-section">
+                            <h4>Dockerfile para Microservicio Django</h4>
+                            <div class="code-example">
+                                <pre><code># Dockerfile
+FROM python:3.11-slim
+
+# Establecer directorio de trabajo
+WORKDIR /app
+
+# Instalar dependencias del sistema
+RUN apt-get update && apt-get install -y \
+    gcc \
+    default-libmysqlclient-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copiar requirements y instalar dependencias Python
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar código de la aplicación
+COPY . .
+
+# Crear usuario no-root
+RUN adduser --disabled-password --gecos '' appuser && \
+    chown -R appuser:appuser /app
+USER appuser
+
+# Exponer puerto
+EXPOSE 8000
+
+# Variables de entorno
+ENV PYTHONPATH=/app
+ENV DJANGO_SETTINGS_MODULE=config.settings.production
+
+# Comando de inicio
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example-section">
+                            <h4>Docker Compose para Múltiples Servicios</h4>
+                            <div class="code-example">
+                                <pre><code># docker-compose.yml
+version: '3.8'
+
+services:
+  # API Gateway
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "80:80"
+    depends_on:
+      - user-service
+      - order-service
+      - payment-service
+    environment:
+      - USER_SERVICE_URL=http://user-service:8000
+      - ORDER_SERVICE_URL=http://order-service:8001
+      - PAYMENT_SERVICE_URL=http://payment-service:8002
+    networks:
+      - microservices-network
+
+  # User Service
+  user-service:
+    build: ./user-service
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@user-db:5432/userdb
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - user-db
+      - redis
+    networks:
+      - microservices-network
+
+  # Order Service
+  order-service:
+    build: ./order-service
+    ports:
+      - "8001:8000"
+    environment:
+      - DATABASE_URL=postgresql://order:password@order-db:5432/orderdb
+      - USER_SERVICE_URL=http://user-service:8000
+    depends_on:
+      - order-db
+    networks:
+      - microservices-network
+
+  # Payment Service
+  payment-service:
+    build: ./payment-service
+    ports:
+      - "8002:8000"
+    environment:
+      - DATABASE_URL=postgresql://payment:password@payment-db:5432/paymentdb
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+    depends_on:
+      - payment-db
+    networks:
+      - microservices-network
+
+  # Databases
+  user-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=userdb
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - user_data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
+  order-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=orderdb
+      - POSTGRES_USER=order
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - order_data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
+  payment-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=paymentdb
+      - POSTGRES_USER=payment
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - payment_data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
+  # Redis para caché
+  redis:
+    image: redis:7-alpine
+    networks:
+      - microservices-network
+
+volumes:
+  user_data:
+  order_data:
+  payment_data:
+
+networks:
+  microservices-network:
+    driver: bridge</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="kubernetes-orchestration">
+                <h2><i class="fas fa-dharmachakra"></i> Kubernetes y Orquestación</h2>
+                <div class="kubernetes-content">
+                    <div class="kubernetes-overview">
+                        <h3>Orquestación con Kubernetes</h3>
+                        <p>Kubernetes automatiza el despliegue, escalado y gestión de aplicaciones containerizadas, proporcionando alta disponibilidad y recuperación automática.</p>
+                        
+                        <div class="k8s-components">
+                            <h4>Componentes Principales</h4>
+                            <div class="components-grid">
+                                <div class="component-card">
+                                    <i class="fas fa-server"></i>
+                                    <h5>Pod</h5>
+                                    <p>Unidad mínima de despliegue</p>
+                                </div>
+                                <div class="component-card">
+                                    <i class="fas fa-clone"></i>
+                                    <h5>Deployment</h5>
+                                    <p>Gestión de réplicas y actualizaciones</p>
+                                </div>
+                                <div class="component-card">
+                                    <i class="fas fa-network-wired"></i>
+                                    <h5>Service</h5>
+                                    <p>Exposición y balanceo de carga</p>
+                                </div>
+                                <div class="component-card">
+                                    <i class="fas fa-route"></i>
+                                    <h5>Ingress</h5>
+                                    <p>Enrutamiento HTTP/HTTPS</p>
+                                </div>
+                                <div class="component-card">
+                                    <i class="fas fa-cog"></i>
+                                    <h5>ConfigMap</h5>
+                                    <p>Configuración de aplicaciones</p>
+                                </div>
+                                <div class="component-card">
+                                    <i class="fas fa-key"></i>
+                                    <h5>Secret</h5>
+                                    <p>Gestión de credenciales</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="kubernetes-examples">
+                        <div class="example-section">
+                            <h4>Deployment de Microservicio</h4>
+                            <div class="code-example">
+                                <pre><code># user-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  labels:
+    app: user-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+      - name: user-service
+        image: myregistry/user-service:v1.2.0
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: user-service-secrets
+              key: database-url
+        - name: REDIS_URL
+          valueFrom:
+            configMapKeyRef:
+              name: user-service-config
+              key: redis-url
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health/
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready/
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  selector:
+    app: user-service
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+  type: ClusterIP</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example-section">
+                            <h4>Ingress Controller</h4>
+                            <div class="code-example">
+                                <pre><code># ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microservices-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - api.miempresa.com
+    secretName: api-tls
+  rules:
+  - host: api.miempresa.com
+    http:
+      paths:
+      - path: /users
+        pathType: Prefix
+        backend:
+          service:
+            name: user-service
+            port:
+              number: 80
+      - path: /orders
+        pathType: Prefix
+        backend:
+          service:
+            name: order-service
+            port:
+              number: 80
+      - path: /payments
+        pathType: Prefix
+        backend:
+          service:
+            name: payment-service
+            port:
+              number: 80</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="api-gateway-service-mesh">
+                <h2><i class="fas fa-sitemap"></i> API Gateway y Service Mesh</h2>
+                <div class="gateway-mesh-content">
+                    <div class="api-gateway-section">
+                        <h3>API Gateway</h3>
+                        <p>Punto de entrada único que gestiona todas las peticiones a los microservicios, proporcionando funcionalidades transversales como autenticación, rate limiting y monitoreo.</p>
+                        
+                        <div class="gateway-features">
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <i class="fas fa-route"></i>
+                                    <h4>Enrutamiento</h4>
+                                    <p>Dirige peticiones al servicio correcto</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h4>Autenticación</h4>
+                                    <p>Validación centralizada de tokens</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <h4>Rate Limiting</h4>
+                                    <p>Control de velocidad de peticiones</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h4>Monitoreo</h4>
+                                    <p>Métricas y logging centralizado</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="gateway-example">
+                            <h4>Configuración Kong API Gateway</h4>
+                            <div class="code-example">
+                                <pre><code># kong.yml
+_format_version: "3.0"
+
+services:
+- name: user-service
+  url: http://user-service:8000
+  plugins:
+  - name: jwt
+    config:
+      secret_is_base64: false
+  - name: rate-limiting
+    config:
+      minute: 100
+      hour: 1000
+
+- name: order-service
+  url: http://order-service:8001
+  plugins:
+  - name: jwt
+    config:
+      secret_is_base64: false
+  - name: cors
+    config:
+      origins:
+      - "https://miapp.com"
+      methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+
+routes:
+- name: user-routes
+  service: user-service
+  paths:
+  - /api/users
+  - /api/auth
+
+- name: order-routes
+  service: order-service
+  paths:
+  - /api/orders
+  - /api/cart
+
+plugins:
+- name: prometheus
+  config:
+    per_consumer: true
+- name: file-log
+  config:
+    path: /var/log/kong/access.log</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-mesh-section">
+                        <h3>Service Mesh</h3>
+                        <p>Infraestructura dedicada para gestionar comunicación entre servicios, proporcionando observabilidad, seguridad y control de tráfico sin modificar el código de aplicación.</p>
+                        
+                        <div class="mesh-benefits">
+                            <div class="benefit-list">
+                                <div class="benefit-item">
+                                    <i class="fas fa-eye"></i>
+                                    <h4>Observabilidad</h4>
+                                    <p>Métricas, logs y trazas automáticas</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-lock"></i>
+                                    <h4>Seguridad</h4>
+                                    <p>mTLS automático entre servicios</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-random"></i>
+                                    <h4>Traffic Management</h4>
+                                    <p>Load balancing y circuit breakers</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-cogs"></i>
+                                    <h4>Policy Enforcement</h4>
+                                    <p>Políticas de acceso y rate limiting</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="istio-example">
+                            <h4>Configuración Istio Service Mesh</h4>
+                            <div class="code-example">
+                                <pre><code># virtual-service.yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: user-service-vs
+spec:
+  hosts:
+  - user-service
+  http:
+  - match:
+    - headers:
+        version:
+          exact: v2
+    route:
+    - destination:
+        host: user-service
+        subset: v2
+      weight: 100
+  - route:
+    - destination:
+        host: user-service
+        subset: v1
+      weight: 80
+    - destination:
+        host: user-service
+        subset: v2
+      weight: 20
+
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: user-service-dr
+spec:
+  host: user-service
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 100
+      http:
+        http1MaxPendingRequests: 50
+        maxRequestsPerConnection: 10
+    circuitBreaker:
+      consecutiveErrors: 3
+      interval: 30s
+      baseEjectionTime: 30s
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="github-project">
+                <h2><i class="fab fa-github"></i> Proyecto en GitHub</h2>
+                <div class="github-content">
+                    <div class="project-showcase">
+                        <h3>Arquitectura de Microservicios Completa</h3>
+                        <p>Sistema completo de e-commerce implementado con microservicios, Docker, Kubernetes, API Gateway y service mesh, demostrando todas las tecnologías de esta semana.</p>
+                        
+                        <div class="project-architecture">
+                            <h4>Arquitectura del Sistema</h4>
+                            <div class="architecture-diagram">
+                                <div class="layer frontend">
+                                    <h5>Frontend</h5>
+                                    <div class="components">
+                                        <span>React SPA</span>
+                                        <span>Mobile App</span>
+                                    </div>
+                                </div>
+                                <div class="layer gateway">
+                                    <h5>API Gateway</h5>
+                                    <div class="components">
+                                        <span>Kong</span>
+                                        <span>Rate Limiting</span>
+                                        <span>Auth</span>
+                                    </div>
+                                </div>
+                                <div class="layer services">
+                                    <h5>Microservicios</h5>
+                                    <div class="components">
+                                        <span>User Service</span>
+                                        <span>Product Service</span>
+                                        <span>Order Service</span>
+                                        <span>Payment Service</span>
+                                        <span>Inventory Service</span>
+                                        <span>Notification Service</span>
+                                    </div>
+                                </div>
+                                <div class="layer data">
+                                    <h5>Capa de Datos</h5>
+                                    <div class="components">
+                                        <span>PostgreSQL</span>
+                                        <span>MongoDB</span>
+                                        <span>Redis</span>
+                                        <span>Elasticsearch</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-features">
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <i class="fas fa-cubes"></i>
+                                    <h4>6 Microservicios</h4>
+                                    <p>Servicios independientes con responsabilidades específicas</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fab fa-docker"></i>
+                                    <h4>Containerización</h4>
+                                    <p>Docker y Docker Compose para desarrollo local</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-dharmachakra"></i>
+                                    <h4>Kubernetes</h4>
+                                    <p>Orquestación completa con Helm charts</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-sitemap"></i>
+                                    <h4>Service Mesh</h4>
+                                    <p>Istio para observabilidad y seguridad</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="github-link">
+                              <a href="https://github.com/arturoCoca" target="_blank" class="github-btn">
+                                <span class="github-icon">
+                                <i class="fab fa-github"></i>
+                                Ver Microservicios en GitHub
+                            </a>
+                            <p class="github-description">
+                                Código completo con documentación, scripts de deployment y guías de instalación
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 14</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Arquitectura de Microservicios</h3>
+                    <p>Comprensión profunda de patrones, principios y trade-offs de la arquitectura de microservicios.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Docker y Containerización</h3>
+                    <p>Dominio de Docker para empaquetar y desplegar microservicios de forma consistente.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Kubernetes</h3>
+                    <p>Orquestación avanzada con deployments, services, ingress y gestión de configuración.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>API Gateway</h3>
+                    <p>Implementación de punto de entrada único con funcionalidades transversales.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Service Mesh</h3>
+                    <p>Gestión avanzada de comunicación entre servicios con Istio.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Proyecto Completo</h3>
+                    <p>Sistema de e-commerce completo implementado con todas las tecnologías de microservicios.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="../../index.html">Inicio</a>
+                    <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="../sem9/sem9.html">Semana 9</a>
+                <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="../sem12/sem12.html">Semana 12</a>
+                <span>/</span>
+                <a href="../sem13/sem13.html">Semana 13</a>
+                    <span>/</span>
+                    <a href="#">Semana 14</a>
+                    <span>/</span>
+                    <a href="../sem15/sem15.html">Semana 15</a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; 2025 Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem14.js"></script>
+</body>
+</html>
+

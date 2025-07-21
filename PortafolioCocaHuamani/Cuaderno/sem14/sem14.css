@@ -1,0 +1,985 @@
+
+/* Variables de color y tipografía */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    
+    --font-main: 'Roboto', sans-serif;
+    --font-code: 'Source Code Pro', monospace;
+    
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+/* Reset adicional */
+.sem-header, .sem-footer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del encabezado */
+.sem-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: rgb(255, 255, 255);
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.sem-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+    opacity: 0.5;
+}
+
+.sem-header .container {
+    position: relative;
+    z-index: 1;
+}
+
+.sem-header h1 {
+    font-size: 2.5rem;
+    margin: 1rem 0 0.5rem;
+}
+
+.sem-header .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--light-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    opacity: 0.7;
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Estilos de secciones */
+.content-section {
+    margin-bottom: 3rem;
+}
+
+.content-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.8rem;
+}
+
+.content-section h2 i {
+    color: var(--secondary-color);
+}
+
+
+/* Footer */
+.sem-footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-nav a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-copy {
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+/* Estilos específicos para Semana 14 - Microservicios */
+
+.microservices-content {
+    margin: 2rem 0;
+}
+
+.architecture-comparison {
+    margin-bottom: 3rem;
+}
+
+.architecture-comparison h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: #2d3748;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
+}
+
+.architecture-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.architecture-card.monolith {
+    border-top-color: #f56565;
+}
+
+.architecture-card.microservices {
+    border-top-color: #48bb78;
+}
+
+.architecture-card h4 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.architecture-card.monolith h4 {
+    color: #f56565;
+}
+
+.architecture-card.microservices h4 {
+    color: #48bb78;
+}
+
+.architecture-visual {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+}
+
+.monolith-block {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 80%;
+    max-width: 300px;
+    box-shadow: 0 5px 15px rgba(229, 62, 62, 0.3);
+}
+
+.monolith-block .layer {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.monolith-block .layer:last-child {
+    margin-bottom: 0;
+}
+
+.microservices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.microservices-grid .service {
+    background: #48bb78;
+    color: #fff;
+    padding: 0.8rem;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(72, 187, 120, 0.3);
+}
+
+.api-gateway {
+    background: #4299e1;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(66, 153, 225, 0.3);
+}
+
+.pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.pros, .cons {
+    background: #f7fafc;
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid;
+}
+
+.pros {
+    border-left-color: #48bb78;
+}
+
+.cons {
+    border-left-color: #f56565;
+}
+
+.pros h5, .cons h5 {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.pros h5 {
+    color: #48bb78;
+}
+
+.cons h5 {
+    color: #f56565;
+}
+
+.pros ul, .cons ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pros li::before {
+    content: "✅";
+    margin-right: 0.5rem;
+}
+
+.cons li::before {
+    content: "❌";
+    margin-right: 0.5rem;
+}
+
+.pros li, .cons li {
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+}
+
+.microservices-principles {
+    margin-top: 3rem;
+}
+
+.microservices-principles h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: #2d3748;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.principle-item {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #667eea;
+    text-align: center;
+}
+
+.principle-item i {
+    font-size: 2.5rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.principle-item h4 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.principle-item p {
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.docker-content {
+    margin: 2rem 0;
+}
+
+.docker-overview {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    color: #fff;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(66, 153, 225, 0.3);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.docker-overview::before {
+    content: "🐳";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    font-size: 150px;
+    opacity: 0.1;
+    animation: float 25s linear infinite;
+}
+
+.docker-overview h3 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.docker-overview p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.docker-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.benefit-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.benefit-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+}
+
+.benefit-card h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.benefit-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.docker-examples {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.docker-examples .example-section {
+    border-left-color: #4299e1;
+}
+
+.docker-examples .example-section h4::before {
+    content: "🐳";
+}
+
+.kubernetes-content {
+    margin: 2rem 0;
+}
+
+.kubernetes-overview {
+    background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%);
+    color: #fff;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(159, 122, 234, 0.3);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.kubernetes-overview::before {
+    content: "☸️";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    font-size: 150px;
+    opacity: 0.1;
+    animation: float 30s linear infinite;
+}
+
+.kubernetes-overview h3 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.kubernetes-overview p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.k8s-components {
+    margin-top: 2rem;
+}
+
+.k8s-components h4 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.component-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.component-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.component-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+}
+
+.component-card h5 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.component-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.kubernetes-examples {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.kubernetes-examples .example-section {
+    border-left-color: #9f7aea;
+}
+
+.kubernetes-examples .example-section h4::before {
+    content: "☸️";
+}
+
+.gateway-mesh-content {
+    margin: 2rem 0;
+}
+
+.api-gateway-section, .service-mesh-section {
+    background: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border-top: 5px solid #ed8936;
+}
+
+.service-mesh-section {
+    border-top-color: #38b2ac;
+}
+
+.api-gateway-section h3, .service-mesh-section h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.api-gateway-section p, .service-mesh-section p {
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.gateway-features, .mesh-benefits {
+    margin-top: 2rem;
+}
+
+.gateway-features .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.gateway-features .feature-item {
+    background: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-left: 3px solid #ed8936;
+}
+
+.gateway-features .feature-item i {
+    font-size: 2rem;
+    color: #ed8936;
+    margin-bottom: 0.8rem;
+}
+
+.gateway-features .feature-item h4 {
+    font-size: 1.1rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.gateway-features .feature-item p {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.mesh-benefits .benefit-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.mesh-benefits .benefit-item {
+    background: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-left: 3px solid #38b2ac;
+}
+
+.mesh-benefits .benefit-item i {
+    font-size: 2rem;
+    color: #38b2ac;
+    margin-bottom: 0.8rem;
+}
+
+.mesh-benefits .benefit-item h4 {
+    font-size: 1.1rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.mesh-benefits .benefit-item p {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.gateway-example, .istio-example {
+    margin-top: 2rem;
+}
+
+.gateway-example h4, .istio-example h4 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.github-content {
+    margin: 2rem 0;
+}
+
+.project-showcase {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: #fff;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(45, 55, 72, 0.3);
+    text-align: center;
+}
+
+.project-showcase h3 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.project-showcase p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.project-architecture {
+    margin: 2rem 0;
+}
+
+.project-architecture h4 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.architecture-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.architecture-diagram .layer {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid;
+}
+
+.architecture-diagram .layer.frontend {
+    border-left-color: #4299e1;
+}
+
+.architecture-diagram .layer.gateway {
+    border-left-color: #ed8936;
+}
+
+.architecture-diagram .layer.services {
+    border-left-color: #48bb78;
+}
+
+.architecture-diagram .layer.data {
+    border-left-color: #9f7aea;
+}
+
+.architecture-diagram .layer h5 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.architecture-diagram .layer .components {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.architecture-diagram .layer .components span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.project-features {
+    margin: 2rem 0;
+}
+
+.project-features .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-features .feature-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.project-features .feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.project-features .feature-item i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #4299e1;
+}
+
+.project-features .feature-item h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.project-features .feature-item p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.github-link {
+    margin-top: 2rem;
+}
+
+.github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #4299e1;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(66, 153, 225, 0.3);
+}
+
+.github-btn:hover {
+    background: #3182ce;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
+}
+
+.github-btn i {
+    font-size: 1.2rem;
+}
+
+.github-description {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.code-example {
+    background: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.code-example pre {
+    margin: 0;
+    padding: 1.5rem;
+    overflow-x: auto;
+}
+
+.code-example code {
+    color: #e2e8f0;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.summary-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #667eea;
+    transition: transform 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-3px);
+}
+
+.summary-card h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.summary-card h3::before {
+    content: "🚀";
+    font-size: 1.2rem;
+}
+
+.summary-card p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+@keyframes float {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-100px) translateY(-100px); }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .microservices-intro, .docker-containerization, .kubernetes-orchestration, .api-gateway-service-mesh, .github-project {
+        padding: 1rem;
+    }
+    
+    .architecture-card {
+        padding: 1.5rem;
+    }
+    
+    .monolith-block {
+        width: 90%;
+    }
+    
+    .microservices-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .pros-cons {
+        grid-template-columns: 1fr;
+    }
+    
+    .principles-grid, .docker-benefits, .components-grid, .gateway-features .feature-grid, .mesh-benefits .benefit-list, .project-features .feature-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    
+    .api-gateway-section, .service-mesh-section {
+        padding: 1.5rem;
+    }
+    
+    .architecture-diagram .layer {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .architecture-card h4 {
+        font-size: 1.5rem;
+    }
+    
+    .monolith-block {
+        padding: 1rem;
+    }
+    
+    .microservices-grid .service {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .api-gateway {
+        padding: 0.6rem 1rem;
+    }
+    
+    .pros h5, .cons h5 {
+        font-size: 1rem;
+    }
+    
+    .principle-item, .benefit-card, .component-card, .gateway-features .feature-item, .mesh-benefits .benefit-item, .project-features .feature-item {
+        padding: 1rem;
+    }
+    
+    .principle-item i, .benefit-card i, .component-card i, .gateway-features .feature-item i, .mesh-benefits .benefit-item i, .project-features .feature-item i {
+        font-size: 2rem;
+    }
+    
+    .code-example pre {
+        padding: 1rem;
+    }
+    
+    .code-example code {
+        font-size: 0.8rem;
+    }
+    
+    .github-btn {
+        padding: 0.8rem 1.5rem;
+    }
+}
+

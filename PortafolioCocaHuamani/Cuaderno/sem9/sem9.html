@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 9 - Tecnología Web Backend | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem9.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="#">Semana 9</a>
+                <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="../sem12/sem12.html">Semana 12</a>
+                <span>/</span>
+                <a href="../sem13/sem13.html">Semana 13</a>
+                <span>/</span>
+                <a href="../sem14/sem14.html">Semana 14</a>
+                <span>/</span>
+                <a href="../sem15/sem15.html">Semana 15</a>
+            </nav>
+            <h1>Tecnología Web Backend</h1>
+            <p class="subtitle">Arquitectura de aplicaciones web, servidores y desarrollo del lado del servidor</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender la arquitectura de aplicaciones web modernas</li>
+                <li>Conocer el funcionamiento de servidores web y server side</li>
+                <li>Dominar lenguajes y frameworks backend</li>
+                <li>Desarrollar aplicaciones web con PHP y JSP</li>
+                <li>Implementar despliegue de aplicaciones backend</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="web-architecture">
+                <h2><i class="fas fa-sitemap"></i> Arquitectura de Aplicaciones Web</h2>
+                <div class="architecture-container">
+                    <div class="architecture-diagram">
+                        <div class="layer frontend-layer">
+                            <h3>Frontend (Cliente)</h3>
+                            <div class="layer-content">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>React/Angular/Vue</span>
+                            </div>
+                        </div>
+                        <div class="layer backend-layer">
+                            <h3>Backend (Servidor)</h3>
+                            <div class="layer-content">
+                                <span>PHP</span>
+                                <span>Java/JSP</span>
+                                <span>Node.js</span>
+                                <span>Python</span>
+                            </div>
+                        </div>
+                        <div class="layer database-layer">
+                            <h3>Base de Datos</h3>
+                            <div class="layer-content">
+                                <span>MySQL</span>
+                                <span>PostgreSQL</span>
+                                <span>MongoDB</span>
+                                <span>Oracle</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="architecture-patterns">
+                        <h3>Patrones de Arquitectura</h3>
+                        <div class="pattern-grid">
+                            <div class="pattern-card">
+                                <h4>Arquitectura Monolítica</h4>
+                                <p>Aplicación única que contiene toda la funcionalidad en un solo despliegue.</p>
+                                <div class="pros-cons">
+                                    <div class="pros">
+                                        <strong>Ventajas:</strong>
+                                        <ul>
+                                            <li>Desarrollo simple</li>
+                                            <li>Fácil despliegue</li>
+                                            <li>Testing sencillo</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cons">
+                                        <strong>Desventajas:</strong>
+                                        <ul>
+                                            <li>Escalabilidad limitada</li>
+                                            <li>Tecnología única</li>
+                                            <li>Mantenimiento complejo</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="pattern-card">
+                                <h4>Arquitectura de Microservicios</h4>
+                                <p>Aplicación dividida en servicios pequeños e independientes.</p>
+                                <div class="pros-cons">
+                                    <div class="pros">
+                                        <strong>Ventajas:</strong>
+                                        <ul>
+                                            <li>Escalabilidad independiente</li>
+                                            <li>Tecnologías diversas</li>
+                                            <li>Desarrollo paralelo</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cons">
+                                        <strong>Desventajas:</strong>
+                                        <ul>
+                                            <li>Complejidad de red</li>
+                                            <li>Gestión distribuida</li>
+                                            <li>Testing complejo</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="web-servers">
+                <h2><i class="fas fa-server"></i> Servidores Web y Funcionamiento Server Side</h2>
+                <div class="servers-content">
+                    <div class="server-types">
+                        <h3>Tipos de Servidores Web</h3>
+                        <div class="server-grid">
+                            <div class="server-card">
+                                <i class="fas fa-globe"></i>
+                                <h4>Apache HTTP Server</h4>
+                                <p>Servidor web de código abierto más utilizado mundialmente.</p>
+                                <ul>
+                                    <li>Módulos extensibles</li>
+                                    <li>Configuración flexible</li>
+                                    <li>Soporte multiplataforma</li>
+                                    <li>Comunidad activa</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="server-card">
+                                <i class="fas fa-rocket"></i>
+                                <h4>Nginx</h4>
+                                <p>Servidor web de alto rendimiento y proxy reverso.</p>
+                                <ul>
+                                    <li>Alto rendimiento</li>
+                                    <li>Bajo consumo de memoria</li>
+                                    <li>Balanceador de carga</li>
+                                    <li>Proxy reverso</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="server-card">
+                                <i class="fab fa-microsoft"></i>
+                                <h4>IIS (Internet Information Services)</h4>
+                                <p>Servidor web de Microsoft para Windows Server.</p>
+                                <ul>
+                                    <li>Integración con Windows</li>
+                                    <li>Soporte .NET</li>
+                                    <li>Interfaz gráfica</li>
+                                    <li>Seguridad integrada</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="server-side-processing">
+                        <h3>Procesamiento del Lado del Servidor</h3>
+                        <div class="processing-flow">
+                            <div class="flow-step">
+                                <div class="step-number">1</div>
+                                <h4>Solicitud del Cliente</h4>
+                                <p>El navegador envía una petición HTTP al servidor</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">2</div>
+                                <h4>Procesamiento del Servidor</h4>
+                                <p>El servidor ejecuta código backend y consulta bases de datos</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">3</div>
+                                <h4>Generación de Respuesta</h4>
+                                <p>Se genera HTML dinámico con los datos procesados</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="flow-step">
+                                <div class="step-number">4</div>
+                                <h4>Respuesta al Cliente</h4>
+                                <p>El servidor envía la respuesta HTTP al navegador</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="backend-languages">
+                <h2><i class="fas fa-code"></i> Lenguajes y Frameworks Backend</h2>
+                <div class="languages-container">
+                    <div class="language-tabs">
+                        <div class="tab-header">
+                            <div class="tab-btn active" data-tab="php">PHP</div>
+                            <div class="tab-btn" data-tab="java">Java/JSP</div>
+                            <div class="tab-btn" data-tab="nodejs">Node.js</div>
+                            <div class="tab-btn" data-tab="python">Python</div>
+                        </div>
+                        
+                        <div class="tab-content active" id="php">
+                            <div class="language-info">
+                                <h3>PHP - Hypertext Preprocessor</h3>
+                                <p>Lenguaje de scripting del lado del servidor especialmente diseñado para desarrollo web.</p>
+                                
+                                <div class="features-frameworks">
+                                    <div class="features">
+                                        <h4>Características</h4>
+                                        <ul>
+                                            <li>Sintaxis similar a C</li>
+                                            <li>Integración con HTML</li>
+                                            <li>Amplia compatibilidad con bases de datos</li>
+                                            <li>Gran comunidad y documentación</li>
+                                            <li>Hosting económico y accesible</li>
+                                        </ul>
+                                    </div>
+                                    <div class="frameworks">
+                                        <h4>Frameworks Populares</h4>
+                                        <ul>
+                                            <li><strong>Laravel:</strong> Framework elegante y expresivo</li>
+                                            <li><strong>Symfony:</strong> Componentes reutilizables</li>
+                                            <li><strong>CodeIgniter:</strong> Framework ligero y simple</li>
+                                            <li><strong>Zend/Laminas:</strong> Framework empresarial</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="code-example">
+                                    <h4>Ejemplo de Código PHP</h4>
+                                    <pre><code>&lt;?php
+// Conexión a base de datos
+$pdo = new PDO('mysql:host=localhost;dbname=mi_db', $user, $pass);
+
+// Consulta de datos
+$stmt = $pdo->prepare('SELECT * FROM usuarios WHERE activo = ?');
+$stmt->execute([1]);
+$usuarios = $stmt->fetchAll();
+
+// Mostrar datos
+foreach ($usuarios as $usuario) {
+    echo "&lt;h3&gt;" . htmlspecialchars($usuario['nombre']) . "&lt;/h3&gt;";
+    echo "&lt;p&gt;" . htmlspecialchars($usuario['email']) . "&lt;/p&gt;";
+}
+?&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="java">
+                            <div class="language-info">
+                                <h3>Java/JSP - Java Server Pages</h3>
+                                <p>Tecnología que permite crear páginas web dinámicas usando Java en el servidor.</p>
+                                
+                                <div class="features-frameworks">
+                                    <div class="features">
+                                        <h4>Características</h4>
+                                        <ul>
+                                            <li>Orientado a objetos</li>
+                                            <li>Multiplataforma (JVM)</li>
+                                            <li>Fuertemente tipado</li>
+                                            <li>Alto rendimiento</li>
+                                            <li>Seguridad robusta</li>
+                                        </ul>
+                                    </div>
+                                    <div class="frameworks">
+                                        <h4>Tecnologías Relacionadas</h4>
+                                        <ul>
+                                            <li><strong>Servlets:</strong> Clases Java para web</li>
+                                            <li><strong>Spring Boot:</strong> Framework de aplicaciones</li>
+                                            <li><strong>Hibernate:</strong> ORM para Java</li>
+                                            <li><strong>Apache Tomcat:</strong> Servidor de aplicaciones</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="code-example">
+                                    <h4>Ejemplo de JSP</h4>
+                                    <pre><code>&lt;%@ page language="java" contentType="text/html; charset=UTF-8" %&gt;
+&lt;%@ page import="java.util.List" %&gt;
+
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Lista de Usuarios&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Usuarios Registrados&lt;/h1&gt;
+    
+    &lt;%
+        List&lt;Usuario&gt; usuarios = (List&lt;Usuario&gt;) request.getAttribute("usuarios");
+        for (Usuario usuario : usuarios) {
+    %&gt;
+        &lt;div&gt;
+            &lt;h3&gt;&lt;%= usuario.getNombre() %&gt;&lt;/h3&gt;
+            &lt;p&gt;&lt;%= usuario.getEmail() %&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;% } %&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="nodejs">
+                            <div class="language-info">
+                                <h3>Node.js</h3>
+                                <p>Entorno de ejecución de JavaScript en el servidor basado en el motor V8 de Chrome.</p>
+                                
+                                <div class="features-frameworks">
+                                    <div class="features">
+                                        <h4>Características</h4>
+                                        <ul>
+                                            <li>JavaScript en el servidor</li>
+                                            <li>Asíncrono y orientado a eventos</li>
+                                            <li>NPM - Gestor de paquetes</li>
+                                            <li>Alto rendimiento I/O</li>
+                                            <li>Comunidad activa</li>
+                                        </ul>
+                                    </div>
+                                    <div class="frameworks">
+                                        <h4>Frameworks Populares</h4>
+                                        <ul>
+                                            <li><strong>Express.js:</strong> Framework web minimalista</li>
+                                            <li><strong>Koa.js:</strong> Framework moderno y ligero</li>
+                                            <li><strong>NestJS:</strong> Framework escalable</li>
+                                            <li><strong>Fastify:</strong> Framework de alto rendimiento</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="python">
+                            <div class="language-info">
+                                <h3>Python</h3>
+                                <p>Lenguaje de programación de alto nivel, interpretado y de propósito general.</p>
+                                
+                                <div class="features-frameworks">
+                                    <div class="features">
+                                        <h4>Características</h4>
+                                        <ul>
+                                            <li>Sintaxis clara y legible</li>
+                                            <li>Tipado dinámico</li>
+                                            <li>Amplia biblioteca estándar</li>
+                                            <li>Multiplataforma</li>
+                                            <li>Comunidad grande</li>
+                                        </ul>
+                                    </div>
+                                    <div class="frameworks">
+                                        <h4>Frameworks Web</h4>
+                                        <ul>
+                                            <li><strong>Django:</strong> Framework completo</li>
+                                            <li><strong>Flask:</strong> Microframework flexible</li>
+                                            <li><strong>FastAPI:</strong> Framework moderno y rápido</li>
+                                            <li><strong>Pyramid:</strong> Framework minimalista</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="web-development">
+                <h2><i class="fas fa-laptop-code"></i> Desarrollo de Aplicaciones Web</h2>
+                <div class="development-sections">
+                    <div class="php-development">
+                        <h3>Aplicaciones Web con PHP</h3>
+                        <div class="development-content">
+                            <div class="development-steps">
+                                <div class="step">
+                                    <h4>1. Configuración del Entorno</h4>
+                                    <ul>
+                                        <li>Instalación de XAMPP/WAMP/LAMP</li>
+                                        <li>Configuración de Apache y MySQL</li>
+                                        <li>Editor de código (VS Code, PhpStorm)</li>
+                                    </ul>
+                                </div>
+                                <div class="step">
+                                    <h4>2. Estructura del Proyecto</h4>
+                                    <ul>
+                                        <li>Organización de archivos y carpetas</li>
+                                        <li>Separación de lógica y presentación</li>
+                                        <li>Configuración de rutas</li>
+                                    </ul>
+                                </div>
+                                <div class="step">
+                                    <h4>3. Conexión a Base de Datos</h4>
+                                    <ul>
+                                        <li>PDO para conexiones seguras</li>
+                                        <li>Prepared statements</li>
+                                        <li>Manejo de errores</li>
+                                    </ul>
+                                </div>
+                                <div class="step">
+                                    <h4>4. Implementación de Funcionalidades</h4>
+                                    <ul>
+                                        <li>CRUD (Create, Read, Update, Delete)</li>
+                                        <li>Autenticación y autorización</li>
+                                        <li>Validación de formularios</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="jsp-development">
+                        <h3>Aplicaciones Web con JSP</h3>
+                        <div class="development-content">
+                            <div class="development-steps">
+                                <div class="step">
+                                    <h4>1. Configuración del Entorno</h4>
+                                    <ul>
+                                        <li>Instalación de JDK</li>
+                                        <li>Configuración de Apache Tomcat</li>
+                                        <li>IDE (Eclipse, IntelliJ IDEA)</li>
+                                    </ul>
+                                </div>
+                                <div class="step">
+                                    <h4>2. Estructura del Proyecto Web</h4>
+                                    <ul>
+                                        <li>Directorio WEB-INF</li>
+                                        <li>Archivo web.xml</li>
+                                        <li>Organización de JSP y Servlets</li>
+                                    </ul>
+                                </div>
+                                <div class="step">
+                                    <h4>3. Desarrollo de Servlets</h4>
+                                    <ul>
+                                        <li>Manejo de peticiones HTTP</li>
+                                        <li>Procesamiento de formularios</li>
+                                        <li>Gestión de sesiones</li>
+                                    </ul>
+                                </div>
+                                <div class="step">
+                                    <h4>4. Creación de JSP</h4>
+                                    <ul>
+                                        <li>Scriptlets y expresiones</li>
+                                        <li>JSTL (JSP Standard Tag Library)</li>
+                                        <li>Integración con bases de datos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="laboratory">
+                <h2><i class="fas fa-flask"></i> Laboratorio 9: Despliegue de Aplicaciones Web Backend</h2>
+                <div class="lab-content">
+                    <div class="lab-objectives">
+                        <h3>Objetivos del Laboratorio</h3>
+                        <ul>
+                            <li>Configurar entornos de desarrollo para PHP y JSP</li>
+                            <li>Desarrollar aplicaciones web funcionales</li>
+                            <li>Implementar conexiones a bases de datos</li>
+                            <li>Realizar despliegue en servidores web</li>
+                            <li>Probar y validar el funcionamiento</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lab-activities">
+                        <h3>Actividades Prácticas</h3>
+                        <div class="activity-grid">
+                            <div class="activity-card">
+                                <h4>Aplicación PHP</h4>
+                                <p>Desarrollo de un sistema de gestión de usuarios con PHP y MySQL</p>
+                                <ul>
+                                    <li>Registro y login de usuarios</li>
+                                    <li>CRUD de perfiles</li>
+                                    <li>Validación de formularios</li>
+                                    <li>Sesiones y seguridad</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="activity-card">
+                                <h4>Aplicación JSP</h4>
+                                <p>Sistema de inventario usando JSP, Servlets y base de datos</p>
+                                <ul>
+                                    <li>Gestión de productos</li>
+                                    <li>Reportes dinámicos</li>
+                                    <li>Interfaz web responsive</li>
+                                    <li>Integración con JDBC</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="activity-card">
+                                <h4>Despliegue</h4>
+                                <p>Configuración y despliegue en servidores de producción</p>
+                                <ul>
+                                    <li>Configuración de Apache/Tomcat</li>
+                                    <li>Optimización de rendimiento</li>
+                                    <li>Configuración de seguridad</li>
+                                    <li>Monitoreo y logs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="github-link-section">
+            <div class="link-container">
+                <h2><i class="fab fa-github"></i> Proyecto en GitHub</h2>
+                <p>Accede al repositorio con los proyectos desarrollados en esta semana:</p>
+                <a href="https://github.com/arturoCoca" class="github-btn" target="_blank">
+                    <i class="fab fa-github"></i>
+                    Ver Proyecto Backend en GitHub
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+                <p class="note">* Incluye aplicaciones PHP y JSP con documentación completa</p>
+            </div>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 9</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Arquitectura Web</h3>
+                    <p>Comprensión de la estructura de aplicaciones web modernas y patrones arquitectónicos como monolitos y microservicios.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Servidores Web</h3>
+                    <p>Conocimiento del funcionamiento de servidores como Apache, Nginx e IIS, y el procesamiento del lado del servidor.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Lenguajes Backend</h3>
+                    <p>Dominio de PHP y JSP para desarrollo de aplicaciones web dinámicas con conexión a bases de datos.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Desarrollo Práctico</h3>
+                    <p>Implementación de aplicaciones completas con funcionalidades CRUD, autenticación y despliegue en producción.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="../../index.html">Inicio</a>
+                    <span>/</span>
+                    <a href="../sem1/sem1.html">Semana 1</a>
+                    <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                 <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                 <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                    <span>/</span>
+                    <a href="../sem7/sem7.html">Semana 7</a>
+                    <span>/</span>
+                    <a href="../sem8/sem8.html">Semana 8</a>
+                    <span>/</span>
+                    <a href="#">Semana 9</a>
+                    <span>/</span>
+                    <a href="../sem10/sem10.html">Semana 10</a>
+                    <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="../sem12/sem12.html">Semana 12</a>
+                <span>/</span>
+                <a href="../sem13/sem13.html">Semana 13</a>
+                <span>/</span>
+                <a href="../sem14/sem14.html">Semana 14</a>
+                <span>/</span>
+                <a href="../sem15/sem15.html">Semana 15</a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; 2025 Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem9.js"></script>
+</body>
+</html>
+

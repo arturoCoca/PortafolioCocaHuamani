@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 13 - APIs RESTful | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem13.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="../sem9/sem9.html">Semana 9</a>
+                <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="../sem12/sem12.html">Semana 12</a>
+                <span>/</span>
+                <a href="#">Semana 13</a>
+                <span>/</span>
+                <a href="../sem14/sem14.html">Semana 14</a>
+                <span>/</span>
+                <a href="../sem15/sem15.html">Semana 15</a>
+            </nav>
+            <h1>APIs RESTful</h1>
+            <p class="subtitle">REST, HATEOAS, serialización, filtrado, AJAX, CSRF, CORS y desarrollo de APIs modernas</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender los principios REST y HATEOAS</li>
+                <li>Dominar la serialización y filtrado de datos</li>
+                <li>Implementar comunicación AJAX eficiente</li>
+                <li>Gestionar CSRF y CORS en APIs</li>
+                <li>Desarrollar APIs RESTful completas con enlace a GitHub</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="rest-introduction">
+                <h2><i class="fas fa-exchange-alt"></i> Introducción a REST</h2>
+                <div class="rest-content">
+                    <div class="rest-overview">
+                        <h3>¿Qué es REST?</h3>
+                        <p>REST (Representational State Transfer) es un estilo arquitectónico para diseñar servicios web que utiliza HTTP de manera eficiente, proporcionando una interfaz uniforme para la comunicación entre sistemas.</p>
+                        
+                        <div class="rest-principles">
+                            <h4>Principios Fundamentales de REST</h4>
+                            <div class="principles-grid">
+                                <div class="principle-card">
+                                    <i class="fas fa-server"></i>
+                                    <h5>Cliente-Servidor</h5>
+                                    <p>Separación clara entre cliente y servidor</p>
+                                </div>
+                                <div class="principle-card">
+                                    <i class="fas fa-memory"></i>
+                                    <h5>Sin Estado</h5>
+                                    <p>Cada petición contiene toda la información necesaria</p>
+                                </div>
+                                <div class="principle-card">
+                                    <i class="fas fa-layer-group"></i>
+                                    <h5>Cacheable</h5>
+                                    <p>Las respuestas pueden ser cacheadas</p>
+                                </div>
+                                <div class="principle-card">
+                                    <i class="fas fa-sitemap"></i>
+                                    <h5>Interfaz Uniforme</h5>
+                                    <p>Uso consistente de métodos HTTP</p>
+                                </div>
+                                <div class="principle-card">
+                                    <i class="fas fa-cubes"></i>
+                                    <h5>Sistema en Capas</h5>
+                                    <p>Arquitectura modular y escalable</p>
+                                </div>
+                                <div class="principle-card">
+                                    <i class="fas fa-code"></i>
+                                    <h5>Código bajo Demanda</h5>
+                                    <p>Capacidad de enviar código ejecutable</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="http-methods">
+                        <h3>Métodos HTTP en REST</h3>
+                        <div class="methods-grid">
+                            <div class="method-card get">
+                                <h4>GET</h4>
+                                <p>Obtener recursos</p>
+                                <div class="method-example">
+                                    <code>GET /api/usuarios/</code>
+                                    <span>Obtener lista de usuarios</span>
+                                </div>
+                            </div>
+                            <div class="method-card post">
+                                <h4>POST</h4>
+                                <p>Crear recursos</p>
+                                <div class="method-example">
+                                    <code>POST /api/usuarios/</code>
+                                    <span>Crear nuevo usuario</span>
+                                </div>
+                            </div>
+                            <div class="method-card put">
+                                <h4>PUT</h4>
+                                <p>Actualizar completo</p>
+                                <div class="method-example">
+                                    <code>PUT /api/usuarios/1/</code>
+                                    <span>Actualizar usuario completo</span>
+                                </div>
+                            </div>
+                            <div class="method-card patch">
+                                <h4>PATCH</h4>
+                                <p>Actualizar parcial</p>
+                                <div class="method-example">
+                                    <code>PATCH /api/usuarios/1/</code>
+                                    <span>Actualizar campos específicos</span>
+                                </div>
+                            </div>
+                            <div class="method-card delete">
+                                <h4>DELETE</h4>
+                                <p>Eliminar recursos</p>
+                                <div class="method-example">
+                                    <code>DELETE /api/usuarios/1/</code>
+                                    <span>Eliminar usuario</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="hateoas">
+                <h2><i class="fas fa-link"></i> HATEOAS</h2>
+                <div class="hateoas-content">
+                    <div class="hateoas-explanation">
+                        <h3>Hypermedia as the Engine of Application State</h3>
+                        <p>HATEOAS es una restricción de REST que permite que los clientes descubran dinámicamente las acciones disponibles a través de hipermedia, haciendo las APIs más autodescriptivas.</p>
+                        
+                        <div class="hateoas-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-search"></i>
+                                <h4>Descubrimiento Dinámico</h4>
+                                <p>Los clientes pueden descubrir acciones disponibles automáticamente</p>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-sync"></i>
+                                <h4>Evolución de API</h4>
+                                <p>Las APIs pueden evolucionar sin romper clientes existentes</p>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-puzzle-piece"></i>
+                                <h4>Bajo Acoplamiento</h4>
+                                <p>Reduce la dependencia entre cliente y servidor</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hateoas-example">
+                        <h4>Ejemplo de Respuesta HATEOAS</h4>
+                        <div class="code-example">
+                            <pre><code>{
+  "id": 1,
+  "nombre": "Juan Pérez",
+  "email": "juan@ejemplo.com",
+  "estado": "activo",
+  "_links": {
+    "self": {
+      "href": "/api/usuarios/1/",
+      "method": "GET"
+    },
+    "edit": {
+      "href": "/api/usuarios/1/",
+      "method": "PUT",
+      "title": "Editar usuario"
+    },
+    "delete": {
+      "href": "/api/usuarios/1/",
+      "method": "DELETE",
+      "title": "Eliminar usuario"
+    },
+    "posts": {
+      "href": "/api/usuarios/1/posts/",
+      "method": "GET",
+      "title": "Posts del usuario"
+    },
+    "avatar": {
+      "href": "/api/usuarios/1/avatar/",
+      "method": "POST",
+      "title": "Subir avatar",
+      "type": "multipart/form-data"
+    }
+  },
+  "_embedded": {
+    "perfil": {
+      "bio": "Desarrollador Full Stack",
+      "ubicacion": "Madrid, España",
+      "_links": {
+        "self": {
+          "href": "/api/perfiles/1/"
+        }
+      }
+    }
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="serialization-filtering">
+                <h2><i class="fas fa-filter"></i> Serialización y Filtrado</h2>
+                <div class="serialization-content">
+                    <div class="serialization-tabs">
+                        <div class="tab-header">
+                            <div class="tab-btn active" data-tab="serialization">Serialización</div>
+                            <div class="tab-btn" data-tab="filtering">Filtrado</div>
+                            <div class="tab-btn" data-tab="pagination">Paginación</div>
+                        </div>
+                        
+                        <div class="tab-content active" id="serialization">
+                            <h3>Serialización de Datos</h3>
+                            <p>La serialización convierte objetos Python en formatos como JSON para transmisión HTTP, mientras que la deserialización hace el proceso inverso.</p>
+                            
+                            <div class="serialization-examples">
+                                <div class="example-block">
+                                    <h4>Serializer Básico</h4>
+                                    <div class="code-example">
+                                        <pre><code># serializers.py
+from rest_framework import serializers
+from .models import Usuario, Post
+
+class UsuarioSerializer(serializers.ModelSerializer):
+    posts_count = serializers.SerializerMethodField()
+    avatar_url = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = Usuario
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 
+                 'fecha_registro', 'posts_count', 'avatar_url']
+        read_only_fields = ['id', 'fecha_registro']
+    
+    def get_posts_count(self, obj):
+        return obj.posts.count()
+    
+    def get_avatar_url(self, obj):
+        if obj.avatar:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.avatar.url)
+        return None
+    
+    def validate_email(self, value):
+        if Usuario.objects.filter(email=value).exists():
+            raise serializers.ValidationError("Este email ya está en uso")
+        return value
+
+class PostSerializer(serializers.ModelSerializer):
+    autor = UsuarioSerializer(read_only=True)
+    comentarios_count = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = Post
+        fields = ['id', 'titulo', 'contenido', 'autor', 'fecha_creacion',
+                 'fecha_actualizacion', 'comentarios_count']
+    
+    def get_comentarios_count(self, obj):
+        return obj.comentarios.count()</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="example-block">
+                                    <h4>Serializer Anidado</h4>
+                                    <div class="code-example">
+                                        <pre><code># Serializers con relaciones anidadas
+class ComentarioSerializer(serializers.ModelSerializer):
+    autor = serializers.StringRelatedField()
+    
+    class Meta:
+        model = Comentario
+        fields = ['id', 'contenido', 'autor', 'fecha_creacion']
+
+class PostDetalleSerializer(serializers.ModelSerializer):
+    autor = UsuarioSerializer(read_only=True)
+    comentarios = ComentarioSerializer(many=True, read_only=True)
+    etiquetas = serializers.StringRelatedField(many=True)
+    
+    class Meta:
+        model = Post
+        fields = ['id', 'titulo', 'contenido', 'autor', 'fecha_creacion',
+                 'fecha_actualizacion', 'comentarios', 'etiquetas']
+    
+    def create(self, validated_data):
+        validated_data['autor'] = self.context['request'].user
+        return super().create(validated_data)</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="filtering">
+                            <h3>Filtrado de Datos</h3>
+                            <p>El filtrado permite a los clientes especificar criterios para obtener subconjuntos específicos de datos.</p>
+                            
+                            <div class="filtering-examples">
+                                <div class="example-block">
+                                    <h4>Filtros con django-filter</h4>
+                                    <div class="code-example">
+                                        <pre><code># filters.py
+import django_filters
+from .models import Post, Usuario
+
+class PostFilter(django_filters.FilterSet):
+    titulo = django_filters.CharFilter(lookup_expr='icontains')
+    autor = django_filters.ModelChoiceFilter(queryset=Usuario.objects.all())
+    fecha_desde = django_filters.DateFilter(field_name='fecha_creacion', lookup_expr='gte')
+    fecha_hasta = django_filters.DateFilter(field_name='fecha_creacion', lookup_expr='lte')
+    contenido = django_filters.CharFilter(lookup_expr='icontains')
+    
+    class Meta:
+        model = Post
+        fields = ['titulo', 'autor', 'fecha_desde', 'fecha_hasta', 'contenido']
+
+# views.py
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_class = PostFilter
+    search_fields = ['titulo', 'contenido', 'autor__username']
+    ordering_fields = ['fecha_creacion', 'titulo']
+    ordering = ['-fecha_creacion']</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="example-block">
+                                    <h4>Filtros Personalizados</h4>
+                                    <div class="code-example">
+                                        <pre><code># Filtros personalizados en ViewSets
+class PostViewSet(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+    
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        
+        # Filtro por autor
+        autor_id = self.request.query_params.get('autor', None)
+        if autor_id:
+            queryset = queryset.filter(autor_id=autor_id)
+        
+        # Filtro por popularidad
+        popular = self.request.query_params.get('popular', None)
+        if popular == 'true':
+            queryset = queryset.annotate(
+                comentarios_count=Count('comentarios')
+            ).filter(comentarios_count__gte=5)
+        
+        # Filtro por rango de fechas
+        fecha_desde = self.request.query_params.get('fecha_desde', None)
+        fecha_hasta = self.request.query_params.get('fecha_hasta', None)
+        
+        if fecha_desde:
+            queryset = queryset.filter(fecha_creacion__gte=fecha_desde)
+        if fecha_hasta:
+            queryset = queryset.filter(fecha_creacion__lte=fecha_hasta)
+        
+        return queryset.select_related('autor').prefetch_related('comentarios')</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="pagination">
+                            <h3>Paginación</h3>
+                            <p>La paginación divide grandes conjuntos de datos en páginas manejables, mejorando el rendimiento y la experiencia del usuario.</p>
+                            
+                            <div class="pagination-examples">
+                                <div class="example-block">
+                                    <h4>Configuración de Paginación</h4>
+                                    <div class="code-example">
+                                        <pre><code># settings.py
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20
+}
+
+# pagination.py
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
+
+class CustomPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+    
+    def get_paginated_response(self, data):
+        return Response({
+            'links': {
+                'next': self.get_next_link(),
+                'previous': self.get_previous_link()
+            },
+            'count': self.page.paginator.count,
+            'total_pages': self.page.paginator.num_pages,
+            'current_page': self.page.number,
+            'page_size': self.page_size,
+            'results': data
+        })</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="ajax-communication">
+                <h2><i class="fas fa-sync-alt"></i> Comunicación AJAX</h2>
+                <div class="ajax-content">
+                    <div class="ajax-overview">
+                        <h3>AJAX en Aplicaciones Modernas</h3>
+                        <p>AJAX (Asynchronous JavaScript and XML) permite comunicación asíncrona con el servidor sin recargar la página, creando experiencias de usuario más fluidas.</p>
+                        
+                        <div class="ajax-methods">
+                            <div class="method-comparison">
+                                <div class="method-option">
+                                    <h4>Fetch API</h4>
+                                    <p>API moderna nativa del navegador</p>
+                                    <div class="pros-cons">
+                                        <div class="pros">
+                                            <strong>Pros:</strong> Nativo, promesas, moderno
+                                        </div>
+                                        <div class="cons">
+                                            <strong>Contras:</strong> No soporta IE
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="method-option">
+                                    <h4>Axios</h4>
+                                    <p>Librería popular para HTTP</p>
+                                    <div class="pros-cons">
+                                        <div class="pros">
+                                            <strong>Pros:</strong> Interceptores, transformaciones
+                                        </div>
+                                        <div class="cons">
+                                            <strong>Contras:</strong> Dependencia externa
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="method-option">
+                                    <h4>jQuery AJAX</h4>
+                                    <p>Método tradicional con jQuery</p>
+                                    <div class="pros-cons">
+                                        <div class="pros">
+                                            <strong>Pros:</strong> Amplio soporte, simple
+                                        </div>
+                                        <div class="cons">
+                                            <strong>Contras:</strong> Dependencia de jQuery
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ajax-examples">
+                        <div class="example-block">
+                            <h4>Fetch API</h4>
+                            <div class="code-example">
+                                <pre><code>// GET Request
+async function obtenerUsuarios() {
+    try {
+        const response = await fetch('/api/usuarios/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
+
+// POST Request
+async function crearUsuario(userData) {
+    try {
+        const response = await fetch('/api/usuarios/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify(userData)
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Error al crear usuario');
+        }
+        
+        return await response.json();
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example-block">
+                            <h4>Axios con Interceptores</h4>
+                            <div class="code-example">
+                                <pre><code>// Configuración de Axios
+const api = axios.create({
+    baseURL: '/api/',
+    timeout: 10000,
+    headers: {
+        'Content-Type': 'application/json'
+    }
+});
+
+// Interceptor de request
+api.interceptors.request.use(
+    config => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        
+        // Agregar CSRF token para métodos que lo requieren
+        if (['post', 'put', 'patch', 'delete'].includes(config.method)) {
+            config.headers['X-CSRFToken'] = getCookie('csrftoken');
+        }
+        
+        return config;
+    },
+    error => Promise.reject(error)
+);
+
+// Interceptor de response
+api.interceptors.response.use(
+    response => response,
+    error => {
+        if (error.response?.status === 401) {
+            // Token expirado, redirigir a login
+            localStorage.removeItem('token');
+            window.location.href = '/login/';
+        }
+        return Promise.reject(error);
+    }
+);
+
+// Uso de la API
+class UsuarioService {
+    static async obtenerTodos() {
+        const response = await api.get('usuarios/');
+        return response.data;
+    }
+    
+    static async crear(userData) {
+        const response = await api.post('usuarios/', userData);
+        return response.data;
+    }
+    
+    static async actualizar(id, userData) {
+        const response = await api.put(`usuarios/${id}/`, userData);
+        return response.data;
+    }
+    
+    static async eliminar(id) {
+        await api.delete(`usuarios/${id}/`);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="csrf-cors">
+                <h2><i class="fas fa-shield-alt"></i> CSRF y CORS</h2>
+                <div class="security-content">
+                    <div class="security-concepts">
+                        <div class="concept-card csrf">
+                            <h3>CSRF (Cross-Site Request Forgery)</h3>
+                            <p>Protección contra ataques que ejecutan acciones no autorizadas en nombre del usuario.</p>
+                            
+                            <div class="csrf-implementation">
+                                <h4>Implementación en Django</h4>
+                                <div class="code-example">
+                                    <pre><code># settings.py
+MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
+    # ... otros middlewares
+]
+
+# En templates
+{% csrf_token %}
+
+# En JavaScript
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+// Uso en AJAX
+fetch('/api/endpoint/', {
+    method: 'POST',
+    headers: {
+        'X-CSRFToken': getCookie('csrftoken'),
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+});</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="concept-card cors">
+                            <h3>CORS (Cross-Origin Resource Sharing)</h3>
+                            <p>Mecanismo que permite que recursos de una página web sean accedidos desde otro dominio.</p>
+                            
+                            <div class="cors-implementation">
+                                <h4>Configuración CORS</h4>
+                                <div class="code-example">
+                                    <pre><code># Instalación
+pip install django-cors-headers
+
+# settings.py
+INSTALLED_APPS = [
+    'corsheaders',
+    # ... otras apps
+]
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    # ... otros middlewares
+]
+
+# Configuración CORS
+CORS_ALLOWED_ORIGINS = [
+    "https://ejemplo.com",
+    "https://www.ejemplo.com",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+# Para desarrollo (NO usar en producción)
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Headers permitidos
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+# Métodos permitidos
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="github-project">
+                <h2><i class="fab fa-github"></i> Proyecto en GitHub</h2>
+                <div class="github-content">
+                    <div class="project-showcase">
+                        <h3>API RESTful Completa</h3>
+                        <p>Sistema de API REST completo con autenticación, filtrado, paginación y documentación automática implementando todos los conceptos de esta semana.</p>
+                        
+                        <div class="api-features">
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    <h4>REST Completo</h4>
+                                    <p>Implementación completa de principios REST con HATEOAS</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-filter"></i>
+                                    <h4>Filtrado Avanzado</h4>
+                                    <p>Sistema de filtros, búsqueda y ordenamiento dinámico</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-sync-alt"></i>
+                                    <h4>Cliente AJAX</h4>
+                                    <p>Frontend interactivo con comunicación asíncrona</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h4>Seguridad</h4>
+                                    <p>Protección CSRF, CORS y autenticación JWT</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="api-endpoints">
+                            <h4>Endpoints Principales</h4>
+                            <div class="endpoints-list">
+                                <div class="endpoint-item">
+                                    <span class="method get">GET</span>
+                                    <code>/api/usuarios/</code>
+                                    <span>Lista de usuarios con filtros</span>
+                                </div>
+                                <div class="endpoint-item">
+                                    <span class="method post">POST</span>
+                                    <code>/api/usuarios/</code>
+                                    <span>Crear nuevo usuario</span>
+                                </div>
+                                <div class="endpoint-item">
+                                    <span class="method get">GET</span>
+                                    <code>/api/posts/</code>
+                                    <span>Posts con paginación y búsqueda</span>
+                                </div>
+                                <div class="endpoint-item">
+                                    <span class="method put">PUT</span>
+                                    <code>/api/posts/{id}/</code>
+                                    <span>Actualizar post completo</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="github-link">
+                            <a href="https://github.com/arturoCoca" target="_blank" >
+                                <i class="fab fa-github"></i>
+                                Ver API en GitHub
+                            </a>
+                            <p class="github-description">
+                                Código fuente completo con documentación, tests y ejemplos de uso
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 13</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Principios REST</h3>
+                    <p>Comprensión profunda de la arquitectura REST y sus principios fundamentales para APIs escalables.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>HATEOAS</h3>
+                    <p>Implementación de hipermedia para crear APIs autodescriptivas y evolutivas.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Serialización</h3>
+                    <p>Dominio de serializers para transformación eficiente de datos entre formatos.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Filtrado y Paginación</h3>
+                    <p>Sistemas avanzados de filtrado, búsqueda y paginación para grandes conjuntos de datos.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Comunicación AJAX</h3>
+                    <p>Implementación de comunicación asíncrona moderna con Fetch API y Axios.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Seguridad API</h3>
+                    <p>Protección completa con CSRF, CORS y mejores prácticas de seguridad.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="../../index.html">Inicio</a>
+                    <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="../sem9/sem9.html">Semana 9</a>
+                <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>           
+                    <span>/</span>
+                    <a href="../sem12/sem12.html">Semana 12</a>
+                    <span>/</span>
+                    <a href="#">Semana 13</a>
+                <span>/</span>
+                    <a href="../sem14/sem14.html">Semana 14</a>
+                <span>/</span>
+                <a href="../sem15/sem15.html">Semana 15</a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; 2025 Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem13.js"></script>
+</body>
+</html>
+

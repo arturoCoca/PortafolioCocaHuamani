@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 12 - Django Avanzado | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem12.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="../sem9/sem9.html">Semana 9</a>
+                <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="#">Semana 12</a>
+                <span>/</span>
+                <a href="../sem13/sem13.html">Semana 13</a>
+                <span>/</span>
+                <a href="../sem14/sem14.html">Semana 14</a>
+                <span>/</span>
+                <a href="../sem15/sem15.html">Semana 15</a>
+            </nav>
+            <h1>Django Avanzado</h1>
+            <p class="subtitle">Formularios, Django Admin, middleware, sesiones, autenticación JWT y desarrollo de proyectos complejos</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Dominar la gestión avanzada de formularios en Django</li>
+                <li>Configurar y personalizar Django Admin</li>
+                <li>Implementar middleware personalizado y gestión de sesiones</li>
+                <li>Desarrollar sistemas de autenticación JWT</li>
+                <li>Crear proyectos Django complejos con enlace a GitHub</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="forms-management">
+                <h2><i class="fas fa-wpforms"></i> Gestión de Formularios</h2>
+                <div class="forms-content">
+                    <div class="forms-overview">
+                        <h3>Sistema de Formularios en Django</h3>
+                        <p>Django proporciona un sistema robusto para manejar formularios HTML, validación de datos y renderizado automático con protección CSRF integrada.</p>
+                        
+                        <div class="forms-types">
+                            <div class="form-type-grid">
+                                <div class="form-type-card">
+                                    <i class="fas fa-edit"></i>
+                                    <h4>Formularios Básicos</h4>
+                                    <p>Formularios simples con validación automática</p>
+                                </div>
+                                <div class="form-type-card">
+                                    <i class="fas fa-database"></i>
+                                    <h4>ModelForms</h4>
+                                    <p>Formularios basados en modelos de datos</p>
+                                </div>
+                                <div class="form-type-card">
+                                    <i class="fas fa-cogs"></i>
+                                    <h4>Formularios Personalizados</h4>
+                                    <p>Validación y widgets personalizados</p>
+                                </div>
+                                <div class="form-type-card">
+                                    <i class="fas fa-layer-group"></i>
+                                    <h4>Formsets</h4>
+                                    <p>Múltiples formularios en una sola vista</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="forms-examples">
+                        <div class="example-section">
+                            <h4>Formularios Básicos</h4>
+                            <div class="code-example">
+                                <pre><code># forms.py
+from django import forms
+from django.core.exceptions import ValidationError
+
+class ContactoForm(forms.Form):
+    nombre = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Tu nombre completo'
+        })
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'tu@email.com'
+        })
+    )
+    asunto = forms.CharField(
+        max_length=200,
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+    mensaje = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control',
+            'rows': 5,
+            'placeholder': 'Escribe tu mensaje aquí...'
+        })
+    )
+    acepta_terminos = forms.BooleanField(
+        required=True,
+        error_messages={'required': 'Debes aceptar los términos'}
+    )
+    
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if not email.endswith('@empresa.com'):
+            raise ValidationError('Solo emails corporativos permitidos')
+        return email
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        nombre = cleaned_data.get('nombre')
+        mensaje = cleaned_data.get('mensaje')
+        
+        if nombre and mensaje and nombre.lower() in mensaje.lower():
+            raise ValidationError('El mensaje no puede contener tu nombre')
+        
+        return cleaned_data</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example-section">
+                            <h4>ModelForms</h4>
+                            <div class="code-example">
+                                <pre><code># forms.py
+from django import forms
+from .models import Articulo, Categoria
+
+class ArticuloForm(forms.ModelForm):
+    class Meta:
+        model = Articulo
+        fields = ['titulo', 'contenido', 'categoria', 'etiquetas', 'imagen']
+        widgets = {
+            'titulo': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Título del artículo'
+            }),
+            'contenido': forms.Textarea(attrs={
+                'class': 'form-control editor',
+                'rows': 10
+            }),
+            'categoria': forms.Select(attrs={'class': 'form-control'}),
+            'etiquetas': forms.CheckboxSelectMultiple(),
+            'imagen': forms.FileInput(attrs={
+                'class': 'form-control',
+                'accept': 'image/*'
+            })
+        }
+        labels = {
+            'titulo': 'Título del Artículo',
+            'contenido': 'Contenido',
+            'categoria': 'Categoría',
+            'etiquetas': 'Etiquetas',
+            'imagen': 'Imagen Destacada'
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['categoria'].queryset = Categoria.objects.filter(activa=True)
+        self.fields['titulo'].help_text = 'Máximo 200 caracteres'
+    
+    def save(self, commit=True):
+        articulo = super().save(commit=False)
+        articulo.slug = self.generate_slug(articulo.titulo)
+        if commit:
+            articulo.save()
+            self.save_m2m()
+        return articulo
+    
+    def generate_slug(self, titulo):
+        from django.utils.text import slugify
+        return slugify(titulo)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="django-admin">
+                <h2><i class="fas fa-user-shield"></i> Django Admin</h2>
+                <div class="admin-content">
+                    <div class="admin-overview">
+                        <h3>Panel de Administración</h3>
+                        <p>Django Admin proporciona una interfaz web automática para gestionar los datos de tu aplicación, completamente personalizable y extensible.</p>
+                        
+                        <div class="admin-features">
+                            <div class="admin-feature-grid">
+                                <div class="admin-feature">
+                                    <i class="fas fa-magic"></i>
+                                    <h4>Generación Automática</h4>
+                                    <p>Interfaz automática basada en modelos</p>
+                                </div>
+                                <div class="admin-feature">
+                                    <i class="fas fa-palette"></i>
+                                    <h4>Personalización</h4>
+                                    <p>Campos, filtros y acciones personalizadas</p>
+                                </div>
+                                <div class="admin-feature">
+                                    <i class="fas fa-users"></i>
+                                    <h4>Gestión de Usuarios</h4>
+                                    <p>Control de permisos y grupos</p>
+                                </div>
+                                <div class="admin-feature">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <h4>Reportes</h4>
+                                    <p>Estadísticas y análisis de datos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-examples">
+                        <div class="example-section">
+                            <h4>Configuración Básica del Admin</h4>
+                            <div class="code-example">
+                                <pre><code># admin.py
+from django.contrib import admin
+from django.utils.html import format_html
+from .models import Articulo, Categoria, Etiqueta
+
+@admin.register(Categoria)
+class CategoriaAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'descripcion', 'activa', 'fecha_creacion']
+    list_filter = ['activa', 'fecha_creacion']
+    search_fields = ['nombre', 'descripcion']
+    list_editable = ['activa']
+    ordering = ['nombre']
+    
+    fieldsets = (
+        ('Información Básica', {
+            'fields': ('nombre', 'descripcion')
+        }),
+        ('Estado', {
+            'fields': ('activa',),
+            'classes': ('collapse',)
+        }),
+    )
+
+@admin.register(Articulo)
+class ArticuloAdmin(admin.ModelAdmin):
+    list_display = ['titulo', 'autor', 'categoria', 'estado', 'vistas', 'fecha_creacion']
+    list_filter = ['estado', 'categoria', 'fecha_creacion', 'autor']
+    search_fields = ['titulo', 'contenido', 'autor__username']
+    list_editable = ['estado']
+    readonly_fields = ['slug', 'fecha_creacion', 'fecha_actualizacion', 'vistas']
+    filter_horizontal = ['etiquetas']
+    date_hierarchy = 'fecha_creacion'
+    
+    fieldsets = (
+        ('Contenido', {
+            'fields': ('titulo', 'slug', 'contenido', 'resumen')
+        }),
+        ('Clasificación', {
+            'fields': ('categoria', 'etiquetas', 'imagen')
+        }),
+        ('Metadatos', {
+            'fields': ('autor', 'estado', 'vistas'),
+            'classes': ('collapse',)
+        }),
+        ('Fechas', {
+            'fields': ('fecha_creacion', 'fecha_actualizacion'),
+            'classes': ('collapse',)
+        }),
+    )
+    
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(autor=request.user)
+    
+    def save_model(self, request, obj, form, change):
+        if not change:  # Si es un nuevo objeto
+            obj.autor = request.user
+        super().save_model(request, obj, form, change)</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example-section">
+                            <h4>Acciones Personalizadas</h4>
+                            <div class="code-example">
+                                <pre><code># admin.py (continuación)
+from django.contrib import messages
+from django.http import HttpResponse
+import csv
+
+class ArticuloAdmin(admin.ModelAdmin):
+    # ... configuración anterior ...
+    
+    actions = ['publicar_articulos', 'archivar_articulos', 'exportar_csv']
+    
+    def publicar_articulos(self, request, queryset):
+        updated = queryset.update(estado='publicado')
+        self.message_user(
+            request,
+            f'{updated} artículos publicados exitosamente.',
+            messages.SUCCESS
+        )
+    publicar_articulos.short_description = "Publicar artículos seleccionados"
+    
+    def archivar_articulos(self, request, queryset):
+        updated = queryset.update(estado='archivado')
+        self.message_user(
+            request,
+            f'{updated} artículos archivados.',
+            messages.WARNING
+        )
+    archivar_articulos.short_description = "Archivar artículos seleccionados"
+    
+    def exportar_csv(self, request, queryset):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="articulos.csv"'
+        
+        writer = csv.writer(response)
+        writer.writerow(['Título', 'Autor', 'Estado', 'Fecha Creación'])
+        
+        for articulo in queryset:
+            writer.writerow([
+                articulo.titulo,
+                articulo.autor.username,
+                articulo.estado,
+                articulo.fecha_creacion.strftime('%Y-%m-%d')
+            ])
+        
+        return response
+    exportar_csv.short_description = "Exportar a CSV"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="middleware-sessions">
+                <h2><i class="fas fa-layer-group"></i> Middleware y Sesiones</h2>
+                <div class="middleware-content">
+                    <div class="middleware-explanation">
+                        <h3>Middleware en Django</h3>
+                        <p>El middleware es un framework de hooks que procesa las peticiones y respuestas de Django globalmente, permitiendo modificar el comportamiento de la aplicación.</p>
+                        
+                        <div class="middleware-flow">
+                            <h4>Flujo de Procesamiento</h4>
+                            <div class="flow-diagram">
+                                <div class="flow-step">
+                                    <div class="step-number">1</div>
+                                    <h5>Request</h5>
+                                    <p>Petición HTTP entrante</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="step-number">2</div>
+                                    <h5>Middleware</h5>
+                                    <p>Procesamiento de middleware</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="step-number">3</div>
+                                    <h5>View</h5>
+                                    <p>Ejecución de la vista</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="step-number">4</div>
+                                    <h5>Response</h5>
+                                    <p>Respuesta HTTP</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="middleware-examples">
+                        <div class="example-section">
+                            <h4>Middleware Personalizado</h4>
+                            <div class="code-example">
+                                <pre><code># middleware.py
+import time
+from django.utils.deprecation import MiddlewareMixin
+from django.http import HttpResponseForbidden
+from django.core.cache import cache
+
+class TimingMiddleware(MiddlewareMixin):
+    """Middleware para medir tiempo de respuesta"""
+    
+    def process_request(self, request):
+        request.start_time = time.time()
+    
+    def process_response(self, request, response):
+        if hasattr(request, 'start_time'):
+            duration = time.time() - request.start_time
+            response['X-Response-Time'] = f'{duration:.3f}s'
+        return response
+
+class RateLimitMiddleware(MiddlewareMixin):
+    """Middleware para limitar peticiones por IP"""
+    
+    def process_request(self, request):
+        ip = self.get_client_ip(request)
+        cache_key = f'rate_limit_{ip}'
+        
+        # Obtener número de peticiones en la última hora
+        requests = cache.get(cache_key, 0)
+        
+        if requests >= 100:  # Límite de 100 peticiones por hora
+            return HttpResponseForbidden('Rate limit exceeded')
+        
+        # Incrementar contador
+        cache.set(cache_key, requests + 1, 3600)  # 1 hora
+        
+        return None
+    
+    def get_client_ip(self, request):
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        return ip
+
+class SecurityHeadersMiddleware(MiddlewareMixin):
+    """Middleware para agregar headers de seguridad"""
+    
+    def process_response(self, request, response):
+        response['X-Content-Type-Options'] = 'nosniff'
+        response['X-Frame-Options'] = 'DENY'
+        response['X-XSS-Protection'] = '1; mode=block'
+        response['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+        return response</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example-section">
+                            <h4>Gestión de Sesiones</h4>
+                            <div class="code-example">
+                                <pre><code># views.py - Gestión de sesiones
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
+def agregar_al_carrito(request, producto_id):
+    """Agregar producto al carrito usando sesiones"""
+    carrito = request.session.get('carrito', {})
+    
+    if str(producto_id) in carrito:
+        carrito[str(producto_id)] += 1
+    else:
+        carrito[str(producto_id)] = 1
+    
+    request.session['carrito'] = carrito
+    request.session.modified = True
+    
+    messages.success(request, 'Producto agregado al carrito')
+    return redirect('tienda:productos')
+
+def ver_carrito(request):
+    """Ver contenido del carrito"""
+    carrito = request.session.get('carrito', {})
+    productos = []
+    total = 0
+    
+    for producto_id, cantidad in carrito.items():
+        try:
+            producto = Producto.objects.get(id=producto_id)
+            subtotal = producto.precio * cantidad
+            productos.append({
+                'producto': producto,
+                'cantidad': cantidad,
+                'subtotal': subtotal
+            })
+            total += subtotal
+        except Producto.DoesNotExist:
+            # Remover producto inexistente del carrito
+            del carrito[producto_id]
+            request.session['carrito'] = carrito
+    
+    context = {
+        'productos': productos,
+        'total': total,
+        'cantidad_items': sum(carrito.values())
+    }
+    return render(request, 'tienda/carrito.html', context)
+
+def limpiar_carrito(request):
+    """Limpiar carrito de compras"""
+    if 'carrito' in request.session:
+        del request.session['carrito']
+    messages.info(request, 'Carrito limpiado')
+    return redirect('tienda:productos')</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="jwt-authentication">
+                <h2><i class="fas fa-key"></i> Autenticación JWT</h2>
+                <div class="jwt-content">
+                    <div class="jwt-overview">
+                        <h3>JSON Web Tokens en Django</h3>
+                        <p>JWT proporciona un método seguro para transmitir información entre partes como un objeto JSON, ideal para APIs y aplicaciones SPA.</p>
+                        
+                        <div class="jwt-benefits">
+                            <div class="benefit-grid">
+                                <div class="benefit-card">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h4>Seguridad</h4>
+                                    <p>Tokens firmados digitalmente</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <i class="fas fa-expand"></i>
+                                    <h4>Escalabilidad</h4>
+                                    <p>Sin estado en el servidor</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <h4>Multiplataforma</h4>
+                                    <p>Compatible con cualquier cliente</p>
+                                </div>
+                                <div class="benefit-card">
+                                    <i class="fas fa-clock"></i>
+                                    <h4>Expiración</h4>
+                                    <p>Tokens con tiempo de vida</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="jwt-implementation">
+                        <div class="example-section">
+                            <h4>Configuración JWT</h4>
+                            <div class="code-example">
+                                <pre><code># settings.py
+from datetime import timedelta
+
+INSTALLED_APPS = [
+    # ... otras apps ...
+    'rest_framework',
+    'rest_framework_simplejwt',
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+}
+
+# urls.py
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
+
+urlpatterns = [
+    # ... otras URLs ...
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+]</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="example-section">
+                            <h4>Vistas con Autenticación JWT</h4>
+                            <div class="code-example">
+                                <pre><code># views.py
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework import status
+from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
+
+@api_view(['POST'])
+def registro_usuario(request):
+    """Registro de nuevo usuario"""
+    serializer = UsuarioSerializer(data=request.data)
+    if serializer.is_valid():
+        usuario = serializer.save()
+        refresh = RefreshToken.for_user(usuario)
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'usuario': UsuarioSerializer(usuario).data
+        }, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def login_personalizado(request):
+    """Login personalizado con información adicional"""
+    username = request.data.get('username')
+    password = request.data.get('password')
+    
+    usuario = authenticate(username=username, password=password)
+    if usuario:
+        refresh = RefreshToken.for_user(usuario)
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'usuario': {
+                'id': usuario.id,
+                'username': usuario.username,
+                'email': usuario.email,
+                'first_name': usuario.first_name,
+                'last_name': usuario.last_name,
+            }
+        })
+    return Response(
+        {'error': 'Credenciales inválidas'}, 
+        status=status.HTTP_401_UNAUTHORIZED
+    )
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def perfil_usuario(request):
+    """Obtener perfil del usuario autenticado"""
+    serializer = UsuarioSerializer(request.user)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def actualizar_perfil(request):
+    """Actualizar perfil del usuario"""
+    serializer = UsuarioSerializer(request.user, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="github-project">
+                <h2><i class="fab fa-github"></i> Proyecto en GitHub</h2>
+                <div class="github-content">
+                    <div class="project-showcase">
+                        <h3>Proyecto Django Avanzado</h3>
+                        <p>Sistema completo de gestión de contenidos con todas las funcionalidades avanzadas implementadas en esta semana.</p>
+                        
+                        <div class="project-features">
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <i class="fas fa-wpforms"></i>
+                                    <h4>Formularios Avanzados</h4>
+                                    <p>Sistema completo de formularios con validación personalizada</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-user-shield"></i>
+                                    <h4>Admin Personalizado</h4>
+                                    <p>Panel de administración con acciones y filtros personalizados</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-layer-group"></i>
+                                    <h4>Middleware Custom</h4>
+                                    <p>Middleware para seguridad, timing y rate limiting</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-key"></i>
+                                    <h4>Autenticación JWT</h4>
+                                    <p>API REST con autenticación JWT completa</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="github-link">
+                                <a href="https://github.com/arturoCoca"  target="_blank">
+                                <i class="fab fa-github"></i>
+                                Ver Proyecto en GitHub
+                            </a>
+                            <p class="github-description">
+                                Repositorio completo con código fuente, documentación y ejemplos de uso
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 12</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Formularios Avanzados</h3>
+                    <p>Dominio completo del sistema de formularios Django con validación personalizada, widgets y ModelForms.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Django Admin</h3>
+                    <p>Personalización avanzada del panel de administración con acciones personalizadas y gestión de permisos.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Middleware</h3>
+                    <p>Implementación de middleware personalizado para seguridad, timing y control de peticiones.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Gestión de Sesiones</h3>
+                    <p>Manejo avanzado de sesiones para carritos de compra y estado de usuario persistente.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Autenticación JWT</h3>
+                    <p>Implementación completa de autenticación JWT para APIs REST seguras y escalables.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Proyecto GitHub</h3>
+                    <p>Desarrollo de proyecto complejo integrando todas las funcionalidades avanzadas de Django.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="../../index.html">Inicio</a>
+                    <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="../sem9/sem9.html">Semana 9</a>
+                <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                    <span>/</span>
+                    <a href="../sem11/sem11.html">Semana 11</a>
+                    <span>/</span>
+                    <a href="#">Semana 12</a>
+                    <span>/</span>
+                    <a href="../sem13/sem13.html">Semana 13</a>
+                    <span>/</span>
+                <a href="../sem14/sem14.html">Semana 14</a>
+                <span>/</span>
+                <a href="../sem15/sem15.html">Semana 15</a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; 2023 Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem12.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 10 - Lenguaje Python | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem10.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="../sem9/sem9.html">Semana 9</a>
+                <span>/</span>
+                <a href="#">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="../sem12/sem12.html">Semana 12</a>
+                <span>/</span>
+                <a href="../sem13/sem13.html">Semana 13</a>
+                <span>/</span>
+                <a href="../sem14/sem14.html">Semana 14</a>
+                <span>/</span>
+                <a href="../sem15/sem15.html">Semana 15</a>
+            </nav>
+            <h1>Lenguaje Python</h1>
+            <p class="subtitle">Introducción a Python: sintaxis, tipos de datos, programación orientada a objetos y desarrollo de aplicaciones</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Dominar la sintaxis básica de Python y sus convenciones</li>
+                <li>Comprender los tipos de datos y estructuras fundamentales</li>
+                <li>Aplicar conceptos de programación orientada a objetos</li>
+                <li>Desarrollar aplicaciones prácticas con Python</li>
+                <li>Manejar excepciones y módulos eficientemente</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="python-intro">
+                <h2><i class="fab fa-python"></i> Introducción a Python</h2>
+                <div class="intro-content">
+                    <div class="python-overview">
+                        <h3>¿Qué es Python?</h3>
+                        <p>Python es un lenguaje de programación de alto nivel, interpretado y de propósito general. Creado por Guido van Rossum en 1991, se caracteriza por su sintaxis clara y legible, lo que lo convierte en una excelente opción tanto para principiantes como para desarrolladores experimentados.</p>
+                        
+                        <div class="python-features">
+                            <div class="feature-grid">
+                                <div class="feature-card">
+                                    <i class="fas fa-code"></i>
+                                    <h4>Sintaxis Clara</h4>
+                                    <p>Código legible y fácil de entender</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-rocket"></i>
+                                    <h4>Desarrollo Rápido</h4>
+                                    <p>Prototipado y desarrollo ágil</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-puzzle-piece"></i>
+                                    <h4>Versátil</h4>
+                                    <p>Web, IA, ciencia de datos, automatización</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-users"></i>
+                                    <h4>Gran Comunidad</h4>
+                                    <p>Amplio ecosistema de librerías</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="python-syntax">
+                <h2><i class="fas fa-edit"></i> Sintaxis Básica, Indentación y Comentarios</h2>
+                <div class="syntax-content">
+                    <div class="syntax-rules">
+                        <h3>Reglas Fundamentales</h3>
+                        <div class="rules-grid">
+                            <div class="rule-card">
+                                <h4>Indentación</h4>
+                                <p>Python usa indentación (espacios o tabs) para definir bloques de código en lugar de llaves {}.</p>
+                                <div class="code-example">
+                                    <pre><code>if edad >= 18:
+    print("Eres mayor de edad")
+    print("Puedes votar")
+else:
+    print("Eres menor de edad")</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="rule-card">
+                                <h4>Comentarios</h4>
+                                <p>Los comentarios se crean con # para líneas simples y """ """ para múltiples líneas.</p>
+                                <div class="code-example">
+                                    <pre><code># Esto es un comentario de una línea
+
+"""
+Esto es un comentario
+de múltiples líneas
+o docstring
+"""</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="rule-card">
+                                <h4>Sensibilidad a Mayúsculas</h4>
+                                <p>Python distingue entre mayúsculas y minúsculas en nombres de variables y funciones.</p>
+                                <div class="code-example">
+                                    <pre><code>nombre = "Juan"
+Nombre = "María"
+NOMBRE = "Pedro"
+# Son tres variables diferentes</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="rule-card">
+                                <h4>Convenciones de Nomenclatura</h4>
+                                <p>Se recomienda usar snake_case para variables y funciones, PascalCase para clases.</p>
+                                <div class="code-example">
+                                    <pre><code>mi_variable = 10
+def mi_funcion():
+    pass
+
+class MiClase:
+    pass</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="variables-data">
+                <h2><i class="fas fa-database"></i> Variables, Cadenas y Números</h2>
+                <div class="variables-content">
+                    <div class="data-types-tabs">
+                        <div class="tab-header">
+                            <div class="tab-btn active" data-tab="variables">Variables</div>
+                            <div class="tab-btn" data-tab="strings">Cadenas</div>
+                            <div class="tab-btn" data-tab="numbers">Números</div>
+                        </div>
+                        
+                        <div class="tab-content active" id="variables">
+                            <h3>Variables en Python</h3>
+                            <p>Las variables en Python son dinámicas, no necesitan declaración de tipo explícita.</p>
+                            
+                            <div class="variable-examples">
+                                <div class="example-block">
+                                    <h4>Asignación de Variables</h4>
+                                    <div class="code-example">
+                                        <pre><code># Asignación simple
+nombre = "Ana"
+edad = 25
+altura = 1.65
+es_estudiante = True
+
+# Asignación múltiple
+x, y, z = 1, 2, 3
+a = b = c = 0
+
+# Intercambio de variables
+x, y = y, x</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="example-block">
+                                    <h4>Tipos de Variables</h4>
+                                    <div class="code-example">
+                                        <pre><code># Verificar tipo de variable
+print(type(nombre))    # &lt;class 'str'&gt;
+print(type(edad))      # &lt;class 'int'&gt;
+print(type(altura))    # &lt;class 'float'&gt;
+print(type(es_estudiante))  # &lt;class 'bool'&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="strings">
+                            <h3>Cadenas de Texto (Strings)</h3>
+                            <p>Las cadenas en Python son inmutables y ofrecen múltiples métodos para manipulación.</p>
+                            
+                            <div class="string-examples">
+                                <div class="example-block">
+                                    <h4>Creación y Formateo</h4>
+                                    <div class="code-example">
+                                        <pre><code># Diferentes formas de crear strings
+texto1 = "Hola mundo"
+texto2 = 'Python es genial'
+texto3 = """Texto de
+múltiples líneas"""
+
+# Formateo de strings
+nombre = "Carlos"
+edad = 30
+mensaje = f"Hola {nombre}, tienes {edad} años"
+mensaje2 = "Hola {}, tienes {} años".format(nombre, edad)</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="example-block">
+                                    <h4>Métodos de Cadenas</h4>
+                                    <div class="code-example">
+                                        <pre><code>texto = "Python Programming"
+
+# Métodos comunes
+print(texto.upper())        # PYTHON PROGRAMMING
+print(texto.lower())        # python programming
+print(texto.title())        # Python Programming
+print(texto.replace("Python", "Java"))  # Java Programming
+print(texto.split())        # ['Python', 'Programming']
+print(len(texto))           # 18</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="numbers">
+                            <h3>Números</h3>
+                            <p>Python maneja diferentes tipos numéricos: enteros, flotantes y complejos.</p>
+                            
+                            <div class="number-examples">
+                                <div class="example-block">
+                                    <h4>Tipos Numéricos</h4>
+                                    <div class="code-example">
+                                        <pre><code># Enteros (int)
+entero = 42
+entero_negativo = -15
+
+# Flotantes (float)
+decimal = 3.14159
+cientifico = 2.5e-4  # 0.00025
+
+# Complejos (complex)
+complejo = 3 + 4j
+
+# Conversiones
+int_a_float = float(42)      # 42.0
+float_a_int = int(3.14)      # 3
+str_a_int = int("123")       # 123</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="example-block">
+                                    <h4>Operaciones Matemáticas</h4>
+                                    <div class="code-example">
+                                        <pre><code># Operadores básicos
+suma = 10 + 5        # 15
+resta = 10 - 5       # 5
+multiplicacion = 10 * 5    # 50
+division = 10 / 3    # 3.333...
+division_entera = 10 // 3  # 3
+modulo = 10 % 3      # 1
+potencia = 2 ** 3    # 8
+
+# Funciones matemáticas
+import math
+print(math.sqrt(16))   # 4.0
+print(math.ceil(3.2))  # 4
+print(math.floor(3.8)) # 3</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="data-structures">
+                <h2><i class="fas fa-list"></i> Tipos de Datos: Listas, Tuplas y Diccionarios</h2>
+                <div class="structures-content">
+                    <div class="structure-grid">
+                        <div class="structure-card">
+                            <h3><i class="fas fa-list-ul"></i> Listas</h3>
+                            <p>Colecciones ordenadas y mutables que pueden contener elementos de diferentes tipos.</p>
+                            
+                            <div class="code-example">
+                                <h4>Operaciones con Listas</h4>
+                                <pre><code># Crear listas
+frutas = ["manzana", "banana", "naranja"]
+numeros = [1, 2, 3, 4, 5]
+mixta = ["texto", 42, 3.14, True]
+
+# Acceso y modificación
+print(frutas[0])        # manzana
+frutas[1] = "pera"      # Modificar elemento
+frutas.append("uva")    # Agregar al final
+frutas.insert(1, "kiwi")  # Insertar en posición
+frutas.remove("naranja")  # Eliminar elemento
+ultimo = frutas.pop()   # Eliminar y retornar último
+
+# Métodos útiles
+print(len(frutas))      # Longitud
+print("pera" in frutas) # Verificar existencia
+frutas.sort()           # Ordenar
+frutas.reverse()        # Invertir</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="structure-card">
+                            <h3><i class="fas fa-lock"></i> Tuplas</h3>
+                            <p>Colecciones ordenadas e inmutables, ideales para datos que no cambian.</p>
+                            
+                            <div class="code-example">
+                                <h4>Trabajando con Tuplas</h4>
+                                <pre><code># Crear tuplas
+coordenadas = (10, 20)
+colores = ("rojo", "verde", "azul")
+tupla_mixta = ("Python", 3.9, True)
+
+# Acceso a elementos
+x, y = coordenadas      # Desempaquetado
+print(colores[0])       # rojo
+print(colores[-1])      # azul (último elemento)
+
+# Métodos de tuplas
+print(len(colores))     # 3
+print(colores.count("rojo"))  # 1
+print(colores.index("verde")) # 1
+
+# Tuplas anidadas
+punto_3d = ((1, 2), (3, 4), (5, 6))
+print(punto_3d[0][1])   # 2</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="structure-card">
+                            <h3><i class="fas fa-key"></i> Diccionarios</h3>
+                            <p>Colecciones de pares clave-valor, no ordenadas y mutables.</p>
+                            
+                            <div class="code-example">
+                                <h4>Manipulación de Diccionarios</h4>
+                                <pre><code># Crear diccionarios
+persona = {
+    "nombre": "Ana",
+    "edad": 28,
+    "ciudad": "Madrid"
+}
+
+# Acceso y modificación
+print(persona["nombre"])     # Ana
+persona["edad"] = 29         # Modificar valor
+persona["profesion"] = "Ingeniera"  # Agregar nueva clave
+
+# Métodos útiles
+print(persona.keys())        # Todas las claves
+print(persona.values())      # Todos los valores
+print(persona.items())       # Pares clave-valor
+
+# Verificaciones
+print("nombre" in persona)   # True
+edad = persona.get("edad", 0)  # Obtener con valor por defecto
+
+# Eliminar elementos
+del persona["ciudad"]        # Eliminar clave específica
+profesion = persona.pop("profesion")  # Eliminar y retornar</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="control-structures">
+                <h2><i class="fas fa-code-branch"></i> Condicionales y Estructuras de Control</h2>
+                <div class="control-content">
+                    <div class="control-sections">
+                        <div class="control-section">
+                            <h3>Condicionales</h3>
+                            <p>Estructuras que permiten ejecutar código basado en condiciones específicas.</p>
+                            
+                            <div class="code-example">
+                                <h4>if, elif, else</h4>
+                                <pre><code># Condicional simple
+edad = 18
+if edad >= 18:
+    print("Eres mayor de edad")
+else:
+    print("Eres menor de edad")
+
+# Condicional múltiple
+nota = 85
+if nota >= 90:
+    calificacion = "A"
+elif nota >= 80:
+    calificacion = "B"
+elif nota >= 70:
+    calificacion = "C"
+else:
+    calificacion = "F"
+
+# Operadores lógicos
+usuario = "admin"
+contraseña = "123456"
+if usuario == "admin" and contraseña == "123456":
+    print("Acceso concedido")
+elif usuario == "admin" or contraseña == "123456":
+    print("Credenciales parcialmente correctas")
+else:
+    print("Acceso denegado")</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="control-section">
+                            <h3>Bucles</h3>
+                            <p>Estructuras que permiten repetir código múltiples veces.</p>
+                            
+                            <div class="code-example">
+                                <h4>for y while</h4>
+                                <pre><code># Bucle for con listas
+frutas = ["manzana", "banana", "naranja"]
+for fruta in frutas:
+    print(f"Me gusta la {fruta}")
+
+# Bucle for con range
+for i in range(5):          # 0, 1, 2, 3, 4
+    print(f"Número: {i}")
+
+for i in range(1, 11, 2):   # 1, 3, 5, 7, 9
+    print(f"Impar: {i}")
+
+# Bucle while
+contador = 0
+while contador < 5:
+    print(f"Contador: {contador}")
+    contador += 1
+
+# Control de bucles
+for i in range(10):
+    if i == 3:
+        continue    # Saltar iteración
+    if i == 7:
+        break       # Salir del bucle
+    print(i)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="functions">
+                <h2><i class="fas fa-cogs"></i> Funciones Imperativas y Retorno de Valores</h2>
+                <div class="functions-content">
+                    <div class="function-concepts">
+                        <h3>Definición y Uso de Funciones</h3>
+                        <p>Las funciones permiten organizar y reutilizar código de manera eficiente.</p>
+                        
+                        <div class="function-examples">
+                            <div class="example-block">
+                                <h4>Funciones Básicas</h4>
+                                <div class="code-example">
+                                    <pre><code># Función simple
+def saludar():
+    print("¡Hola mundo!")
+
+saludar()  # Llamar la función
+
+# Función con parámetros
+def saludar_persona(nombre):
+    print(f"¡Hola {nombre}!")
+
+saludar_persona("Ana")
+
+# Función con múltiples parámetros
+def sumar(a, b):
+    resultado = a + b
+    return resultado
+
+total = sumar(5, 3)
+print(total)  # 8</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="example-block">
+                                <h4>Parámetros Avanzados</h4>
+                                <div class="code-example">
+                                    <pre><code># Parámetros por defecto
+def presentarse(nombre, edad=25):
+    print(f"Soy {nombre} y tengo {edad} años")
+
+presentarse("Carlos")        # Usa edad por defecto
+presentarse("Ana", 30)       # Especifica edad
+
+# Argumentos variables
+def sumar_todos(*numeros):
+    return sum(numeros)
+
+print(sumar_todos(1, 2, 3, 4, 5))  # 15
+
+# Argumentos con nombre
+def crear_perfil(**datos):
+    for clave, valor in datos.items():
+        print(f"{clave}: {valor}")
+
+crear_perfil(nombre="Luis", edad=28, ciudad="Barcelona")</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="example-block">
+                                <h4>Funciones Lambda</h4>
+                                <div class="code-example">
+                                    <pre><code># Función lambda (anónima)
+cuadrado = lambda x: x ** 2
+print(cuadrado(5))  # 25
+
+# Uso con funciones de orden superior
+numeros = [1, 2, 3, 4, 5]
+cuadrados = list(map(lambda x: x ** 2, numeros))
+print(cuadrados)  # [1, 4, 9, 16, 25]
+
+pares = list(filter(lambda x: x % 2 == 0, numeros))
+print(pares)  # [2, 4]</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="oop">
+                <h2><i class="fas fa-cube"></i> Programación Orientada a Objetos</h2>
+                <div class="oop-content">
+                    <div class="oop-concepts">
+                        <h3>Encapsulamiento, Herencia y Polimorfismo</h3>
+                        
+                        <div class="oop-sections">
+                            <div class="oop-section">
+                                <h4>Clases y Objetos</h4>
+                                <div class="code-example">
+                                    <pre><code># Definir una clase
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre    # Atributo público
+        self._edad = edad       # Atributo protegido
+        self.__id = 12345       # Atributo privado
+    
+    def presentarse(self):
+        return f"Hola, soy {self.nombre} y tengo {self._edad} años"
+    
+    def cumplir_años(self):
+        self._edad += 1
+    
+    @property
+    def edad(self):
+        return self._edad
+    
+    @edad.setter
+    def edad(self, nueva_edad):
+        if nueva_edad >= 0:
+            self._edad = nueva_edad
+
+# Crear objetos
+persona1 = Persona("Ana", 25)
+persona2 = Persona("Carlos", 30)
+
+print(persona1.presentarse())
+persona1.cumplir_años()
+print(f"Nueva edad: {persona1.edad}")</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="oop-section">
+                                <h4>Herencia</h4>
+                                <div class="code-example">
+                                    <pre><code># Clase padre
+class Animal:
+    def __init__(self, nombre, especie):
+        self.nombre = nombre
+        self.especie = especie
+    
+    def hacer_sonido(self):
+        pass
+    
+    def dormir(self):
+        return f"{self.nombre} está durmiendo"
+
+# Clases hijas
+class Perro(Animal):
+    def __init__(self, nombre, raza):
+        super().__init__(nombre, "Canino")
+        self.raza = raza
+    
+    def hacer_sonido(self):
+        return f"{self.nombre} dice: ¡Guau!"
+    
+    def buscar_pelota(self):
+        return f"{self.nombre} está buscando la pelota"
+
+class Gato(Animal):
+    def __init__(self, nombre, color):
+        super().__init__(nombre, "Felino")
+        self.color = color
+    
+    def hacer_sonido(self):
+        return f"{self.nombre} dice: ¡Miau!"
+
+# Uso de herencia
+mi_perro = Perro("Rex", "Labrador")
+mi_gato = Gato("Whiskers", "Gris")
+
+print(mi_perro.hacer_sonido())
+print(mi_gato.hacer_sonido())</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="oop-section">
+                                <h4>Polimorfismo</h4>
+                                <div class="code-example">
+                                    <pre><code># Polimorfismo en acción
+def hacer_sonidos(animales):
+    for animal in animales:
+        print(animal.hacer_sonido())
+
+# Lista de diferentes animales
+mascotas = [
+    Perro("Buddy", "Golden Retriever"),
+    Gato("Luna", "Negro"),
+    Perro("Max", "Bulldog")
+]
+
+hacer_sonidos(mascotas)
+
+# Herencia múltiple
+class Volador:
+    def volar(self):
+        return "Estoy volando"
+
+class Nadador:
+    def nadar(self):
+        return "Estoy nadando"
+
+class Pato(Animal, Volador, Nadador):
+    def hacer_sonido(self):
+        return f"{self.nombre} dice: ¡Cuac!"
+
+pato = Pato("Donald", "Pato")
+print(pato.hacer_sonido())
+print(pato.volar())
+print(pato.nadar())</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="exceptions-modules">
+                <h2><i class="fas fa-exclamation-triangle"></i> Excepciones y Módulos</h2>
+                <div class="exceptions-content">
+                    <div class="exceptions-sections">
+                        <div class="exception-section">
+                            <h3>Manejo de Excepciones</h3>
+                            <p>Las excepciones permiten manejar errores de manera elegante y controlada.</p>
+                            
+                            <div class="code-example">
+                                <h4>try, except, finally</h4>
+                                <pre><code># Manejo básico de excepciones
+try:
+    numero = int(input("Ingresa un número: "))
+    resultado = 10 / numero
+    print(f"Resultado: {resultado}")
+except ValueError:
+    print("Error: Debes ingresar un número válido")
+except ZeroDivisionError:
+    print("Error: No se puede dividir por cero")
+except Exception as e:
+    print(f"Error inesperado: {e}")
+finally:
+    print("Operación completada")
+
+# Lanzar excepciones personalizadas
+def validar_edad(edad):
+    if edad < 0:
+        raise ValueError("La edad no puede ser negativa")
+    if edad > 150:
+        raise ValueError("La edad no puede ser mayor a 150")
+    return True
+
+try:
+    validar_edad(-5)
+except ValueError as e:
+    print(f"Error de validación: {e}")</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="modules-section">
+                            <h3>Módulos y Paquetes</h3>
+                            <p>Los módulos permiten organizar y reutilizar código en diferentes archivos.</p>
+                            
+                            <div class="code-example">
+                                <h4>Importación de Módulos</h4>
+                                <pre><code># Importar módulos estándar
+import math
+import datetime
+from random import randint, choice
+
+# Usar funciones de módulos
+print(math.pi)
+print(math.sqrt(16))
+print(datetime.datetime.now())
+print(randint(1, 10))
+print(choice(['a', 'b', 'c']))
+
+# Crear módulo personalizado (archivo: mi_modulo.py)
+# def saludar(nombre):
+#     return f"Hola {nombre}"
+# 
+# PI = 3.14159
+
+# Importar módulo personalizado
+# import mi_modulo
+# from mi_modulo import saludar, PI
+
+# Alias para módulos
+import numpy as np
+import pandas as pd
+
+# Verificar contenido de módulos
+print(dir(math))  # Ver funciones disponibles</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="laboratory">
+                <h2><i class="fas fa-flask"></i> Laboratorio 10: Aplicación con Python</h2>
+                <div class="lab-content">
+                    <div class="lab-objectives">
+                        <h3>Objetivos del Laboratorio</h3>
+                        <ul>
+                            <li>Desarrollar una aplicación completa usando Python</li>
+                            <li>Aplicar conceptos de POO en un proyecto real</li>
+                            <li>Implementar manejo de excepciones y archivos</li>
+                            <li>Crear una interfaz de usuario funcional</li>
+                            <li>Documentar y estructurar el código adecuadamente</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lab-project">
+                        <h3>Proyecto: Sistema de Gestión de Biblioteca</h3>
+                        <p>Desarrollaremos un sistema completo para gestionar una biblioteca, incluyendo libros, usuarios y préstamos.</p>
+                        
+                        <div class="project-features">
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <h4>Gestión de Libros</h4>
+                                    <ul>
+                                        <li>Agregar, editar y eliminar libros</li>
+                                        <li>Búsqueda por título, autor o género</li>
+                                        <li>Control de disponibilidad</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <h4>Gestión de Usuarios</h4>
+                                    <ul>
+                                        <li>Registro de nuevos usuarios</li>
+                                        <li>Actualización de información</li>
+                                        <li>Historial de préstamos</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <h4>Sistema de Préstamos</h4>
+                                    <ul>
+                                        <li>Préstamo y devolución de libros</li>
+                                        <li>Control de fechas y multas</li>
+                                        <li>Reportes de actividad</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="feature-item">
+                                    <h4>Persistencia de Datos</h4>
+                                    <ul>
+                                        <li>Guardado en archivos JSON</li>
+                                        <li>Carga automática al iniciar</li>
+                                        <li>Backup de seguridad</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-example">
+                            <h4>Estructura del Proyecto</h4>
+                            <pre><code>biblioteca/
+├── main.py              # Archivo principal
+├── models/
+│   ├── __init__.py
+│   ├── libro.py         # Clase Libro
+│   ├── usuario.py       # Clase Usuario
+│   └── prestamo.py      # Clase Prestamo
+├── services/
+│   ├── __init__.py
+│   ├── biblioteca_service.py  # Lógica de negocio
+│   └── archivo_service.py     # Manejo de archivos
+├── utils/
+│   ├── __init__.py
+│   └── validaciones.py  # Funciones de validación
+└── data/
+    ├── libros.json
+    ├── usuarios.json
+    └── prestamos.json</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 10</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Fundamentos de Python</h3>
+                    <p>Dominio de sintaxis básica, indentación, comentarios y convenciones de nomenclatura para escribir código Python limpio y legible.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Tipos de Datos</h3>
+                    <p>Comprensión profunda de variables, cadenas, números, listas, tuplas y diccionarios con sus métodos y operaciones.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Estructuras de Control</h3>
+                    <p>Implementación efectiva de condicionales, bucles y funciones para crear lógica de programación robusta.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Programación Orientada a Objetos</h3>
+                    <p>Aplicación de conceptos de POO incluyendo encapsulamiento, herencia múltiple y polimorfismo en Python.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Manejo de Errores</h3>
+                    <p>Gestión profesional de excepciones y organización de código mediante módulos y paquetes.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Proyecto Práctico</h3>
+                    <p>Desarrollo de una aplicación completa de gestión de biblioteca aplicando todos los conceptos aprendidos.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="../../index.html">Inicio</a>
+                    <span>/</span>
+                    
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                    <a href="../sem9/sem9.html">Semana 9</a>
+                    <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="../sem12/sem12.html">Semana 12</a>
+                <span>/</span>
+                <a href="../sem13/sem13.html">Semana 13</a>
+                <span>/</span>
+                <a href="../sem14/sem14.html">Semana 14</a>
+                <span>/</span>
+                <a href="../sem15/sem15.html">Semana 15</a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; 2025 Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem10.js"></script>
+</body>
+</html>
+

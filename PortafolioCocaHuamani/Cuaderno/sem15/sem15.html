@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 15 - Introducción a Flask | Portafolio</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="sem15.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="sem-header">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="../sem9/sem9.html">Semana 9</a>
+                <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="../sem12/sem12.html">Semana 12</a>
+                <span>/</span>
+                <a href="../sem13/sem13.html">Semana 13</a>
+                <span>/</span>
+                <a href="../sem14/sem14.html">Semana 14</a>
+                <span>/</span>
+                <a href="#">Semana 15</a>
+            </nav>
+            <h1>Introducción a Flask</h1>
+            <p class="subtitle">Framework web ligero para Python, rutas, plantillas Jinja2, bases de datos y despliegue</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="learning-objectives">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de Aprendizaje</h2>
+            <ul>
+                <li>Comprender los fundamentos de Flask y su filosofía</li>
+                <li>Crear rutas y manejar peticiones HTTP</li>
+                <li>Utilizar plantillas Jinja2 para renderizar HTML dinámico</li>
+                <li>Integrar bases de datos con SQLAlchemy</li>
+                <li>Desplegar aplicaciones Flask con Gunicorn y Nginx</li>
+                <li>Desarrollar proyecto Flask con enlace a GitHub</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <article class="flask-intro">
+                <h2><i class="fas fa-flask"></i> ¿Qué es Flask?</h2>
+                <div class="flask-content">
+                    <div class="flask-overview">
+                        <h3>Microframework para Python</h3>
+                        <p>Flask es un microframework web para Python, lo que significa que proporciona las herramientas esenciales para construir aplicaciones web sin imponer una estructura rígida o dependencias excesivas. Es ideal para proyectos pequeños y medianos, APIs RESTful y prototipos rápidos.</p>
+                        
+                        <div class="flask-features">
+                            <div class="feature-grid">
+                                <div class="feature-card">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <h4>Ligero y Flexible</h4>
+                                    <p>Mínima curva de aprendizaje, gran libertad de diseño</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-code"></i>
+                                    <h4>Basado en Werkzeug y Jinja2</h4>
+                                    <p>Utiliza componentes probados para WSGI y plantillas</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-plug"></i>
+                                    <h4>Extensible</h4>
+                                    <p>Gran ecosistema de extensiones para añadir funcionalidades</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <h4>Fácil de Usar</h4>
+                                    <p>Sintaxis intuitiva y documentación clara</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flask-example">
+                        <h4>Hola Mundo en Flask</h4>
+                        <div class="code-example">
+                            <pre><code># app.py
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+
+app = Flask(__name__)
+app.config["SECRET_KEY"] = "una_clave_secreta_muy_segura"
+
+@app.route("/")
+def index():
+    return "<h1>¡Hola, mundo desde Flask!</h1>"
+
+@app.route("/saludar/<nombre>")
+def saludar(nombre):
+    return f"<h1>¡Hola, {nombre}! Bienvenido a Flask.</h1>"
+
+@app.route("/suma/<int:a>/<int:b>")
+def suma(a, b):
+    resultado = a + b
+    return f"<h1>La suma de {a} y {b} es: {resultado}</h1>"
+
+@app.route("/contacto", methods=["GET", "POST"])
+def contacto():
+    if request.method == "POST":
+        nombre = request.form["nombre"]
+        email = request.form["email"]
+        mensaje = request.form["mensaje"]
+        flash(f"Mensaje de {nombre} ({email}) recibido: {mensaje}", "success")
+        return redirect(url_for("index"))
+    return render_template("contacto.html")
+
+@app.route("/api/data")
+def api_data():
+    data = {
+        "nombre": "API de Ejemplo",
+        "version": "1.0",
+        "recursos": [
+            {"id": 1, "item": "Elemento A"},
+            {"id": 2, "item": "Elemento B"}
+        ]
+    }
+    return jsonify(data)
+
+if __name__ == "__main__":
+    app.run(debug=True)</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="routing-templates">
+                <h2><i class="fas fa-route"></i> Rutas y Plantillas Jinja2</h2>
+                <div class="routing-templates-content">
+                    <div class="routing-section">
+                        <h3>Manejo de Rutas</h3>
+                        <p>Flask utiliza decoradores para asociar funciones Python con URLs específicas, permitiendo manejar diferentes métodos HTTP y parámetros dinámicos.</p>
+                        
+                        <div class="routing-examples">
+                            <div class="example-block">
+                                <h4>Rutas Básicas y Dinámicas</h4>
+                                <div class="code-example">
+                                    <pre><code># app.py (rutas)
+@app.route("/")
+def home():
+    return "Página de inicio"
+
+@app.route("/usuario/<username>")
+def show_user_profile(username):
+    return f"Perfil de usuario: {username}"
+
+@app.route("/post/<int:post_id>")
+def show_post(post_id):
+    return f"Post ID: {post_id}"
+
+@app.route("/path/<path:subpath>")
+def show_subpath(subpath):
+    return f"Subruta: {subpath}"
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        if username == "admin" and password == "password":
+            flash("Inicio de sesión exitoso", "success")
+            return redirect(url_for("dashboard"))
+        else:
+            flash("Credenciales inválidas", "danger")
+    return render_template("login.html")</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="templates-section">
+                        <h3>Plantillas Jinja2</h3>
+                        <p>Jinja2 es el motor de plantillas por defecto de Flask, permitiendo crear HTML dinámico con lógica de programación, herencia de plantillas y macros.</p>
+                        
+                        <div class="templates-examples">
+                            <div class="example-block">
+                                <h4>Uso de Jinja2</h4>
+                                <div class="code-example">
+                                    <pre><code>&lt;!-- base.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;{% block title %}Mi Aplicación Flask{% endblock %}&lt;/title&gt;
+    &lt;link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;a href="{{ url_for("index") }}"&gt;Inicio&lt;/a&gt;
+            &lt;a href="{{ url_for("contacto") }}"&gt;Contacto&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                &lt;ul class="flashes"&gt;
+                {% for category, message in messages %}
+                    &lt;li class="{{ category }}"&gt;{{ message }}&lt;/li&gt;
+                {% endfor %}
+                &lt;/ul&gt;
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&copy; {{ "now"|date("%Y") }} Mi Aplicación Flask.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- index.html --&gt;
+{% extends "base.html" %}
+
+{% block title %}Página Principal{% endblock %}
+
+{% block content %}
+    &lt;h1&gt;Bienvenido a mi sitio Flask&lt;/h1&gt;
+    &lt;p&gt;Explora las funcionalidades de Flask.&lt;/p&gt;
+    &lt;ul&gt;
+        {% for item in items %}
+            &lt;li&gt;{{ item }}&lt;/li&gt;
+        {% endfor %}
+    &lt;/ul&gt;
+{% endblock %}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="databases-deployment">
+                <h2><i class="fas fa-database"></i> Bases de Datos y Despliegue</h2>
+                <div class="databases-deployment-content">
+                    <div class="databases-section">
+                        <h3>Integración con Bases de Datos (SQLAlchemy)</h3>
+                        <p>Flask no incluye un ORM por defecto, pero Flask-SQLAlchemy es una extensión popular que facilita la interacción con bases de datos relacionales.</p>
+                        
+                        <div class="database-examples">
+                            <div class="example-block">
+                                <h4>Flask-SQLAlchemy</h4>
+                                <div class="code-example">
+                                    <pre><code># app.py (con SQLAlchemy)
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(120), nullable=False)
+    posts = db.relationship("Post", backref="author", lazy=True)
+
+    def __repr__(self):
+        return f"User(\'{self.username}\', \'{self.email}\')"
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    def __repr__(self):
+        return f"Post(\'{self.title}\', \'{self.date_posted}\')"
+
+# Para crear la base de datos y tablas (ejecutar una vez)
+# with app.app_context():
+#     db.create_all()
+
+# Ejemplo de uso en una ruta
+@app.route("/add_user")
+def add_user():
+    with app.app_context():
+        new_user = User(username="testuser", email="test@example.com", password="password123")
+        db.session.add(new_user)
+        db.session.commit()
+    return "Usuario añadido!"
+
+@app.route("/users")
+def get_users():
+    with app.app_context():
+        users = User.query.all()
+        user_list = [{"username": u.username, "email": u.email} for u in users]
+    return jsonify(user_list)</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="deployment-section">
+                        <h3>Despliegue de Aplicaciones Flask</h3>
+                        <p>Para desplegar aplicaciones Flask en producción, se recomienda usar un servidor WSGI como Gunicorn y un proxy inverso como Nginx.</p>
+                        
+                        <div class="deployment-flow">
+                            <h4>Flujo de Despliegue</h4>
+                            <div class="flow-diagram">
+                                <div class="flow-step">
+                                    <div class="step-number">1</div>
+                                    <h5>Nginx</h5>
+                                    <p>Proxy inverso, SSL, balanceo de carga</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="step-number">2</div>
+                                    <h5>Gunicorn</h5>
+                                    <p>Servidor WSGI, maneja procesos Flask</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="step-number">3</div>
+                                    <h5>Flask App</h5>
+                                    <p>Lógica de negocio, rutas, plantillas</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="deployment-examples">
+                            <div class="example-block">
+                                <h4>Configuración Gunicorn</h4>
+                                <div class="code-example">
+                                    <pre><code># wsgi.py
+from app import app
+
+if __name__ == "__main__":
+    app.run()
+
+# Comando para ejecutar Gunicorn
+# gunicorn --workers 4 --bind 0.0.0.0:8000 wsgi:app
+
+# systemd service file (/etc/systemd/system/myflaskapp.service)
+[Unit]
+Description=Gunicorn instance to serve myflaskapp
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/myflaskapp
+ExecStart=/usr/bin/gunicorn --workers 4 --bind unix:/var/www/myflaskapp/myflaskapp.sock -m 007 wsgi:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="example-block">
+                                <h4>Configuración Nginx</h4>
+                                <div class="code-example">
+                                    <pre><code># /etc/nginx/sites-available/myflaskapp
+server {
+    listen 80;
+    server_name your_domain.com www.your_domain.com;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/var/www/myflaskapp/myflaskapp.sock;
+    }
+
+    # Para servir archivos estáticos directamente con Nginx
+    location /static {
+        alias /var/www/myflaskapp/static;
+    }
+}
+
+# Habilitar el sitio
+# sudo ln -s /etc/nginx/sites-available/myflaskapp /etc/nginx/sites-enabled/
+# sudo nginx -t
+# sudo systemctl restart nginx</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="github-project">
+                <h2><i class="fab fa-github"></i> Proyecto en GitHub</h2>
+                <div class="github-content">
+                    <div class="project-showcase">
+                        <h3>Aplicación Flask Completa</h3>
+                        <p>Aplicación web Flask con autenticación de usuarios, gestión de posts, integración con base de datos y scripts de despliegue, demostrando todos los conceptos de esta semana.</p>
+                        
+                        <div class="project-features">
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <i class="fas fa-user-plus"></i>
+                                    <h4>Autenticación</h4>
+                                    <p>Registro, login y gestión de sesiones de usuario</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-blog"></i>
+                                    <h4>Gestión de Contenido</h4>
+                                    <p>Creación, edición y eliminación de posts</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-database"></i>
+                                    <h4>Integración DB</h4>
+                                    <p>Uso de Flask-SQLAlchemy con SQLite/PostgreSQL</p>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <h4>Despliegue</h4>
+                                    <p>Configuraciones para Gunicorn y Nginx</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="github-link">
+                            <a href="https://github.com/arturoCoca" class="github-btn" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Ver Proyecto Flask en GitHub
+                            </a>
+                            <p class="github-description">
+                                Código fuente completo con documentación, estructura de proyecto y guía de inicio rápido
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="summary">
+            <h2><i class="fas fa-clipboard-check"></i> Resumen Semana 15</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3>Fundamentos de Flask</h3>
+                    <p>Comprensión de la filosofía de Flask, su ligereza y flexibilidad como microframework.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Rutas y Vistas</h3>
+                    <p>Dominio del enrutamiento, manejo de peticiones HTTP y parámetros dinámicos.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Plantillas Jinja2</h3>
+                    <p>Creación de HTML dinámico, herencia de plantillas y uso de lógica en el frontend.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Bases de Datos</h3>
+                    <p>Integración de bases de datos relacionales con Flask-SQLAlchemy.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Despliegue</h3>
+                    <p>Estrategias de despliegue en producción con Gunicorn y Nginx.</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Proyecto Completo</h3>
+                    <p>Desarrollo de una aplicación Flask funcional con autenticación y gestión de contenido.</p>
+                </div>
+            </div>
+        </section>
+        <section class=" ">
+            <h2><i class=""></i>  </h2>
+            <p> </p>
+            
+        
+    </main>
+
+    <footer class="sem-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="../../index.html">Inicio</a>
+                    <span>/</span>
+                <a href="../sem1/sem1.html">Semana 1</a>
+                <span>/</span>
+                <a href="../sem2/sem2.html">Semana 2</a>
+                <span>/</span>
+                <a href="../sem3/sem3.html">Semana 3</a>
+                <span>/</span>
+                <a href="../sem4/sem4.html">Semana 4</a>
+                <span>/</span>
+                <a href="../sem5/sem5.html">Semana 5</a>
+                <span>/</span>
+                <a href="../sem6/sem6.html">Semana 6</a>
+                <span>/</span>
+                <a href="../sem7/sem7.html">Semana 7</a>
+                <span>/</span>
+                <a href="../sem8/sem8.html">Semana 8</a>
+                <span>/</span>
+                <a href="../sem9/sem9.html">Semana 9</a>
+                <span>/</span>
+                <a href="../sem10/sem10.html">Semana 10</a>
+                <span>/</span>
+                <a href="../sem11/sem11.html">Semana 11</a>
+                <span>/</span>
+                <a href="../sem12/sem12.html">Semana 12</a>
+                <span>/</span>
+                <a href="../sem13/sem13.html">Semana 13</a>
+                <span>/</span>
+                <a href="../sem14/sem14.html">Semana 14</a>
+                    <span>/</span>
+                    <a href="#">Semana 15</a>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; 2025 Portafolio de Aprendizaje. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sem15.js"></script>
+</body>
+</html>
+
